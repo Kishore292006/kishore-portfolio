@@ -105,34 +105,13 @@ h1 .lt{display:inline-block;padding-bottom:.14em;margin-bottom:-.14em;background
 .btn-ghost:hover{text-decoration:underline;text-underline-offset:4px}
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:1px;height:44px;background:linear-gradient(var(--blue),transparent);opacity:.7}
 /* pre-JS gate: only active while anime.js is expected within 2.5s */
-html.wait h1,html.wait .eyebrow,html.wait .role,html.wait .lede,html.wait .cta,html.wait .roadmap{opacity:0}
+html.wait h1,html.wait .eyebrow,html.wait .role,html.wait .lede,html.wait .cta{opacity:0}
 
 /* hero: drifting neural-network background + rotating role line */
 .net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 52% 46% at 50% 46%,transparent 28%,#000 100%);mask-image:radial-gradient(ellipse 52% 46% at 50% 46%,transparent 28%,#000 100%)}
 .role{margin-top:16px;font:400 clamp(15px,1.8vw,19px)/1.4 var(--mono);color:var(--muted);letter-spacing:.01em}
 .rw{display:inline-block;color:var(--blue);will-change:transform,opacity}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* career roadmap: Data Analyst (now) -> dotted trail -> Machine Learning Engineer (goal) */
-.roadmap{display:flex;align-items:center;justify-content:center;gap:18px;margin:52px auto 0;max-width:780px}
-.rm-node{flex:none;min-width:200px;text-align:left;border:1px solid var(--line);border-radius:18px;padding:14px 18px;background:rgba(11,11,15,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.rm-tag{display:flex;align-items:center;gap:8px;font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
-.rm-node b{display:block;margin-top:6px;font:500 16px var(--display);letter-spacing:-.01em}
-.rm-node small{display:block;margin-top:2px;font-size:12px;color:var(--muted)}
-.rm-now{border-color:hsl(var(--h) 100% 62% / .5);background:hsl(var(--h) 100% 62% / .06)}
-.rm-now .rm-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);animation:rmping 2s ease-out infinite}
-@keyframes rmping{0%{box-shadow:0 0 0 0 hsl(var(--h) 100% 62% / .6)}80%,100%{box-shadow:0 0 0 9px transparent}}
-.rm-goal{border-style:dashed;border-color:rgba(255,255,255,.22);animation:rmglow 3.2s ease-in-out infinite alternate}
-.rm-goal .rm-tag{color:var(--muted)}
-@keyframes rmglow{to{border-color:hsl(var(--h) 100% 62% / .6)}}
-.rm-track{flex:1;min-width:110px;display:flex;align-items:center;justify-content:space-between}
-.rm-track i{width:5px;height:5px;border-radius:50%;background:var(--blue);opacity:.45;flex:none}
-@media(max-width:640px){
-  .roadmap{flex-direction:column;align-items:stretch;gap:10px;max-width:340px;margin-top:40px}
-  .rm-node{min-width:0}
-  .rm-track{flex:none;flex-direction:column;min-height:96px;min-width:0}
-}
-@media(prefers-reduced-motion:reduce){.rm-now .rm-tag::before,.rm-goal{animation:none}}
 
 /* sections */
 section{padding:clamp(72px,11vw,120px) 0;border-top:1px solid var(--line)}
@@ -370,11 +349,6 @@ html.rv-on .rv.in{opacity:1;transform:none}
         </a>
         <a class="btn btn-ghost" href="#work">View my work ›</a>
       </div>
-      <div class="roadmap" id="roadmap" role="group" aria-label="Career roadmap: Data Analyst today, Machine Learning Engineer next">
-        <div class="rm-node rm-now"><span class="rm-tag">Now</span><b>Data Analyst</b><small>Python · SQL · Power BI</small></div>
-        <div class="rm-track" aria-hidden="true"></div>
-        <div class="rm-node rm-goal"><span class="rm-tag">Goal</span><b>Machine Learning Engineer</b><small>Building toward it · B.Tech AI &amp; ML</small></div>
-      </div>
     </div>
     <span class="scroll-hint" aria-hidden="true"></span>
   </section>
@@ -554,9 +528,6 @@ html.rv-on .rv.in{opacity:1;transform:none}
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
     matchMedia('(min-width:641px)').addEventListener&&matchMedia('(min-width:641px)').addEventListener('change',function(){ set(false); });
   })();
-
-  /* roadmap trail: a row of dots between "Data Analyst" and "Machine Learning Engineer" */
-  (function(){ var tr=$('.rm-track'); if(tr) for(var n=0;n<12;n++) tr.appendChild(document.createElement('i')); })();
 
   /* ---------- hero background: a drifting neural network that reaches toward the cursor ---------- */
   (function(){
@@ -934,25 +905,6 @@ html.rv-on .rv.in{opacity:1;transform:none}
     var entrance=d.classList.contains('wait'); /* false if the failsafe already fired: skip, show final state */
     var chs=[];
 
-    /* Roadmap: the Data Analyst node appears, the dots pop in one by one, the ML Engineer node appears,
-       then a wave of light keeps travelling along the trail toward the goal */
-    var rm=$('#roadmap'), rmNodes=$$('.rm-node',rm||document), rmDots=$$('.rm-track i',rm||document);
-    function rmWave(){
-      if(!rmDots.length) return;
-      A({targets:rmDots,
-        opacity:[{value:1,duration:320},{value:.35,duration:520}],
-        scale:[{value:1.9,duration:320},{value:1,duration:520}],
-        delay:A.stagger(110),endDelay:500,loop:true,easing:'easeInOutSine'});
-    }
-    function playRoadmap(){
-      if(!rm) return;
-      if(!entrance){ rmWave(); return; }
-      A.timeline({easing:'easeOutCubic'})
-        .add({targets:rmNodes[0],opacity:1,translateY:0,duration:700})
-        .add({targets:rmDots,opacity:.35,scale:1,duration:380,delay:A.stagger(75)},'-=250')
-        .add({targets:rmNodes[1],opacity:1,translateY:0,duration:700},'-=250')
-        .finished.then(rmWave);
-    }
     /* Rotating role line under the name: each phrase slides up and out, the next one rises in */
     var roleEl=$('.rw'), roles=['Data Analyst','BI Dashboard Builder','ML Engineer in the making'], ri=0;
     function roleCycle(){
@@ -964,11 +916,6 @@ html.rv-on .rv.in{opacity:1;transform:none}
           A({targets:roleEl,translateY:0,opacity:1,duration:520,easing:'easeOutBack(1.5)',complete:function(){ setTimeout(next,ri===roles.length-1?3000:2100); }});
         }});
       },2200);
-    }
-
-    if(entrance){
-      A.set(rmNodes,{opacity:0,translateY:18});
-      A.set(rmDots,{opacity:0,scale:0});
     }
 
     if(entrance){
@@ -1007,8 +954,8 @@ html.rv-on .rv.in{opacity:1;transform:none}
           duration:900,easing:'easeOutCubic',
           delay:A.stagger(130)
         },'-=650')
-        .finished.then(function(){ magnetReady=true; playRoadmap(); roleCycle(); });
-    }else{ playRoadmap(); roleCycle(); }
+        .finished.then(function(){ magnetReady=true; roleCycle(); });
+    }else{ roleCycle(); }
 
     /* Glow: breathing + cursor-follow parallax */
     var glow=$('.glow'), glowI=$('.glow i');
