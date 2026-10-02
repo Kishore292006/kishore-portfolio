@@ -266,8 +266,11 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 @media(max-width:700px){.bi-grid{grid-template-columns:1fr}.bi-insights{grid-template-columns:1fr}.bi-kpis{grid-template-columns:1fr 1fr}.bi-kpi:last-child{grid-column:1/-1}.donut{grid-template-columns:1fr;justify-items:center}.lgs{width:100%}.pill.reset{margin-left:0}.pill,.dd summary{min-height:40px}}
 .project h3{font:500 clamp(21px,2.6vw,26px)/1.2 var(--display);letter-spacing:-.02em}
 .project p{color:var(--muted);margin-top:14px;font-size:16px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;list-style:none;padding:0}
-.tags li{font:400 12px var(--mono);color:var(--text);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;list-style:none;padding:0}
+.tags li{position:relative;display:inline-flex;align-items:center;justify-content:center;font:500 13px var(--mono);color:var(--text);background:rgba(16,16,23,.75);border:1px solid var(--line);padding:8px 16px;border-radius:12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:default;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease,background .25s ease,color .25s ease;overflow:hidden}
+.tags li:hover{border-color:hsl(var(--h) 100% 62% / .65);background:hsl(var(--h) 100% 62% / .08);color:#fff;box-shadow:0 8px 24px -4px hsl(var(--h) 100% 62% / .35), 0 0 16px hsl(var(--h) 100% 62% / .2);transform:translateY(-2px);text-shadow:0 0 12px hsl(var(--h) 100% 62% / .4)}
+.tags li::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(140px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .22),transparent 70%);opacity:0;pointer-events:none;transition:opacity .2s}
+.tags li:hover::before{opacity:1}
 .link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);margin-top:20px;font-weight:500;font-size:15px;min-height:44px}
 .link:hover{text-decoration:underline;text-underline-offset:4px}
 
@@ -288,9 +291,8 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .pg-bin{position:absolute;border-radius:16px;border:1px solid hsl(calc(var(--h) + var(--o)) 90% 66% / .16);background:linear-gradient(180deg,hsl(calc(var(--h) + var(--o)) 90% 60% / .07),transparent 70%);pointer-events:none;z-index:1}
 .pg-bin b{position:absolute;left:14px;top:11px;right:14px;display:flex;justify-content:space-between;gap:8px;font:500 10.5px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:hsl(calc(var(--h) + var(--o)) 90% 76%)}
 .pg-bin b i{font-style:normal;opacity:.6}
-.pg-bar{display:none;align-items:center;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;margin-top:12px}
+.pg-bar{display:none;align-items:center;justify-content:center;gap:10px 18px;flex-wrap:wrap;margin-top:16px}
 .pg.pg-on .pg-bar{display:flex}
-.pg-hint{font:400 12px var(--mono);color:var(--muted);letter-spacing:.04em}
 .pg-btn{font:500 14px var(--body);color:var(--blue);background:transparent;border:1px solid hsl(var(--h) 100% 62% / .45);border-radius:999px;min-height:44px;padding:0 20px;cursor:pointer;transition:background .2s}
 .pg-btn:hover{background:hsl(var(--h) 100% 62% / .1)}
 
@@ -485,7 +487,6 @@ html.rv-on .rv.in{opacity:1;transform:none}
           <span class="chip" data-cat="tools">PyCharm</span>
         </div>
         <div class="pg-bar">
-          <span class="pg-hint" aria-hidden="true">Each skill lands in its own group — drag them around</span>
           <button type="button" class="pg-btn" id="pgDrop">Drop again</button>
         </div>
       </div>
@@ -1305,9 +1306,9 @@ html.rv-on .rv.in{opacity:1;transform:none}
   }
 })();
 
-/* interactive cursor-tracking glow for about section & stat matrix boxes */
+/* interactive cursor-tracking glow for about section, stat matrix boxes & project tech tags */
 (function(){
-  var cards = document.querySelectorAll('.about-card, .stat');
+  var cards = document.querySelectorAll('.about-card, .stat, .tags li');
   cards.forEach(function(card){
     card.addEventListener('pointermove', function(e){
       var r = card.getBoundingClientRect();
