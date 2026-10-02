@@ -1,0 +1,14 @@
+{
+  "name": "kishore-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio site with a zero-dependency Node server and resume download counter",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "UNLICENSED"
+}

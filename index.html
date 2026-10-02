@@ -1,0 +1,1302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mattapalli Kishore — Data & BI Analyst</title>
+<meta name="description" content="Portfolio of Mattapalli Kishore — B.Tech CSE (AI & ML) student building analytics with Python, SQL and Power BI.">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+/* Progressive enhancement gate. Nothing below hides content unless this script ran,
+   and every hiding class has a timed failsafe so a slow/blocked CDN never leaves text invisible. */
+(function(){
+  var d=document.documentElement;
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.PF={reduce:reduce,q:{}};
+  /* callbacks that run once a CDN library is available (or immediately if it already is) */
+  PF.on=function(name,cb){ if(window[name]) cb(); else (PF.q[name]=PF.q[name]||[]).push(cb); };
+  d.classList.add('js');
+  if(!reduce){
+    d.classList.add('wait');                                   /* hero hidden until anime.js is ready */
+    setTimeout(function(){ d.classList.remove('wait'); },2500); /* failsafe: show the final state */
+    if('IntersectionObserver' in window) d.classList.add('rv-on');
+    [['anime','https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js'],
+     ['Matter','https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js']].forEach(function(l){
+      var s=document.createElement('script'); s.src=l[1]; s.async=true;
+      s.onload=function(){ (PF.q[l[0]]||[]).splice(0).forEach(function(f){ try{f();}catch(e){console.error(e);} }); };
+      document.head.appendChild(s);
+    });
+  }
+})();
+</script>
+<style>
+:root{
+  --bg:#000;
+  --surface:#0b0b0f;
+  --line:rgba(255,255,255,.09);
+  --text:#f5f5f7;
+  --muted:#a1a1a6;
+  /* one hue (Lime) drives the whole accent: change --h, --bl and --on to re-colour the site */
+  --h:76; --bl:52%; --on:#0b1300;
+  --blue:hsl(var(--h) 100% 62%);
+  --blue-deep:hsl(var(--h) 100% var(--bl));
+  --tint:hsl(var(--h) 100% 82%);
+  --glow:hsl(var(--h) 100% 62% / .22);
+  --display:"SF Pro Display","Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --body:"SF Pro Text","Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
+  --gutter:clamp(20px,5vw,48px);
+  --max:1080px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:12px;background:var(--blue-deep);color:var(--on);padding:10px 16px;border-radius:999px;z-index:100;font-size:14px}
+.skip:focus{left:12px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(0,0,0,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav .wrap{height:48px;display:flex;align-items:center;justify-content:space-between}
+.nav .mark{font:500 14px var(--display);letter-spacing:-.005em;display:inline-flex;align-items:center;min-height:44px}
+.nav ul{display:flex;gap:6px;list-style:none;padding:0}
+.nav ul a{font-size:13px;color:var(--muted);transition:color .2s;display:inline-flex;align-items:center;min-height:44px;padding:0 10px}
+.nav ul a:hover{color:var(--text)}
+.menu-btn{display:none;width:44px;height:44px;margin-right:-10px;background:none;border:0;cursor:pointer;position:relative}
+.menu-btn span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .2s,top .25s}
+.menu-btn span:nth-child(1){top:17px}.menu-btn span:nth-child(2){top:25px}
+.nav.open .menu-btn span:nth-child(1){top:21px;transform:rotate(45deg)}
+.nav.open .menu-btn span:nth-child(2){top:21px;transform:rotate(-45deg)}
+@media(max-width:640px){
+  .menu-btn{display:block}
+  .nav ul{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:6px var(--gutter) 14px;background:rgba(0,0,0,.985);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-bottom:1px solid var(--line)}
+  .nav.open ul{display:flex}
+  .nav ul a{font-size:17px;color:var(--text);min-height:52px;padding:0;width:100%;border-bottom:1px solid var(--line)}
+  .nav ul li:last-child a{border-bottom:0}
+}
+.progress{position:fixed;top:47px;left:0;right:0;height:2px;z-index:51;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--blue-deep),var(--blue));pointer-events:none}
+
+/* hero */
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;padding:110px 0 80px;isolation:isolate;overflow:hidden}
+.glow{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.glow i{position:absolute;left:50%;top:46%;--g:min(900px,120vw);width:var(--g);height:var(--g);margin:calc(var(--g)/-2) 0 0 calc(var(--g)/-2);background:radial-gradient(closest-side,var(--glow),transparent 70%);animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.55;transform:scale(1.08)}}
+html.has-anime .glow i{animation:none}
+.eyebrow{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:20px}
+h1{font:500 clamp(40px,8vw,72px)/1.05 var(--display);letter-spacing:-.035em}
+h1 .grad{background:linear-gradient(180deg,#fff 20%,var(--tint) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+h1 .word{display:block;white-space:nowrap}
+/* per-letter spans: gradient is applied per glyph so transforms never break background-clip */
+h1 .lt{display:inline-block;padding-bottom:.14em;margin-bottom:-.14em;background:linear-gradient(180deg,#fff 20%,var(--tint) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;will-change:transform,opacity}
+.lede{font:300 clamp(18px,2.1vw,22px)/1.45 var(--display);letter-spacing:-.005em;color:var(--muted);max-width:640px;margin:24px auto 0;text-wrap:balance}
+.lede b{color:var(--text);font-weight:400}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px var(--body);padding:12px 24px;border-radius:999px;transition:background .2s,box-shadow .2s;min-height:48px}
+.btn svg{width:17px;height:17px;flex:none}
+.btn-primary{background:var(--blue-deep);color:var(--on);box-shadow:0 0 0 0 var(--glow)}
+.btn-primary:hover{background:hsl(var(--h) 100% calc(var(--bl) + 7%));box-shadow:0 8px 40px var(--glow)}
+.btn-ghost{color:var(--blue);padding-inline:18px}
+.btn-ghost:hover{text-decoration:underline;text-underline-offset:4px}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);width:1px;height:44px;background:linear-gradient(var(--blue),transparent);opacity:.7}
+/* pre-JS gate: only active while anime.js is expected within 2.5s */
+html.wait h1,html.wait .eyebrow,html.wait .role,html.wait .lede,html.wait .cta,html.wait .roadmap{opacity:0}
+
+/* hero: drifting neural-network background + rotating role line */
+.net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 52% 46% at 50% 46%,transparent 28%,#000 100%);mask-image:radial-gradient(ellipse 52% 46% at 50% 46%,transparent 28%,#000 100%)}
+.role{margin-top:16px;font:400 clamp(15px,1.8vw,19px)/1.4 var(--mono);color:var(--muted);letter-spacing:.01em}
+.rw{display:inline-block;color:var(--blue);will-change:transform,opacity}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* career roadmap: Data Analyst (now) -> dotted trail -> Machine Learning Engineer (goal) */
+.roadmap{display:flex;align-items:center;justify-content:center;gap:18px;margin:52px auto 0;max-width:780px}
+.rm-node{flex:none;min-width:200px;text-align:left;border:1px solid var(--line);border-radius:18px;padding:14px 18px;background:rgba(11,11,15,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.rm-tag{display:flex;align-items:center;gap:8px;font:500 10.5px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.rm-node b{display:block;margin-top:6px;font:500 16px var(--display);letter-spacing:-.01em}
+.rm-node small{display:block;margin-top:2px;font-size:12px;color:var(--muted)}
+.rm-now{border-color:hsl(var(--h) 100% 62% / .5);background:hsl(var(--h) 100% 62% / .06)}
+.rm-now .rm-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--blue);animation:rmping 2s ease-out infinite}
+@keyframes rmping{0%{box-shadow:0 0 0 0 hsl(var(--h) 100% 62% / .6)}80%,100%{box-shadow:0 0 0 9px transparent}}
+.rm-goal{border-style:dashed;border-color:rgba(255,255,255,.22);animation:rmglow 3.2s ease-in-out infinite alternate}
+.rm-goal .rm-tag{color:var(--muted)}
+@keyframes rmglow{to{border-color:hsl(var(--h) 100% 62% / .6)}}
+.rm-track{flex:1;min-width:110px;display:flex;align-items:center;justify-content:space-between}
+.rm-track i{width:5px;height:5px;border-radius:50%;background:var(--blue);opacity:.45;flex:none}
+@media(max-width:640px){
+  .roadmap{flex-direction:column;align-items:stretch;gap:10px;max-width:340px;margin-top:40px}
+  .rm-node{min-width:0}
+  .rm-track{flex:none;flex-direction:column;min-height:96px;min-width:0}
+}
+@media(prefers-reduced-motion:reduce){.rm-now .rm-tag::before,.rm-goal{animation:none}}
+
+/* sections */
+section{padding:clamp(72px,11vw,120px) 0;border-top:1px solid var(--line)}
+.hero{border-top:0}
+.label{font:500 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+h2{font:500 clamp(28px,4.4vw,44px)/1.12 var(--display);letter-spacing:-.03em;max-width:18ch;text-wrap:balance}
+h2 .w{display:inline-block;will-change:transform,opacity}
+.sub{color:var(--muted);font-size:clamp(16px,1.7vw,19px);line-height:1.55;max-width:640px;margin-top:20px;letter-spacing:-.005em}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:56px;border-top:1px solid var(--line)}
+.stat{padding:28px 24px 8px 0}
+.stat+.stat{padding-left:24px;border-left:1px solid var(--line)}
+.stat .n{font:300 clamp(32px,4vw,44px)/1 var(--display);letter-spacing:-.03em;color:var(--text);font-variant-numeric:tabular-nums}
+.stat .n i{font-style:normal;color:var(--blue)}
+.stat .t{font-size:13px;color:var(--muted);margin-top:10px}
+@media(max-width:760px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:24px 16px 18px 0}
+  .stat+.stat{padding-left:0;border-left:0}
+  .stat:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* project */
+\1.bi{margin-top:44px;border:1px solid var(--line);border-radius:24px;background:var(--surface);padding:clamp(16px,3vw,28px);box-shadow:0 30px 80px -44px var(--glow)}
+.bi-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px 16px;flex-wrap:wrap}
+.bi-head b{display:block;font:500 17px var(--display);letter-spacing:-.01em}
+.bi-head div span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.bi-tag{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1px solid hsl(var(--h) 100% 62% / .4);padding:5px 11px;border-radius:999px}
+.bi-filters{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;margin-top:20px;padding:12px 16px;border:1px solid var(--line);border-radius:16px}
+.fg{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fl{font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pill{font:400 13px var(--body);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;min-height:34px;padding:0 14px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.pill:hover{border-color:hsl(var(--h) 100% 62% / .5)}
+.pill[aria-pressed="true"]{background:var(--blue-deep);border-color:transparent;color:var(--on)}
+.seg-ctl{display:inline-flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:2px}
+.seg-ctl .pill{border-color:transparent;min-height:30px}
+.pill.reset{color:var(--blue);border-color:hsl(var(--h) 100% 62% / .4);margin-left:auto}
+.pill.reset[hidden]{display:none}
+.dd{position:relative}
+.dd summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;min-height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;font-size:13px;-webkit-user-select:none;user-select:none;transition:border-color .2s}
+.dd summary::-webkit-details-marker{display:none}
+.dd summary::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px);opacity:.7}
+.dd summary:hover,.dd[open] summary{border-color:hsl(var(--h) 100% 62% / .5)}
+.dd.on summary{background:var(--blue-deep);border-color:transparent;color:var(--on)}
+.dd-menu{position:absolute;z-index:30;top:calc(100% + 6px);left:0;min-width:220px;max-height:280px;overflow:auto;padding:8px;background:#0b0b0f;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.dd-menu label{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;font-size:13px;cursor:pointer}
+.dd-menu label:hover{background:hsl(var(--h) 100% 62% / .08)}
+.dd-menu input{accent-color:hsl(var(--h) 100% 62%);width:16px;height:16px;margin:0}
+.bi-active{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.bi-active:empty{display:none}
+.af{font:400 12px var(--mono);color:var(--text);background:hsl(var(--h) 100% 62% / .08);border:1px solid hsl(var(--h) 100% 62% / .35);border-radius:999px;padding:5px 11px;cursor:pointer}
+.af::after{content:" ✕";color:var(--blue)}
+.af:hover{background:hsl(var(--h) 100% 62% / .16)}
+.bi-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:16px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--line)}
+.bi-kpi{background:var(--surface);padding:16px 18px;min-width:0}
+.bi-kpi small{display:block;font-size:12px;color:var(--muted)}
+.bi-kpi strong{display:block;margin-top:6px;font:300 clamp(20px,2.3vw,27px)/1.1 var(--display);letter-spacing:-.025em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bi-kpi strong i{font-style:normal;color:var(--blue);margin-left:1px}
+.bi-kpi:first-child strong{color:var(--blue)}
+.bi-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.bi-card{border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.bi-card.wide{grid-column:1/-1}
+.bi-card h4{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.hb{list-style:none;padding:0;display:grid;gap:4px}
+.hbr{display:grid;grid-template-columns:minmax(74px,32%) 1fr auto;gap:12px;align-items:center;width:100%;font:400 13px var(--body);color:var(--muted);background:none;border:0;border-radius:10px;padding:7px 8px;cursor:pointer;text-align:left;transition:background .2s,opacity .25s,color .2s}
+.hbr:hover{background:hsl(var(--h) 100% 62% / .06)}
+.hbr[aria-pressed="true"]{background:hsl(var(--h) 100% 62% / .12);color:var(--text)}
+.hbr.dim{opacity:.38}
+.hbr .t{height:8px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}
+.hbr .t i{display:block;height:100%;width:0;border-radius:999px;background:hsl(var(--h) 100% 62% / .45);transition:width .7s cubic-bezier(.2,.8,.2,1),background .3s;transform-origin:left center}
+.hbr.lead .t i{background:linear-gradient(90deg,var(--blue-deep),var(--blue))}
+.hbr.lead .l{color:var(--text)}
+.hbr .v{font:400 12px var(--mono);color:var(--text);font-variant-numeric:tabular-nums}
+html.rv-on .hbr .t i{transform:scaleX(0);transition:width .7s cubic-bezier(.2,.8,.2,1),background .3s,transform 1.1s cubic-bezier(.2,.8,.2,1) .25s}
+html.rv-on .in .hbr .t i{transform:scaleX(1)}
+.bi-insights{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.bi-insights li{border:1px solid var(--line);border-left:2px solid var(--blue);border-radius:12px;padding:12px 16px}
+.bi-insights small{display:block;font-size:12px;color:var(--muted)}
+.bi-insights b{font:500 17px var(--display);letter-spacing:-.01em}
+.bi-note{margin-top:14px;font:400 12px var(--mono);color:var(--muted);letter-spacing:.03em}
+.trend{position:relative}
+.trend svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y;cursor:pointer}
+.trend .gl{stroke:rgba(255,255,255,.07);stroke-width:1}
+.trend text{fill:var(--muted);font:400 10px var(--mono)}
+.trend .line{fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.trend .area{fill:url(#trendFill);stroke:none}
+.trend .dot{fill:var(--surface);stroke:var(--blue);stroke-width:1.8;transition:opacity .2s}
+.trend .dot.peak{fill:var(--blue)}
+.trend .dot.sel{fill:var(--blue);stroke:var(--text);stroke-width:2}
+.trend .dot.dim{opacity:.3}
+.trend .hit{fill:transparent;stroke:none;outline:none}
+.trend .hit:focus-visible{stroke:var(--blue);stroke-width:2}
+.trend .cur{stroke:hsl(var(--h) 100% 62% / .35);stroke-width:1;stroke-dasharray:3 3;opacity:0;transition:opacity .15s}
+.trend .tip{position:absolute;left:0;top:0;pointer-events:none;background:#000;border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:400 12px/1.3 var(--mono);color:var(--text);white-space:nowrap;opacity:0;transition:opacity .15s;transform:translate(-50%,-125%)}
+.trend .tip b{color:var(--blue);font-weight:500}
+html.rv-on .trend .line{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);transition:stroke-dashoffset 1.9s cubic-bezier(.4,.1,.2,1) .25s}
+html.rv-on .in .trend .line{stroke-dashoffset:0}
+html.rv-on .trend .area,html.rv-on .trend .dots{opacity:0;transition:opacity 1s ease 1.3s}
+html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
+.bi-filters{position:relative}
+@media(max-width:700px){.seg-ctl .pill{min-height:38px}.hbr,.lgb{min-height:44px}.dd-menu label{min-height:44px}.dd-menu input{width:20px;height:20px}.af{min-height:36px}.net{opacity:.6}}
+@media(max-width:700px){.dd{position:static}.dd-menu{left:0;right:0;min-width:0;top:calc(100% + 6px)}}
+.donut{display:grid;grid-template-columns:auto 1fr;gap:14px 28px;align-items:center}
+.donut svg{width:150px;height:150px;overflow:visible}
+.seg{fill:none;stroke-width:18;cursor:pointer;outline:none;transition:stroke-dasharray .8s cubic-bezier(.2,.8,.2,1),stroke-dashoffset .8s cubic-bezier(.2,.8,.2,1),opacity .25s}
+.seg:focus-visible{stroke-width:22}
+.seg0{stroke:var(--blue)}
+.seg1{stroke:hsl(calc(var(--h) + 52) 90% 62%)}
+.seg2{stroke:hsl(calc(var(--h) - 52) 90% 62%)}
+.seg.dim{opacity:.25}
+.donut svg text{text-anchor:middle}
+.dn-total{fill:var(--text);font:300 24px var(--display);letter-spacing:-.02em}
+.dn-sub{fill:var(--muted);font:400 9px var(--mono);letter-spacing:.12em}
+.lgs{display:grid;gap:4px}
+.lgb{display:grid;grid-template-columns:10px 1fr auto;gap:10px;align-items:center;width:100%;font:400 13px var(--body);color:var(--muted);background:none;border:0;border-radius:10px;padding:7px 8px;cursor:pointer;text-align:left;transition:background .2s,opacity .25s}
+.lgb:hover{background:hsl(var(--h) 100% 62% / .06)}
+.lgb[aria-pressed="true"]{background:hsl(var(--h) 100% 62% / .12);color:var(--text)}
+.lgb.dim{opacity:.38}
+.lgb i{width:10px;height:10px;border-radius:50%}
+.lgb .v{font:400 12px var(--mono);color:var(--text)}
+@media(max-width:900px){.bi-kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.bi-grid{grid-template-columns:1fr}.bi-insights{grid-template-columns:1fr}.bi-kpis{grid-template-columns:1fr 1fr}.bi-kpi:last-child{grid-column:1/-1}.donut{grid-template-columns:1fr;justify-items:center}.lgs{width:100%}.pill.reset{margin-left:0}.pill,.dd summary{min-height:40px}}
+.project h3{font:500 clamp(21px,2.6vw,26px)/1.2 var(--display);letter-spacing:-.02em}
+.project p{color:var(--muted);margin-top:14px;font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;list-style:none;padding:0}
+.tags li{font:400 12px var(--mono);color:var(--text);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);margin-top:20px;font-weight:500;font-size:15px;min-height:44px}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* skills */
+.pg{margin-top:44px}
+.pg-stage{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:radial-gradient(120% 90% at 50% 100%,hsl(var(--h) 100% 62% / .06),transparent 60%),var(--surface);padding:22px;display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-start;gap:8px;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:pan-y}
+/* every skill group gets its own hue, spread around the theme hue */
+[data-cat="prog"]{--o:0}
+[data-cat="analysis"]{--o:26}
+[data-cat="db"]{--o:52}
+[data-cat="bi"]{--o:-26}
+[data-cat="tools"]{--o:-52}
+.chip{--cb:hsl(calc(var(--h) + var(--o)) 90% 60% / .16);--cl:hsl(calc(var(--h) + var(--o)) 90% 66% / .6);display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font:400 13px/1 var(--body);letter-spacing:0;color:var(--text);padding:9px 15px;border-radius:999px;border:1px solid var(--cl);background:linear-gradient(var(--cb),var(--cb)),#0b0b0f;cursor:default}
+/* physics mode (added by JS only once Matter.js is ready); stage height is set from the bin layout */
+.pg-stage.pg-live{display:block;padding:0;touch-action:pan-y}
+.pg-live .chip{position:absolute;left:0;top:0;margin:0;touch-action:none;cursor:grab;will-change:transform;transform:translate3d(0,-400px,0);z-index:2}
+.pg-live .chip.grab{cursor:grabbing;z-index:5;box-shadow:0 8px 24px hsl(calc(var(--h) + var(--o)) 90% 60% / .25)}
+.pg-bin{position:absolute;border-radius:16px;border:1px solid hsl(calc(var(--h) + var(--o)) 90% 66% / .16);background:linear-gradient(180deg,hsl(calc(var(--h) + var(--o)) 90% 60% / .07),transparent 70%);pointer-events:none;z-index:1}
+.pg-bin b{position:absolute;left:14px;top:11px;right:14px;display:flex;justify-content:space-between;gap:8px;font:500 10.5px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:hsl(calc(var(--h) + var(--o)) 90% 76%)}
+.pg-bin b i{font-style:normal;opacity:.6}
+.pg-bar{display:none;align-items:center;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;margin-top:12px}
+.pg.pg-on .pg-bar{display:flex}
+.pg-hint{font:400 12px var(--mono);color:var(--muted);letter-spacing:.04em}
+.pg-btn{font:500 14px var(--body);color:var(--blue);background:transparent;border:1px solid hsl(var(--h) 100% 62% / .45);border-radius:999px;min-height:44px;padding:0 20px;cursor:pointer;transition:background .2s}
+.pg-btn:hover{background:hsl(var(--h) 100% 62% / .1)}
+
+
+/* education */
+.edu{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.edu article{border:1px solid var(--line);border-radius:24px;background:rgba(11,11,15,.7);padding:30px clamp(22px,3vw,34px);transition:border-color .25s,background .25s;will-change:transform}
+.edu article:hover{border-color:hsl(var(--h) 100% 62% / .35);background:hsl(var(--h) 100% 62% / .05)}
+.edu time{font:400 12px var(--mono);color:var(--blue)}
+.edu h3{font:500 20px/1.25 var(--display);letter-spacing:-.015em;margin-top:10px}
+.edu p{color:var(--muted);margin-top:8px;font-size:15px}
+.edu .big{font:300 clamp(32px,4vw,40px)/1 var(--display);letter-spacing:-.03em;margin-top:20px}
+.edu .big small{font-size:.4em;color:var(--muted);letter-spacing:0;font-weight:400;margin-left:6px}
+@media(max-width:700px){.edu{grid-template-columns:1fr}}
+
+/* contact */
+.contact{text-align:center;position:relative;isolation:isolate;overflow:hidden}
+.contact::before{content:"";position:absolute;left:50%;bottom:-40%;width:min(900px,130vw);aspect-ratio:1;transform:translateX(-50%);background:radial-gradient(closest-side,var(--glow),transparent 70%);z-index:-1}
+.contact h2{margin-inline:auto;max-width:16ch}
+.contact .sub{margin-inline:auto}
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:56px auto 0;max-width:900px;border:1px solid var(--line);border-radius:24px;background:rgba(11,11,15,.7);backdrop-filter:blur(12px);overflow:hidden}
+.ch{display:flex;flex-direction:column;align-items:center;gap:10px;padding:32px 20px;transition:background .25s;min-width:0}
+.ch+.ch{border-left:1px solid var(--line)}
+.ch:hover{background:hsl(var(--h) 100% 62% / .08)}
+.ch svg{width:26px;height:26px;color:var(--blue)}
+.ch div{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;max-width:100%}
+.ch b{font:500 16px var(--display);letter-spacing:-.005em}
+.ch span{font-size:13px;color:var(--muted);max-width:100%;overflow-wrap:anywhere}
+@media(max-width:760px){
+  .channels{grid-template-columns:1fr}
+  .ch{flex-direction:row;text-align:left;gap:18px;padding:20px 24px;justify-content:flex-start;min-height:64px}
+  .ch+.ch{border-left:0;border-top:1px solid var(--line)}
+  .ch svg{flex:none}
+  .ch div{align-items:flex-start}
+}
+footer{padding:28px 0 44px;color:var(--muted);font-size:13px;text-align:center;border-top:1px solid var(--line)}
+
+/* reveal (only hidden when JS is running and motion is allowed) */
+.rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+html.rv-on .rv{opacity:0;transform:translateY(24px)}
+html.rv-on .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{transition:none}
+  .glow i{animation:none}
+  .progress{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Mattapalli Kishore — home">Kishore</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navList"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. HERO + resume -->
+  <section class="hero">
+    <canvas class="net" id="net" aria-hidden="true"></canvas>
+    <div class="glow" aria-hidden="true"><i></i></div>
+    <div class="wrap">
+      <p class="eyebrow">Data Analytics · Business Intelligence</p>
+      <h1 id="name" aria-label="Mattapalli Kishore"><span class="grad">Mattapalli<br>Kishore</span></h1>
+      <p class="role"><span class="sr">Data Analyst, BI dashboard builder, and aspiring Machine Learning Engineer.</span><span aria-hidden="true">I’m a <span class="rw">Data Analyst</span></span></p>
+      <p class="lede">Turning raw data into <b>clear decisions</b> with Python, SQL and Power BI.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="Mattapalli_Kishore_Resume.pdf" download="Mattapalli_Kishore_Resume.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+          Download Resume
+        </a>
+        <a class="btn btn-ghost" href="#work">View my work ›</a>
+      </div>
+      <div class="roadmap" id="roadmap" role="group" aria-label="Career roadmap: Data Analyst today, Machine Learning Engineer next">
+        <div class="rm-node rm-now"><span class="rm-tag">Now</span><b>Data Analyst</b><small>Python · SQL · Power BI</small></div>
+        <div class="rm-track" aria-hidden="true"></div>
+        <div class="rm-node rm-goal"><span class="rm-tag">Goal</span><b>Machine Learning Engineer</b><small>Building toward it · B.Tech AI &amp; ML</small></div>
+      </div>
+    </div>
+    <span class="scroll-hint" aria-hidden="true"></span>
+  </section>
+
+  <!-- 2. ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <p class="label rv">About</p>
+      <h2 data-split>Third-year engineer. Analyst at heart.</h2>
+      <p class="sub rv">B.Tech student in Computer Science and Engineering (AI &amp; ML) at GD Goenka University, based in Gurugram. Hands-on with data cleaning, exploratory analysis, SQL and Power BI dashboards — and looking for a Data Analyst or BI Analyst internship to apply them to real business problems.</p>
+      <div class="stats rv" role="list">
+        <div class="stat" role="listitem"><div class="n" data-count="9.16" data-dec="2">9.16</div><div class="t">CGPA out of 10</div></div>
+        <div class="stat" role="listitem"><div class="n" data-count="93.9" data-dec="1" data-suffix="%">93.9<i>%</i></div><div class="t">Intermediate (MPC)</div></div>
+        <div class="stat" role="listitem"><div class="n" data-count="49975" data-dec="0">49,975</div><div class="t">Records analysed</div></div>
+        <div class="stat" role="listitem"><div class="n" data-count="25.83" data-dec="2" data-suffix="%">25.83<i>%</i></div><div class="t">Profit margin found</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PROJECT -->
+  <section id="work">
+    <div class="wrap">
+      <p class="label rv">Selected project</p>
+      <h2 data-split>Retail sales, end&nbsp;to&nbsp;end.</h2>
+      <div class="project rv">
+        <div class="proj-copy">
+          <h3>Retail Sales Performance &amp; Profitability Analytics</h3>
+          <p>An end-to-end analysis of sales, profitability, order status and regional performance — from messy raw data to an interactive Power BI dashboard with KPI cards and slicers.</p>
+          <p>Cleaned and validated a synthetic retail dataset (duplicates, missing values, inconsistent categories, invalid data), explored trends across categories, regions, channels and months, and documented the workflow, limitations and findings in a GitHub repository.</p>
+          <ul class="tags" aria-label="Technologies used">
+            <li>Python</li><li>Pandas</li><li>NumPy</li><li>Power BI</li><li>EDA</li>
+          </ul>
+          <a class="link" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener">View on GitHub ›</a>
+        </div>
+        <div class="bi" id="bi" role="group" aria-label="Interactive sales analytics dashboard">
+          <div class="bi-head">
+            <div><b>Sales Analytics Dashboard</b><span>Retail Sales Performance · 2024–2025 · 49,975 cleaned records</span></div>
+            <span class="bi-tag">Power BI · interactive</span>
+          </div>
+          <div class="bi-filters" role="toolbar" aria-label="Dashboard filters">
+            <div class="fg"><span class="fl">Year</span><button type="button" class="pill" data-sl="y" data-i="0" aria-pressed="false">2024</button><button type="button" class="pill" data-sl="y" data-i="1" aria-pressed="false">2025</button></div>
+            <div class="fg"><span class="fl">Category</span><details class="dd" data-d="c"><summary>All</summary><div class="dd-menu"></div></details></div>
+            <div class="fg"><span class="fl">Region</span><details class="dd" data-d="r"><summary>All</summary><div class="dd-menu"></div></details></div>
+            <div class="fg"><span class="fl">Channel</span><button type="button" class="pill" data-sl="h" data-i="0" aria-pressed="false">Online</button><button type="button" class="pill" data-sl="h" data-i="1" aria-pressed="false">Store</button></div>
+            <div class="fg"><span class="fl">Measure</span><span class="seg-ctl"><button type="button" class="pill" data-m="sales" aria-pressed="true">Sales</button><button type="button" class="pill" data-m="profit" aria-pressed="false">Profit</button><button type="button" class="pill" data-m="orders" aria-pressed="false">Orders</button></span></div>
+            <button type="button" class="pill reset" id="biReset" hidden>Reset filters</button>
+          </div>
+          <div class="bi-active" id="biActive" aria-live="polite"></div>
+          <div class="bi-kpis">
+            <div class="bi-kpi"><small>Total sales</small><strong id="k-sales">₹586.51<i>M</i></strong></div>
+            <div class="bi-kpi"><small>Total profit</small><strong id="k-profit">₹151.50<i>M</i></strong></div>
+            <div class="bi-kpi"><small>Profit margin</small><strong id="k-margin">25.83<i>%</i></strong></div>
+            <div class="bi-kpi"><small>Return orders</small><strong id="k-ret">4,063</strong></div>
+            <div class="bi-kpi"><small>Cancelled orders</small><strong id="k-can">4,988</strong></div>
+          </div>
+          <div class="bi-grid">
+            <div class="bi-card wide"><h4 id="t-trend">Monthly sales trend</h4><div class="trend" id="trend"><div id="trendSvg"></div><div class="tip" aria-hidden="true"></div></div></div>
+            <div class="bi-card"><h4 id="t-c">Sales by category</h4><ul class="hb" id="hb-c"></ul></div>
+            <div class="bi-card"><h4 id="t-r">Sales by region</h4><ul class="hb" id="hb-r"></ul></div>
+            <div class="bi-card"><h4 id="t-h">Sales by channel</h4><ul class="hb" id="hb-h"></ul></div>
+            <div class="bi-card"><h4>Orders by status</h4><div class="donut" id="donut"></div></div>
+            <div class="bi-card wide"><h4>Key business insights</h4>
+              <ul class="bi-insights">
+                <li><small>Top category</small><b id="in-c">Electronics</b></li>
+                <li><small>Top region</small><b id="in-r">South</b></li>
+                <li><small>Top channel</small><b id="in-h">Online</b></li>
+              </ul>
+            </div>
+          </div>
+          <p class="bi-note">Click a bar, a month, or a donut slice to cross-filter every visual, the way you would in Power BI. Click again to clear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <p class="label rv">Toolkit</p>
+      <h2 data-split>What I work with.</h2>
+
+      <!-- Playful, decorative skill playground. The real, semantic list is the <dl> below. -->
+      <div class="pg" id="pg">
+        <div class="pg-stage" id="pgStage" role="group" aria-label="Skills: Programming, Data analysis, Databases, Business intelligence, Tools">
+          <span class="chip" data-cat="prog">Python</span>
+          <span class="chip" data-cat="analysis">Pandas</span>
+          <span class="chip" data-cat="analysis">NumPy</span>
+          <span class="chip" data-cat="analysis">Data Cleaning</span>
+          <span class="chip" data-cat="analysis">EDA</span>
+          <span class="chip" data-cat="analysis">Matplotlib</span>
+          <span class="chip" data-cat="analysis">Seaborn</span>
+          <span class="chip" data-cat="db">SQL</span>
+          <span class="chip" data-cat="db">MySQL</span>
+          <span class="chip" data-cat="bi">Power BI</span>
+          <span class="chip" data-cat="bi">Dashboard Development</span>
+          <span class="chip" data-cat="bi">KPI Analysis</span>
+          <span class="chip" data-cat="bi">Data Visualization</span>
+          <span class="chip" data-cat="tools">Git</span>
+          <span class="chip" data-cat="tools">GitHub</span>
+          <span class="chip" data-cat="tools">Jupyter Notebook</span>
+          <span class="chip" data-cat="tools">PyCharm</span>
+        </div>
+        <div class="pg-bar">
+          <span class="pg-hint" aria-hidden="true">Each skill lands in its own group — drag them around</span>
+          <button type="button" class="pg-btn" id="pgDrop">Drop again</button>
+        </div>
+      </div>
+
+      <p class="sub rv" style="font-size:16px">Currently strengthening SQL, Excel, Power BI and analytics through practical learning and project work.</p>
+    </div>
+  </section>
+
+  <!-- 5. EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <p class="label rv">Education</p>
+      <h2 data-split>Where I study.</h2>
+      <div class="edu">
+        <article>
+          <time>Expected 2028</time>
+          <h3>GD Goenka University</h3>
+          <p>B.Tech in Computer Science and Engineering (AI &amp; ML) · Gurugram, Haryana</p>
+          <div class="big">9.16<small>/ 10 CGPA</small></div>
+        </article>
+        <article>
+          <time>Intermediate</time>
+          <h3>Sri Chaitanya College</h3>
+          <p>MPC · Hyderabad, India</p>
+          <div class="big">93.9%<small>score</small></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <p class="label rv">Contact</p>
+      <h2 data-split>Let’s talk data.</h2>
+      <p class="sub rv">Open to Data Analyst and BI Analyst internships. The fastest way to reach me is email.</p>
+      <div class="channels rv">
+        <a class="ch" id="gmailLink" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=Mattapalli%20Kishore%20%3Cmattapallikishore2006%40gmail.com%3E&amp;su=Hello%20Mattapalli&amp;body=Hi%20Mattapalli%2C%0A%0A" target="_blank" rel="noopener" data-mailto="mailto:Mattapalli%20Kishore%20%3Cmattapallikishore2006@gmail.com%3E?subject=Hello%20Mattapalli&amp;body=Hi%20Mattapalli%2C%0A%0A">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+          <div><b>Gmail</b><span>mattapallikishore2006@gmail.com</span></div>
+        </a>
+        <a class="ch" href="https://www.linkedin.com/in/mattapalli-kishore-74a134410/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.84-2.05 3.8-2.05 4.06 0 4.84 2.67 4.84 6.14V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4V9.75Z"/></svg>
+          <div><b>LinkedIn</b><span>mattapalli-kishore</span></div>
+        </a>
+        <a class="ch" href="https://github.com/Kishore292006" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.11 3.04.74.8 1.19 1.83 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+          <div><b>GitHub</b><span>Kishore292006</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">© 2026 Mattapalli Kishore · Gurugram, India</div></footer>
+
+<script>
+(function(){
+  var d=document.documentElement, reduce=PF.reduce;
+  function $(s,r){return (r||document).querySelector(s)}
+  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  function rand(a,b){return a+Math.random()*(b-a)}
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* phone navigation menu */
+  (function(){
+    var hd=$('.nav'), btn=$('#menuBtn'), ul=$('.nav ul'); if(!btn||!ul) return;
+    ul.id='navList';
+    function set(open){ hd.classList.toggle('open',open); btn.setAttribute('aria-expanded',String(open)); btn.setAttribute('aria-label',open?'Close menu':'Menu'); }
+    btn.addEventListener('click',function(e){ e.stopPropagation(); set(!hd.classList.contains('open')); });
+    ul.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+    document.addEventListener('click',function(e){ if(!hd.contains(e.target)) set(false); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+    matchMedia('(min-width:641px)').addEventListener&&matchMedia('(min-width:641px)').addEventListener('change',function(){ set(false); });
+  })();
+
+  /* roadmap trail: a row of dots between "Data Analyst" and "Machine Learning Engineer" */
+  (function(){ var tr=$('.rm-track'); if(tr) for(var n=0;n<12;n++) tr.appendChild(document.createElement('i')); })();
+
+  /* ---------- hero background: a drifting neural network that reaches toward the cursor ---------- */
+  (function(){
+    var cv=$('#net'), ctx=cv&&cv.getContext&&cv.getContext('2d'); if(!ctx) return;
+    var hero=cv.parentNode, W=0, H=0, N=[], pulses=[], mouse={x:-999,y:-999}, hue=76, frames=0, raf=0, running=false, onScreen=true, LINK=135;
+    function readHue(){ var h=parseFloat(getComputedStyle(d).getPropertyValue('--h')); if(!isNaN(h)) hue=h; }
+    function size(){
+      var r=hero.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
+      W=r.width; H=r.height; cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr); ctx.setTransform(dpr,0,0,dpr,0,0);
+      var n=Math.round(Math.max(26,Math.min(62,W*H/17000)));
+      while(N.length<n) N.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.36,vy:(Math.random()-.5)*.36,r:1+Math.random()*1.5});
+      N.length=n; N.forEach(function(p){ p.x=Math.min(p.x,W); p.y=Math.min(p.y,H); });
+    }
+    function step(){
+      for(var i=0;i<N.length;i++){
+        var p=N[i], dx=mouse.x-p.x, dy=mouse.y-p.y, dist=Math.hypot(dx,dy);
+        if(dist<190&&dist>1){ p.vx+=dx/dist*.012; p.vy+=dy/dist*.012; }
+        var sp=Math.hypot(p.vx,p.vy); if(sp>.75){ p.vx*=.75/sp; p.vy*=.75/sp; }
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1; if(p.y<0||p.y>H) p.vy*=-1;
+      }
+      if(frames%38===0&&pulses.length<5){
+        var a=N[(Math.random()*N.length)|0], best=null;
+        for(var j=0;j<N.length;j++){ var b=N[j]; if(b!==a&&Math.hypot(a.x-b.x,a.y-b.y)<LINK&&Math.random()<.4){ best=b; break; } }
+        if(best) pulses.push({a:a,b:best,t:0});
+      }
+      pulses.forEach(function(q){ q.t+=.022; }); pulses=pulses.filter(function(q){ return q.t<1; });
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<N.length;i++){
+        var p=N[i];
+        for(var j=i+1;j<N.length;j++){
+          var q=N[j], dist=Math.hypot(p.x-q.x,p.y-q.y);
+          if(dist<LINK){ ctx.strokeStyle='hsla('+hue+',100%,70%,'+((1-dist/LINK)*.3).toFixed(3)+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+        }
+        var md=Math.hypot(p.x-mouse.x,p.y-mouse.y);
+        if(md<160){ ctx.strokeStyle='hsla('+hue+',100%,75%,'+((1-md/160)*.55).toFixed(3)+')'; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); }
+      }
+      for(var k=0;k<N.length;k++){ var n=N[k]; ctx.fillStyle='hsla('+hue+',100%,72%,.7)'; ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,6.2832); ctx.fill(); }
+      pulses.forEach(function(q){
+        var x=q.a.x+(q.b.x-q.a.x)*q.t, y=q.a.y+(q.b.y-q.a.y)*q.t;
+        ctx.fillStyle='hsla('+hue+',100%,85%,.95)'; ctx.shadowColor='hsl('+hue+',100%,65%)'; ctx.shadowBlur=10; ctx.beginPath(); ctx.arc(x,y,2.2,0,6.2832); ctx.fill(); ctx.shadowBlur=0;
+      });
+    }
+    function loop(){ if(!running) return; frames++; if(frames%60===0) readHue(); step(); draw(); raf=requestAnimationFrame(loop); }
+    function start(){ if(running||PF.reduce||!onScreen||document.hidden) return; running=true; raf=requestAnimationFrame(loop); }
+    function stop(){ running=false; cancelAnimationFrame(raf); }
+    readHue(); size(); draw();
+    if('ResizeObserver' in window) new ResizeObserver(function(){ size(); draw(); }).observe(hero);
+    if('IntersectionObserver' in window) new IntersectionObserver(function(es){ onScreen=es[0].isIntersecting; if(onScreen) start(); else stop(); }).observe(hero);
+    document.addEventListener('visibilitychange',function(){ if(document.hidden) stop(); else start(); });
+    if(fine){
+      hero.addEventListener('pointermove',function(e){ var r=hero.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
+      hero.addEventListener('pointerleave',function(){ mouse.x=mouse.y=-999; });
+    }
+    start();
+  })();
+
+  /* ---------- Gmail link: Gmail compose on desktop, the phone's mail app (often Gmail) on touch devices ---------- */
+  (function(){
+    var a=$('#gmailLink'); if(!a) return;
+    if(matchMedia('(pointer:coarse)').matches){ a.href=a.getAttribute('data-mailto').replace(/&amp;/g,'&'); a.removeAttribute('target'); }
+  })();
+
+  /* ---------- scroll progress line (no library needed) ---------- */
+  var bar=$('.progress'), pTick=false;
+  function prog(){
+    pTick=false;
+    var max=d.scrollHeight-innerHeight;
+    bar.style.transform='scaleX('+(max>0?Math.min(1,scrollY/max):0)+')';
+  }
+  addEventListener('scroll',function(){ if(!pTick){pTick=true;requestAnimationFrame(prog);} },{passive:true});
+  addEventListener('resize',prog); prog();
+
+  /* ---------- interactive sales dashboard: real aggregates of sales_cleaned.csv, filtered client-side ---------- */
+  (function(){
+    var root=$('#bi'); if(!root) return;
+    var CUBE='0,1,0,0,0,0,2360365.95,624547.13,91;0,1,0,0,0,1,85752.62,20089.48,6;0,1,0,0,0,2,345328.36,108126.03,14;0,1,0,0,1,0,748677.12,182264.71,32;0,1,0,0,1,1,130309.53,16001.08,3;0,1,0,0,1,2,117699.95,25839.00,7;0,1,0,1,0,0,2165036.52,591266.43,85;0,1,0,1,0,1,258613.02,60833.39,12;0,1,0,1,0,2,76131.74,19845.67,5;0,1,0,1,1,0,1290731.85,331905.86,48;0,1,0,1,1,1,65983.20,21401.86,6;0,1,0,1,1,2,169049.63,29250.98,8;0,1,0,2,0,0,1714314.42,433621.46,68;0,1,0,2,0,1,23504.87,6827.23,3;0,1,0,2,0,2,394130.83,100267.84,13;0,1,0,2,1,0,1127604.73,259142.85,40;0,1,0,2,1,1,21187.10,4820.75,4;0,1,0,2,1,2,318642.42,97018.91,12;0,1,0,3,0,0,721573.62,169256.54,40;0,1,0,3,0,1,240729.60,62713.12,4;0,1,0,3,0,2,333960.49,76435.32,10;0,1,0,3,1,0,841739.59,224145.19,34;0,1,0,3,1,1,63751.07,12054.56,3;0,1,0,3,1,2,140873.20,21131.21,5;0,1,1,0,0,0,1154192.57,309974.81,63;0,1,1,0,0,1,83486.86,20121.05,5;0,1,1,0,0,2,132760.53,33475.95,7;0,1,1,0,1,0,620399.76,167679.33,42;0,1,1,0,1,1,40880.25,8382.36,3;0,1,1,0,1,2,10016.95,3298.66,1;0,1,1,1,0,0,887157.26,238000.71,46;0,1,1,1,0,1,67821.31,18932.40,6;0,1,1,1,0,2,114975.29,33043.01,5;0,1,1,1,1,0,516559.80,136828.38,41;0,1,1,1,1,1,7644.88,1749.39,1;0,1,1,1,1,2,66420.90,15992.89,4;0,1,1,2,0,0,684148.17,169158.48,40;0,1,1,2,0,1,76933.85,17272.40,4;0,1,1,2,0,2,70190.07,20584.86,3;0,1,1,2,1,0,295420.96,80085.69,21;0,1,1,2,1,1,23983.09,7304.32,3;0,1,1,2,1,2,8073.75,3192.00,1;0,1,1,3,0,0,618756.01,147586.02,35;0,1,1,3,0,1,79697.85,23338.81,3;0,1,1,3,0,2,7321.21,1613.62,1;0,1,1,3,1,0,319468.79,89498.67,20;0,1,1,3,1,1,13479.75,4828.64,1;0,1,1,3,1,2,72798.31,16880.03,5;0,1,2,0,0,0,363052.44,96420.40,60;0,1,2,0,0,1,28683.12,7986.61,7;0,1,2,0,0,2,94850.97,19359.43,12;0,1,2,0,1,0,285032.66,67699.14,45;0,1,2,0,1,1,14499.79,3842.75,4;0,1,2,0,1,2,40121.56,8144.71,5;0,1,2,1,0,0,420034.91,96439.05,61;0,1,2,1,0,1,34831.27,8869.52,8;0,1,2,1,0,2,54819.20,11460.32,4;0,1,2,1,1,0,264288.56,63130.93,34;0,1,2,1,1,1,14795.11,4523.08,3;0,1,2,1,1,2,10300.16,2508.74,2;0,1,2,2,0,0,411587.30,100803.30,65;0,1,2,2,0,1,8173.46,1284.66,2;0,1,2,2,0,2,42746.09,5321.63,4;0,1,2,2,1,0,228678.54,54065.80,32;0,1,2,2,1,1,14516.00,3307.57,3;0,1,2,2,1,2,2976.05,776.99,1;0,1,2,3,0,0,248413.21,52904.66,40;0,1,2,3,0,1,22395.01,7124.19,4;0,1,2,3,0,2,107264.76,25517.67,11;0,1,2,3,1,0,97965.60,28013.54,18;0,1,2,3,1,1,16920.15,5315.24,2;0,1,2,3,1,2,11606.89,2088.46,2;0,1,3,0,0,0,352350.17,93464.97,74;0,1,3,0,0,1,18336.56,3421.92,6;0,1,3,0,0,2,27026.05,7608.02,6;0,1,3,0,1,0,228195.39,51762.57,50;0,1,3,0,1,1,27677.08,9168.53,5;0,1,3,0,1,2,39699.67,11798.45,8;0,1,3,1,0,0,292605.48,64880.75,65;0,1,3,1,0,1,37273.29,8633.19,10;0,1,3,1,0,2,54080.88,11672.06,10;0,1,3,1,1,0,218610.71,58820.95,44;0,1,3,1,1,1,14414.79,2933.81,5;0,1,3,1,1,2,17663.78,5097.93,4;0,1,3,2,0,0,304091.65,80278.85,65;0,1,3,2,0,1,26051.12,7307.81,7;0,1,3,2,0,2,36564.59,10688.23,7;0,1,3,2,1,0,130668.37,40311.43,28;0,1,3,2,1,1,33915.34,7494.52,8;0,1,3,2,1,2,20674.94,5526.65,4;0,1,3,3,0,0,255865.29,68740.59,62;0,1,3,3,0,1,14616.62,3669.12,5;0,1,3,3,0,2,37293.56,11630.24,7;0,1,3,3,1,0,94602.90,18947.70,20;0,1,3,3,1,1,9217.59,2608.36,4;0,1,3,3,1,2,24046.03,7246.45,4;0,1,4,0,0,0,107128.75,25968.77,35;0,1,4,0,0,1,4368.34,1283.08,2;0,1,4,0,0,2,11097.79,2577.77,5;0,1,4,0,1,0,61074.40,17276.71,23;0,1,4,0,1,1,7591.59,1487.41,5;0,1,4,0,1,2,11103.76,2238.23,3;0,1,4,1,0,0,107722.62,30180.62,33;0,1,4,1,0,1,8094.11,1548.25,4;0,1,4,1,0,2,19058.53,4016.90,6;0,1,4,1,1,0,126351.58,32036.20,33;0,1,4,1,1,1,1709.85,527.18,2;0,1,4,1,1,2,3453.85,1014.55,3;0,1,4,2,0,0,95196.60,28220.55,30;0,1,4,2,0,1,9200.49,1469.28,3;0,1,4,2,0,2,7248.62,1598.66,6;0,1,4,2,1,0,80828.72,18522.37,26;0,1,4,2,1,1,11726.63,3295.90,5;0,1,4,2,1,2,2146.17,636.19,2;0,1,4,3,0,0,76094.47,18880.33,36;0,1,4,3,0,1,1822.86,409.87,1;0,1,4,3,0,2,7980.44,2278.99,4;0,1,4,3,1,0,53515.73,13417.28,17;0,1,4,3,1,1,5729.39,1032.56,3;0,1,4,3,1,2,1124.84,286.19,1;0,2,0,0,0,0,1074711.18,309610.52,60;0,2,0,0,0,1,230859.76,55662.85,8;0,2,0,0,0,2,347475.48,82484.02,13;0,2,0,0,1,0,1039021.29,271050.87,52;0,2,0,0,1,1,120293.67,26821.45,4;0,2,0,0,1,2,28090.56,7849.37,6;0,2,0,1,0,0,2186965.86,568345.82,82;0,2,0,1,0,1,160234.89,29279.91,5;0,2,0,1,0,2,180305.72,39843.99,9;0,2,0,1,1,0,1027853.04,276523.75,55;0,2,0,1,1,1,15982.43,2767.14,4;0,2,0,1,1,2,185984.25,55087.58,5;0,2,0,2,0,0,1700799.67,492168.30,73;0,2,0,2,0,1,228648.85,62813.56,10;0,2,0,2,0,2,512018.41,134245.82,18;0,2,0,2,1,0,1083320.89,259587.80,40;0,2,0,2,1,1,26884.62,8127.38,4;0,2,0,2,1,2,68696.04,14880.11,6;0,2,0,3,0,0,1084722.07,260723.87,52;0,2,0,3,0,1,57661.77,17918.31,4;0,2,0,3,0,2,399612.95,100554.56,10;0,2,0,3,1,0,1022257.44,265166.40,35;0,2,0,3,1,1,119745.80,28350.25,7;0,2,0,3,1,2,67145.34,23374.37,3;0,2,1,0,0,0,991167.49,251227.50,65;0,2,1,0,0,1,34506.83,5711.01,4;0,2,1,0,0,2,167081.57,26538.67,7;0,2,1,0,1,0,502065.31,122700.77,35;0,2,1,0,1,1,65089.50,12371.17,3;0,2,1,0,1,2,21829.43,4184.92,2;0,2,1,1,0,0,797861.89,213746.13,52;0,2,1,1,0,1,164449.17,49366.72,7;0,2,1,1,0,2,112961.89,24911.59,8;0,2,1,1,1,0,287922.21,78657.05,25;0,2,1,1,1,1,73710.91,14449.18,6;0,2,1,1,1,2,16797.32,6371.19,1;0,2,1,2,0,0,900845.96,225587.19,46;0,2,1,2,0,1,40240.50,9519.96,3;0,2,1,2,0,2,58146.48,16489.12,7;0,2,1,2,1,0,432821.77,82753.91,27;0,2,1,2,1,1,48605.04,9988.45,2;0,2,1,2,1,2,39816.38,4820.37,2;0,2,1,3,0,0,633979.64,169084.31,36;0,2,1,3,0,1,50673.84,15236.40,5;0,2,1,3,0,2,118209.48,30959.20,4;0,2,1,3,1,0,302521.87,86237.83,20;0,2,1,3,1,1,9638.12,749.11,1;0,2,1,3,1,2,11947.88,3529.54,2;0,2,2,0,0,0,460496.78,110286.02,56;0,2,2,0,0,1,56185.55,15939.00,7;0,2,2,0,0,2,3103.45,380.64,1;0,2,2,0,1,0,232822.35,61709.36,34;0,2,2,0,1,1,10617.62,1545.86,3;0,2,2,0,1,2,27594.20,9170.98,4;0,2,2,1,0,0,442301.38,113831.97,62;0,2,2,1,0,1,4799.48,1331.23,2;0,2,2,1,0,2,23143.16,5065.06,5;0,2,2,1,1,0,246107.26,59291.93,41;0,2,2,1,1,1,40260.32,6609.27,4;0,2,2,1,1,2,4460.11,1064.66,2;0,2,2,2,0,0,358596.62,95847.62,48;0,2,2,2,0,1,29312.76,7277.67,5;0,2,2,2,0,2,27909.17,8334.87,9;0,2,2,2,1,0,170041.70,40131.71,33;0,2,2,2,1,1,24283.17,6678.86,4;0,2,2,2,1,2,6760.50,1936.96,3;0,2,2,3,0,0,220281.59,58016.29,38;0,2,2,3,0,1,9804.00,2732.77,4;0,2,2,3,0,2,1456.12,457.32,1;0,2,2,3,1,0,72290.34,19443.32,18;0,2,2,3,1,1,5731.53,1012.01,2;0,2,3,0,0,0,308465.29,78495.53,61;0,2,3,0,0,1,60798.36,13516.03,10;0,2,3,0,0,2,36897.72,12063.97,8;0,2,3,0,1,0,236928.44,57390.74,51;0,2,3,0,1,1,31069.53,6087.70,7;0,2,3,0,1,2,52959.67,11956.87,15;0,2,3,1,0,0,270104.20,62225.93,69;0,2,3,1,0,1,18047.57,3836.76,4;0,2,3,1,0,2,13613.21,3019.33,4;0,2,3,1,1,0,186303.44,45377.99,46;0,2,3,1,1,1,41766.46,10792.13,6;0,2,3,1,1,2,14601.27,2313.48,3;0,2,3,2,0,0,258261.58,60384.49,59;0,2,3,2,0,1,16523.93,2858.23,5;0,2,3,2,0,2,16089.53,3751.34,6;0,2,3,2,1,0,205123.90,54828.32,36;0,2,3,2,1,1,5347.24,1751.71,2;0,2,3,2,1,2,31781.92,5062.59,4;0,2,3,3,0,0,153214.85,42244.38,41;0,2,3,3,0,1,36481.27,9005.57,6;0,2,3,3,0,2,8590.86,657.21,3;0,2,3,3,1,0,146910.22,40090.29,28;0,2,3,3,1,1,14143.43,4337.16,3;0,2,3,3,1,2,22398.52,6273.79,5;0,2,4,0,0,0,90668.39,25595.48,34;0,2,4,0,0,1,4205.97,1265.16,4;0,2,4,0,0,2,23373.66,8464.55,6;0,2,4,0,1,0,81926.00,19381.23,27;0,2,4,0,1,1,2932.39,1024.54,1;0,2,4,0,1,2,7531.02,1361.23,3;0,2,4,1,0,0,105269.78,23714.00,36;0,2,4,1,0,1,10759.74,2145.76,3;0,2,4,1,0,2,7039.16,2475.37,3;0,2,4,1,1,0,77986.48,22135.02,25;0,2,4,1,1,1,2407.97,439.59,1;0,2,4,1,1,2,1289.42,258.36,1;0,2,4,2,0,0,209663.52,49798.43,54;0,2,4,2,0,1,4114.00,1558.88,2;0,2,4,2,0,2,9371.24,2136.42,4;0,2,4,2,1,0,63691.47,16513.21,23;0,2,4,2,1,1,2636.62,457.93,2;0,2,4,2,1,2,14128.81,3574.22,3;0,2,4,3,0,0,58300.13,14413.80,23;0,2,4,3,0,1,10382.64,3148.68,4;0,2,4,3,0,2,17101.16,4152.06,6;0,2,4,3,1,0,38666.40,10566.33,14;0,2,4,3,1,1,6316.64,2207.77,3;0,2,4,3,1,2,3235.73,1114.42,2;0,3,0,0,0,0,1598353.58,422451.83,82;0,3,0,0,0,1,186497.92,52892.77,7;0,3,0,0,0,2,266300.97,72727.83,10;0,3,0,0,1,0,1232640.96,342005.63,50;0,3,0,0,1,1,139659.71,39015.81,7;0,3,0,0,1,2,45818.60,10961.69,5;0,3,0,1,0,0,2174652.35,508616.98,77;0,3,0,1,0,1,205971.27,53374.96,12;0,3,0,1,0,2,167720.75,49784.91,14;0,3,0,1,1,0,890644.62,231442.35,42;0,3,0,1,1,1,104200.59,21637.93,4;0,3,0,1,1,2,64673.75,14758.15,5;0,3,0,2,0,0,1536730.11,397597.30,68;0,3,0,2,0,1,276423.30,63068.52,10;0,3,0,2,0,2,94102.82,21869.97,7;0,3,0,2,1,0,1348375.34,368819.94,56;0,3,0,2,1,1,66536.79,7954.45,5;0,3,0,2,1,2,138827.18,36456.64,6;0,3,0,3,0,0,802471.18,215803.42,41;0,3,0,3,0,1,167811.56,47705.79,6;0,3,0,3,0,2,176857.92,26016.13,8;0,3,0,3,1,0,1003655.74,281633.86,39;0,3,0,3,1,1,47338.51,12888.56,2;0,3,1,0,0,0,850698.85,232591.48,48;0,3,1,0,0,1,156482.56,40021.68,10;0,3,1,0,0,2,75916.94,21113.87,6;0,3,1,0,1,0,520413.34,137801.06,36;0,3,1,0,1,1,21781.02,3663.98,3;0,3,1,0,1,2,95655.76,36342.91,6;0,3,1,1,0,0,757867.39,187624.14,45;0,3,1,1,0,1,42279.73,11669.85,3;0,3,1,1,0,2,129964.90,31462.27,8;0,3,1,1,1,0,712391.59,197248.77,42;0,3,1,1,1,1,43417.37,12044.11,4;0,3,1,1,1,2,80934.87,22649.68,5;0,3,1,2,0,0,926433.24,230179.36,53;0,3,1,2,0,1,21967.79,4641.69,1;0,3,1,2,0,2,35507.97,7449.90,3;0,3,1,2,1,0,499139.99,135275.50,28;0,3,1,2,1,1,20184.86,6707.87,1;0,3,1,2,1,2,9149.27,2278.13,2;0,3,1,3,0,0,447778.36,117685.26,30;0,3,1,3,0,1,72084.41,19191.50,4;0,3,1,3,0,2,64629.33,17322.64,6;0,3,1,3,1,0,379551.98,99119.90,21;0,3,1,3,1,1,81305.44,24473.25,4;0,3,1,3,1,2,8036.47,2567.64,1;0,3,2,0,0,0,335181.05,83544.44,51;0,3,2,0,0,1,33947.94,9153.44,9;0,3,2,0,0,2,20873.82,4876.45,4;0,3,2,0,1,0,241999.75,63662.49,41;0,3,2,0,1,1,24251.61,2039.69,5;0,3,2,0,1,2,41983.08,12054.92,5;0,3,2,1,0,0,344688.68,93703.90,53;0,3,2,1,0,1,10637.52,3474.00,3;0,3,2,1,0,2,46644.18,8962.80,8;0,3,2,1,1,0,251332.41,63217.11,42;0,3,2,1,1,1,46899.56,12165.66,6;0,3,2,1,1,2,13100.22,3151.83,3;0,3,2,2,0,0,353825.95,85443.42,50;0,3,2,2,0,1,37732.11,12010.61,3;0,3,2,2,0,2,11637.85,3899.84,3;0,3,2,2,1,0,211803.31,45336.83,27;0,3,2,2,1,1,25388.25,6039.42,4;0,3,2,2,1,2,63755.36,14190.69,9;0,3,2,3,0,0,172880.98,45582.95,27;0,3,2,3,0,1,42640.83,9324.67,5;0,3,2,3,0,2,56728.91,15272.25,9;0,3,2,3,1,0,162350.08,45806.72,22;0,3,2,3,1,1,22542.24,2945.89,2;0,3,2,3,1,2,2897.54,750.48,1;0,3,3,0,0,0,341924.69,82299.72,80;0,3,3,0,0,1,21207.58,4798.63,6;0,3,3,0,0,2,47973.19,11538.65,11;0,3,3,0,1,0,187538.56,45816.04,45;0,3,3,0,1,1,21099.00,3208.57,3;0,3,3,0,1,2,34392.60,9517.40,8;0,3,3,1,0,0,297900.83,70151.29,58;0,3,3,1,0,1,13398.35,3387.11,2;0,3,3,1,0,2,53444.28,11778.09,10;0,3,3,1,1,0,175657.36,48851.90,39;0,3,3,1,1,1,15521.65,4404.89,3;0,3,3,1,1,2,18748.62,5811.67,5;0,3,3,2,0,0,215348.00,54351.20,50;0,3,3,2,0,1,9737.27,2899.95,3;0,3,3,2,0,2,14916.89,5161.86,6;0,3,3,2,1,0,188755.52,46101.01,37;0,3,3,2,1,1,14232.42,2301.99,5;0,3,3,2,1,2,6143.88,2088.76,1;0,3,3,3,0,0,174006.44,46577.81,40;0,3,3,3,0,1,14071.82,3395.11,5;0,3,3,3,0,2,14562.25,4586.65,3;0,3,3,3,1,0,134219.85,33239.60,24;0,3,3,3,1,1,18916.82,6980.46,6;0,3,3,3,1,2,14619.23,3874.58,2;0,3,4,0,0,0,122184.80,31565.42,45;0,3,4,0,0,1,2426.12,681.19,2;0,3,4,0,0,2,7129.31,1697.40,5;0,3,4,0,1,0,81573.75,16645.16,32;0,3,4,0,1,1,19614.18,6215.34,4;0,3,4,0,1,2,2228.68,206.67,1;0,3,4,1,0,0,139395.32,32584.15,39;0,3,4,1,0,1,2501.66,847.90,2;0,3,4,1,0,2,23846.99,4762.00,6;0,3,4,1,1,0,51089.68,13470.93,17;0,3,4,1,1,1,10391.98,1870.69,4;0,3,4,1,1,2,5960.40,1796.06,4;0,3,4,2,0,0,92007.12,25174.53,33;0,3,4,2,0,1,1888.42,180.70,1;0,3,4,2,0,2,6898.74,1670.81,5;0,3,4,2,1,0,88164.40,24627.92,21;0,3,4,2,1,1,12296.93,3096.01,3;0,3,4,2,1,2,2224.27,623.36,1;0,3,4,3,0,0,95968.57,23203.54,24;0,3,4,3,0,1,6256.88,1141.25,3;0,3,4,3,0,2,26291.69,8318.13,5;0,3,4,3,1,0,113724.48,31755.70,29;0,3,4,3,1,1,7165.43,1511.33,2;0,3,4,3,1,2,1152.76,135.89,1;0,4,0,0,0,0,1655679.54,422765.61,80;0,4,0,0,0,1,163972.24,33076.89,9;0,4,0,0,0,2,268541.53,77043.60,12;0,4,0,0,1,0,809867.06,212893.11,46;0,4,0,0,1,1,104081.08,19230.50,4;0,4,0,0,1,2,127780.40,33181.97,4;0,4,0,1,0,0,1379732.29,325639.43,78;0,4,0,1,0,1,43122.18,14821.81,5;0,4,0,1,0,2,241211.79,77807.88,8;0,4,0,1,1,0,1626928.12,427625.03,60;0,4,0,1,1,1,26362.32,7763.49,5;0,4,0,1,1,2,247776.12,63590.02,5;0,4,0,2,0,0,1453679.24,376631.04,59;0,4,0,2,0,1,483651.06,105464.90,12;0,4,0,2,0,2,25076.45,7222.54,8;0,4,0,2,1,0,1039119.56,274220.27,48;0,4,0,2,1,1,35597.87,9822.38,4;0,4,0,2,1,2,127402.42,43873.27,6;0,4,0,3,0,0,1030341.53,223773.24,57;0,4,0,3,0,1,229718.02,32782.50,3;0,4,0,3,0,2,250453.93,63441.77,10;0,4,0,3,1,0,975907.60,301617.44,37;0,4,0,3,1,1,36923.92,7671.42,3;0,4,0,3,1,2,176870.45,62791.63,6;0,4,1,0,0,0,975749.17,267974.12,59;0,4,1,0,0,1,79531.83,20024.55,5;0,4,1,0,0,2,164066.07,35900.22,11;0,4,1,0,1,0,349731.22,87529.48,24;0,4,1,0,1,1,34120.54,9653.15,3;0,4,1,0,1,2,84406.75,22235.22,5;0,4,1,1,0,0,780792.25,200451.65,46;0,4,1,1,0,1,103067.94,26513.99,7;0,4,1,1,0,2,115503.98,36505.26,7;0,4,1,1,1,0,545387.59,164498.63,28;0,4,1,1,1,1,77364.70,15718.49,4;0,4,1,1,1,2,44389.75,13400.18,3;0,4,1,2,0,0,832298.29,210510.82,50;0,4,1,2,0,1,81806.13,20491.15,7;0,4,1,2,0,2,93302.72,30535.12,4;0,4,1,2,1,0,422337.19,125923.71,25;0,4,1,3,0,0,642912.35,166350.75,41;0,4,1,3,0,1,33764.12,4480.45,4;0,4,1,3,0,2,75099.86,18795.99,2;0,4,1,3,1,0,278524.13,63005.71,13;0,4,1,3,1,2,48766.83,13553.56,4;0,4,2,0,0,0,380330.56,95697.41,62;0,4,2,0,0,1,54560.79,16095.43,6;0,4,2,0,0,2,64860.01,15492.45,10;0,4,2,0,1,0,215804.91,50706.38,36;0,4,2,0,1,1,4272.14,1064.55,1;0,4,2,0,1,2,38145.70,13199.23,5;0,4,2,1,0,0,493239.59,133109.62,62;0,4,2,1,0,1,25830.18,8313.66,5;0,4,2,1,0,2,83741.09,20174.64,11;0,4,2,1,1,0,365780.08,93656.40,42;0,4,2,1,1,1,22817.93,8468.99,3;0,4,2,1,1,2,19713.16,4358.20,3;0,4,2,2,0,0,311367.37,86271.60,51;0,4,2,2,0,1,22433.32,6284.84,3;0,4,2,2,0,2,18527.17,7345.38,4;0,4,2,2,1,0,211873.87,53172.07,34;0,4,2,2,1,1,19995.82,4888.56,2;0,4,2,2,1,2,50903.21,12569.30,5;0,4,2,3,0,0,278463.16,76357.20,39;0,4,2,3,0,1,26965.02,5844.44,3;0,4,2,3,0,2,29144.40,5954.04,7;0,4,2,3,1,0,89623.45,20857.62,19;0,4,2,3,1,1,9828.69,2207.47,3;0,4,3,0,0,0,250525.41,61206.19,53;0,4,3,0,0,1,24227.39,5415.49,8;0,4,3,0,0,2,18103.78,5500.21,4;0,4,3,0,1,0,172449.18,45044.41,38;0,4,3,0,1,1,25149.67,7008.70,6;0,4,3,0,1,2,22223.90,4795.71,4;0,4,3,1,0,0,346925.84,90991.34,64;0,4,3,1,0,1,16155.01,4577.16,6;0,4,3,1,0,2,35886.16,9934.67,9;0,4,3,1,1,0,184418.45,47063.74,49;0,4,3,1,1,1,8897.81,2916.34,3;0,4,3,1,1,2,35456.80,10660.65,5;0,4,3,2,0,0,246029.10,64145.16,51;0,4,3,2,0,1,10337.50,2782.17,3;0,4,3,2,0,2,20122.94,4238.93,5;0,4,3,2,1,0,181936.65,45377.06,34;0,4,3,2,1,1,24740.31,8259.77,4;0,4,3,2,1,2,13326.78,3392.17,4;0,4,3,3,0,0,174859.68,44324.13,40;0,4,3,3,0,1,12453.63,3459.90,5;0,4,3,3,0,2,35445.77,10745.04,7;0,4,3,3,1,0,108460.45,24010.22,20;0,4,3,3,1,1,22444.60,6536.37,4;0,4,3,3,1,2,16345.01,4353.86,2;0,4,4,0,0,0,171085.02,42162.96,44;0,4,4,0,0,1,23045.46,7604.54,5;0,4,4,0,0,2,18328.75,4414.84,7;0,4,4,0,1,0,56139.13,11311.14,19;0,4,4,0,1,1,7366.09,2024.52,2;0,4,4,0,1,2,2235.33,383.87,1;0,4,4,1,0,0,116401.53,29550.64,44;0,4,4,1,0,1,13802.78,3149.98,5;0,4,4,1,0,2,10513.46,2619.96,6;0,4,4,1,1,0,94372.71,26578.72,30;0,4,4,1,1,1,19158.13,5777.20,6;0,4,4,1,1,2,636.29,205.97,1;0,4,4,2,0,0,147193.63,34108.06,42;0,4,4,2,0,1,9329.06,2595.41,3;0,4,4,2,0,2,8850.01,2883.94,5;0,4,4,2,1,0,47805.74,10884.30,20;0,4,4,2,1,1,4493.07,740.48,3;0,4,4,2,1,2,8072.60,2167.67,3;0,4,4,3,0,0,123975.40,35899.30,35;0,4,4,3,0,2,4785.62,1500.87,3;0,4,4,3,1,0,51038.44,10755.09,18;0,4,4,3,1,1,3102.08,779.07,1;0,4,4,3,1,2,4643.39,1496.51,1;0,5,0,0,0,0,1352950.41,340180.25,73;0,5,0,0,0,1,210881.26,50156.86,7;0,5,0,0,0,2,335289.60,105938.72,13;0,5,0,0,1,0,1497949.70,399014.74,66;0,5,0,0,1,1,59609.78,18129.45,3;0,5,0,0,1,2,83010.28,16231.62,10;0,5,0,1,0,0,2083814.54,580014.01,88;0,5,0,1,0,1,163188.70,53050.66,6;0,5,0,1,0,2,231286.24,74616.42,6;0,5,0,1,1,0,735982.43,164337.04,37;0,5,0,1,1,1,7113.83,1610.72,2;0,5,0,1,1,2,87235.91,29833.65,4;0,5,0,2,0,0,1386345.18,335831.45,62;0,5,0,2,0,1,220416.34,57527.12,9;0,5,0,2,0,2,228727.83,74211.52,7;0,5,0,2,1,0,823762.67,239227.79,47;0,5,0,2,1,1,119516.50,42645.55,3;0,5,0,2,1,2,208238.06,58595.43,10;0,5,0,3,0,0,917545.63,218385.88,47;0,5,0,3,0,1,96029.92,32367.57,4;0,5,0,3,0,2,224270.76,63092.35,7;0,5,0,3,1,0,394596.69,101342.18,25;0,5,0,3,1,1,229998.05,53956.96,7;0,5,0,3,1,2,26519.91,7979.04,3;0,5,1,0,0,0,755616.06,205856.99,59;0,5,1,0,0,1,92866.07,30623.66,7;0,5,1,0,0,2,137435.68,39738.63,9;0,5,1,0,1,0,677045.50,209111.88,38;0,5,1,0,1,1,26342.12,4423.93,3;0,5,1,0,1,2,46950.23,12892.74,4;0,5,1,1,0,0,982555.43,267426.57,59;0,5,1,1,0,1,3383.26,265.39,1;0,5,1,1,0,2,92896.82,12485.61,5;0,5,1,1,1,0,488839.41,110507.12,34;0,5,1,1,1,1,60550.12,16340.66,5;0,5,1,1,1,2,64150.14,17676.82,5;0,5,1,2,0,0,810487.69,197935.86,48;0,5,1,2,0,1,48210.75,17496.35,2;0,5,1,2,0,2,72641.04,13696.11,2;0,5,1,2,1,0,489589.11,121256.49,38;0,5,1,2,1,1,100699.60,24475.72,5;0,5,1,2,1,2,100562.00,24622.77,7;0,5,1,3,0,0,490055.13,137013.24,33;0,5,1,3,0,1,45655.70,9424.90,2;0,5,1,3,0,2,28132.73,6568.64,1;0,5,1,3,1,0,382810.00,104373.78,25;0,5,1,3,1,1,40957.24,9762.07,2;0,5,1,3,1,2,26577.70,7537.62,4;0,5,2,0,0,0,388257.86,97971.61,66;0,5,2,0,0,1,66507.51,12680.98,6;0,5,2,0,0,2,39247.17,10850.56,5;0,5,2,0,1,0,212905.22,56838.15,37;0,5,2,0,1,1,11859.07,3071.23,4;0,5,2,0,1,2,23361.15,6280.16,4;0,5,2,1,0,0,442410.18,116632.23,68;0,5,2,1,0,1,41453.19,9524.81,9;0,5,2,1,0,2,17042.18,4328.16,3;0,5,2,1,1,0,300592.32,67528.70,50;0,5,2,1,1,1,13573.03,5493.37,4;0,5,2,1,1,2,44918.10,10291.58,8;0,5,2,2,0,0,418802.11,102566.65,59;0,5,2,2,0,1,40658.16,9283.03,7;0,5,2,2,0,2,22188.97,4401.95,5;0,5,2,2,1,0,302125.54,82225.55,41;0,5,2,2,1,1,17170.16,5109.71,5;0,5,2,2,1,2,50981.50,14694.49,6;0,5,2,3,0,0,315918.41,81385.33,49;0,5,2,3,0,1,18268.93,3655.44,2;0,5,2,3,0,2,35470.66,8723.32,6;0,5,2,3,1,0,157677.91,37577.51,25;0,5,2,3,1,1,7342.50,2347.36,2;0,5,2,3,1,2,17654.87,5082.03,3;0,5,3,0,0,0,272893.59,69415.90,61;0,5,3,0,0,1,27760.77,7688.01,4;0,5,3,0,0,2,51600.34,14386.39,11;0,5,3,0,1,0,194048.07,51834.06,45;0,5,3,0,1,1,19207.94,5268.05,2;0,5,3,0,1,2,30820.13,6098.77,5;0,5,3,1,0,0,288451.57,77317.83,63;0,5,3,1,0,1,41684.22,7092.52,9;0,5,3,1,0,2,33515.63,9694.62,7;0,5,3,1,1,0,220766.36,52828.29,46;0,5,3,1,1,1,5625.94,1443.79,2;0,5,3,1,1,2,50796.65,18768.84,6;0,5,3,2,0,0,344411.27,82131.06,67;0,5,3,2,0,1,27684.27,6062.48,6;0,5,3,2,0,2,7133.60,1900.35,2;0,5,3,2,1,0,88963.50,22773.87,25;0,5,3,2,1,1,18680.11,5643.98,3;0,5,3,2,1,2,7150.57,1858.78,3;0,5,3,3,0,0,168384.57,44700.10,40;0,5,3,3,0,1,32938.83,9373.11,5;0,5,3,3,0,2,32938.41,8923.27,7;0,5,3,3,1,0,106117.70,27286.03,22;0,5,3,3,1,1,12756.57,3240.51,3;0,5,3,3,1,2,34152.03,9227.22,5;0,5,4,0,0,0,146832.04,38139.61,45;0,5,4,0,0,1,5076.07,1875.74,3;0,5,4,0,0,2,28820.14,7004.46,8;0,5,4,0,1,0,55353.27,14192.13,20;0,5,4,0,1,1,17168.12,5542.95,3;0,5,4,0,1,2,11539.03,3245.10,5;0,5,4,1,0,0,140128.31,39523.15,41;0,5,4,1,0,1,15705.43,4233.97,7;0,5,4,1,0,2,8973.10,1645.82,6;0,5,4,1,1,0,92811.34,25125.31,24;0,5,4,1,1,1,5223.35,1842.89,2;0,5,4,1,1,2,18339.10,5141.63,5;0,5,4,2,0,0,104821.07,27606.30,41;0,5,4,2,0,1,7504.88,1559.58,2;0,5,4,2,0,2,9310.16,2096.76,2;0,5,4,2,1,0,119013.76,30431.32,37;0,5,4,2,1,1,2001.81,574.60,1;0,5,4,2,1,2,7382.02,2369.04,5;0,5,4,3,0,0,70284.11,16386.43,26;0,5,4,3,0,1,23520.29,4694.02,6;0,5,4,3,0,2,10473.84,3320.35,2;0,5,4,3,1,0,73697.65,17912.03,19;0,5,4,3,1,1,8065.19,3021.67,1;0,5,4,3,1,2,11627.27,3536.29,2;0,6,0,0,0,0,1683183.98,428898.70,91;0,6,0,0,0,1,50838.30,17770.66,6;0,6,0,0,0,2,181190.19,58953.55,10;0,6,0,0,1,0,816335.46,206395.32,52;0,6,0,0,1,1,102431.95,21290.83,7;0,6,0,0,1,2,178284.19,52381.38,6;0,6,0,1,0,0,1555945.46,399079.86,81;0,6,0,1,0,1,41213.46,13307.08,4;0,6,0,1,0,2,276847.03,86030.16,11;0,6,0,1,1,0,1113566.96,310612.27,43;0,6,0,1,1,1,18313.09,5235.53,4;0,6,0,1,1,2,295800.26,78610.81,14;0,6,0,2,0,0,1861616.84,488090.31,71;0,6,0,2,0,1,99742.16,28386.19,5;0,6,0,2,0,2,519776.12,143726.98,13;0,6,0,2,1,0,868355.35,201012.40,34;0,6,0,2,1,1,129569.26,36997.18,3;0,6,0,2,1,2,155854.62,37557.07,10;0,6,0,3,0,0,1055597.43,285842.19,45;0,6,0,3,0,1,112508.45,25339.34,7;0,6,0,3,0,2,251973.26,77231.65,8;0,6,0,3,1,0,805117.29,234072.65,36;0,6,0,3,1,1,106798.14,24413.70,3;0,6,0,3,1,2,23675.37,4234.58,3;0,6,1,0,0,0,1018800.17,287214.99,51;0,6,1,0,0,1,16774.12,6395.83,2;0,6,1,0,0,2,117173.55,28678.87,7;0,6,1,0,1,0,397144.86,110705.00,24;0,6,1,0,1,1,20879.27,-531.76,1;0,6,1,0,1,2,62618.89,15515.60,2;0,6,1,1,0,0,879272.96,231368.74,53;0,6,1,1,0,1,146190.93,36718.85,7;0,6,1,1,0,2,40668.12,10541.20,5;0,6,1,1,1,0,341346.57,90110.84,31;0,6,1,1,1,1,17637.21,5297.47,2;0,6,1,1,1,2,80581.63,14288.17,4;0,6,1,2,0,0,752058.23,196714.02,41;0,6,1,2,0,1,43049.45,12929.97,3;0,6,1,2,0,2,87166.82,26578.19,4;0,6,1,2,1,0,474923.57,118053.44,27;0,6,1,2,1,1,22382.48,8056.40,3;0,6,1,2,1,2,84220.56,22861.51,5;0,6,1,3,0,0,610478.51,146744.08,38;0,6,1,3,0,1,57640.41,10223.95,2;0,6,1,3,0,2,96824.01,23164.60,7;0,6,1,3,1,0,434738.19,111318.19,31;0,6,1,3,1,1,32417.45,11305.68,2;0,6,1,3,1,2,66218.90,14538.71,4;0,6,2,0,0,0,479816.16,123193.51,66;0,6,2,0,0,1,24935.51,7052.46,4;0,6,2,0,0,2,36956.69,8132.48,8;0,6,2,0,1,0,258252.44,68354.43,32;0,6,2,0,1,1,21444.47,4151.67,4;0,6,2,0,1,2,13971.59,2760.89,5;0,6,2,1,0,0,485121.99,130791.53,64;0,6,2,1,0,1,76771.55,16938.46,9;0,6,2,1,0,2,35903.37,9409.26,6;0,6,2,1,1,0,340266.57,95323.89,39;0,6,2,1,1,1,15883.38,4761.56,2;0,6,2,1,1,2,9597.58,3057.56,2;0,6,2,2,0,0,352818.87,99219.65,50;0,6,2,2,0,1,17411.57,5166.96,4;0,6,2,2,0,2,13486.44,4683.87,3;0,6,2,2,1,0,237795.57,60137.97,33;0,6,2,2,1,1,8864.74,2058.73,2;0,6,2,2,1,2,5622.99,2081.14,2;0,6,2,3,0,0,261711.15,72642.55,38;0,6,2,3,0,1,26522.90,5566.59,5;0,6,2,3,0,2,35931.16,6416.30,7;0,6,2,3,1,0,179027.82,45192.12,23;0,6,2,3,1,1,5091.62,1031.45,1;0,6,2,3,1,2,7447.86,2013.08,2;0,6,3,0,0,0,246229.19,63870.10,55;0,6,3,0,0,1,15072.91,4512.95,5;0,6,3,0,0,2,55106.39,14365.14,11;0,6,3,0,1,0,157728.50,41890.39,37;0,6,3,0,1,1,6802.38,725.57,1;0,6,3,0,1,2,7979.90,1812.62,3;0,6,3,1,0,0,220003.36,54799.20,52;0,6,3,1,0,1,31147.79,7849.02,7;0,6,3,1,0,2,38873.49,8646.35,8;0,6,3,1,1,0,143230.27,38336.26,32;0,6,3,1,1,1,55839.95,15871.24,11;0,6,3,1,1,2,5499.97,2087.77,1;0,6,3,2,0,0,271173.34,68931.43,63;0,6,3,2,0,1,21419.75,4750.97,5;0,6,3,2,0,2,22457.49,6019.85,3;0,6,3,2,1,0,182092.15,51846.13,36;0,6,3,2,1,1,12774.77,3413.83,2;0,6,3,2,1,2,11618.81,4091.74,3;0,6,3,3,0,0,184018.21,49788.85,44;0,6,3,3,0,1,28274.65,6542.34,6;0,6,3,3,0,2,26725.14,6463.13,4;0,6,3,3,1,0,162605.65,41377.69,34;0,6,3,3,1,1,13618.57,4035.54,3;0,6,3,3,1,2,23067.20,7703.32,5;0,6,4,0,0,0,113639.22,27180.44,45;0,6,4,0,0,1,36223.54,8898.06,7;0,6,4,0,0,2,12244.41,4339.99,4;0,6,4,0,1,0,111351.91,32554.46,27;0,6,4,0,1,1,2494.96,937.58,2;0,6,4,0,1,2,6744.00,2192.51,3;0,6,4,1,0,0,105285.21,26486.80,41;0,6,4,1,0,1,4825.22,1225.57,3;0,6,4,1,0,2,16335.44,4310.11,4;0,6,4,1,1,0,91356.94,17759.22,26;0,6,4,1,1,1,2876.20,677.85,3;0,6,4,1,1,2,6618.43,1321.82,2;0,6,4,2,0,0,121895.54,29799.49,35;0,6,4,2,0,1,4580.94,1517.85,3;0,6,4,2,0,2,14548.57,3260.81,7;0,6,4,2,1,0,68500.76,17839.44,23;0,6,4,2,1,1,12407.71,2586.64,3;0,6,4,2,1,2,383.55,62.55,1;0,6,4,3,0,0,89951.00,22984.63,29;0,6,4,3,0,1,3846.26,1306.17,3;0,6,4,3,0,2,1787.51,604.30,1;0,6,4,3,1,0,49862.57,9979.34,12;0,6,4,3,1,1,13440.24,5277.29,2;0,6,4,3,1,2,2650.60,102.69,1;0,7,0,0,0,0,1791105.36,461082.40,85;0,7,0,0,0,1,211143.50,58082.38,10;0,7,0,0,0,2,128829.72,23127.81,8;0,7,0,0,1,0,1207331.24,305050.63,44;0,7,0,0,1,1,89244.64,7558.72,3;0,7,0,0,1,2,124158.53,28301.36,4;0,7,0,1,0,0,1698218.59,439884.08,82;0,7,0,1,0,1,202550.96,60685.65,7;0,7,0,1,0,2,37757.46,11743.43,4;0,7,0,1,1,0,1359274.39,347188.91,45;0,7,0,1,1,1,116262.03,33901.88,4;0,7,0,1,1,2,115718.44,33673.27,4;0,7,0,2,0,0,1522273.30,404895.99,66;0,7,0,2,0,1,95897.88,19915.18,9;0,7,0,2,0,2,374535.64,83780.67,15;0,7,0,2,1,0,793932.01,197565.04,40;0,7,0,2,1,1,197025.98,35801.70,5;0,7,0,2,1,2,67780.00,10932.04,3;0,7,0,3,0,0,1337419.44,349489.17,62;0,7,0,3,0,1,190360.23,55463.28,4;0,7,0,3,0,2,124022.33,29880.94,8;0,7,0,3,1,0,532282.60,145386.40,31;0,7,0,3,1,1,3835.01,707.72,2;0,7,0,3,1,2,121872.39,26064.80,5;0,7,1,0,0,0,919259.56,221704.45,58;0,7,1,0,0,1,99468.60,28406.01,6;0,7,1,0,0,2,109011.21,26824.89,7;0,7,1,0,1,0,632818.00,160078.74,35;0,7,1,0,1,1,154318.04,46493.51,6;0,7,1,0,1,2,44730.86,10981.89,4;0,7,1,1,0,0,844472.73,199293.45,49;0,7,1,1,0,1,43586.25,11589.88,4;0,7,1,1,0,2,152893.34,41340.06,8;0,7,1,1,1,0,573515.22,149026.26,34;0,7,1,1,1,1,74593.47,26794.32,3;0,7,1,1,1,2,64868.08,13286.12,4;0,7,1,2,0,0,598835.95,145296.97,43;0,7,1,2,0,1,47582.80,14854.12,2;0,7,1,2,0,2,109949.01,30376.22,6;0,7,1,2,1,0,314657.96,74487.00,19;0,7,1,2,1,1,124162.19,33429.52,5;0,7,1,2,1,2,49982.44,12062.89,5;0,7,1,3,0,0,500766.13,140814.90,36;0,7,1,3,0,1,89611.87,22851.87,6;0,7,1,3,0,2,82186.39,25837.92,5;0,7,1,3,1,0,231259.07,46620.40,17;0,7,1,3,1,1,13589.85,2541.59,2;0,7,1,3,1,2,29658.78,8948.24,2;0,7,2,0,0,0,457481.13,109669.17,70;0,7,2,0,0,1,50064.37,10861.38,8;0,7,2,0,0,2,30894.20,9826.13,5;0,7,2,0,1,0,217410.23,56008.67,33;0,7,2,0,1,1,54235.64,11128.72,7;0,7,2,0,1,2,10103.79,3054.46,4;0,7,2,1,0,0,375688.77,104379.65,51;0,7,2,1,0,1,3029.24,633.50,2;0,7,2,1,0,2,65177.90,18481.53,9;0,7,2,1,1,0,266532.79,73815.06,34;0,7,2,1,1,1,18946.08,5044.63,2;0,7,2,1,1,2,11955.97,4769.58,2;0,7,2,2,0,0,316026.15,80575.54,58;0,7,2,2,0,1,28714.93,6135.36,4;0,7,2,2,0,2,12925.62,1976.97,2;0,7,2,2,1,0,197591.33,39505.71,31;0,7,2,2,1,1,21555.53,5845.56,5;0,7,2,2,1,2,13557.98,3150.44,2;0,7,2,3,0,0,297599.60,87600.78,48;0,7,2,3,0,1,8248.69,952.49,3;0,7,2,3,0,2,39484.12,9957.13,7;0,7,2,3,1,0,175787.81,43936.21,24;0,7,2,3,1,1,1252.66,352.99,1;0,7,2,3,1,2,19951.91,5738.67,3;0,7,3,0,0,0,379331.02,101943.33,73;0,7,3,0,0,1,20169.24,4261.21,4;0,7,3,0,0,2,35436.03,5904.32,6;0,7,3,0,1,0,143732.99,31009.98,33;0,7,3,0,1,1,14288.28,3427.76,4;0,7,3,0,1,2,10552.99,1412.16,3;0,7,3,1,0,0,338856.09,84945.89,61;0,7,3,1,0,1,12541.07,3342.07,4;0,7,3,1,0,2,52404.44,9320.77,8;0,7,3,1,1,0,184469.62,50006.80,34;0,7,3,1,1,1,13232.47,4092.15,3;0,7,3,1,1,2,25558.13,6718.17,7;0,7,3,2,0,0,307016.65,72030.54,64;0,7,3,2,0,1,29352.20,7907.30,6;0,7,3,2,0,2,37175.89,8360.19,9;0,7,3,2,1,0,148546.35,36560.59,37;0,7,3,2,1,1,5613.34,1216.20,2;0,7,3,2,1,2,14623.48,4429.14,2;0,7,3,3,0,0,231429.81,59884.11,52;0,7,3,3,0,1,37860.84,9107.75,6;0,7,3,3,0,2,31496.66,10378.71,6;0,7,3,3,1,0,165664.08,41205.14,38;0,7,3,3,1,1,23945.75,8167.71,5;0,7,3,3,1,2,15238.85,4455.60,3;0,7,4,0,0,0,117460.43,31518.55,35;0,7,4,0,0,1,5719.92,1585.68,5;0,7,4,0,0,2,39598.56,9984.78,10;0,7,4,0,1,0,71872.66,18205.17,30;0,7,4,0,1,1,10752.13,3249.38,3;0,7,4,1,0,0,121776.41,31537.60,41;0,7,4,1,0,1,18953.26,4823.33,6;0,7,4,1,0,2,31607.86,9813.12,5;0,7,4,1,1,0,82699.11,21467.29,27;0,7,4,1,1,1,10416.67,2974.21,4;0,7,4,1,1,2,12779.29,2605.78,5;0,7,4,2,0,0,85864.70,20824.51,32;0,7,4,2,0,1,7645.81,2635.28,2;0,7,4,2,0,2,25228.45,8083.94,8;0,7,4,2,1,0,92595.42,25412.61,23;0,7,4,2,1,1,10359.94,1985.60,3;0,7,4,2,1,2,6585.62,1514.66,4;0,7,4,3,0,0,84886.19,22352.97,27;0,7,4,3,0,1,8420.20,1750.56,2;0,7,4,3,1,0,63275.05,13800.47,24;0,7,4,3,1,1,13777.32,3675.22,2;0,7,4,3,1,2,11529.81,4477.44,2;0,8,0,0,0,0,2123639.75,578744.62,96;0,8,0,0,0,1,129886.91,21068.83,7;0,8,0,0,0,2,230462.27,61984.38,12;0,8,0,0,1,0,1292573.53,345113.26,61;0,8,0,0,1,1,65443.60,20758.15,5;0,8,0,0,1,2,36262.55,6511.42,7;0,8,0,1,0,0,2063736.53,536026.73,85;0,8,0,1,0,1,138519.50,38004.90,9;0,8,0,1,0,2,122091.21,24299.56,7;0,8,0,1,1,0,733067.27,198025.45,43;0,8,0,1,1,2,250824.85,70605.00,8;0,8,0,2,0,0,1406089.40,329305.13,67;0,8,0,2,0,1,22463.41,4742.40,5;0,8,0,2,0,2,263860.73,59720.17,11;0,8,0,2,1,0,1528627.23,398584.85,56;0,8,0,2,1,1,153126.61,29835.55,3;0,8,0,2,1,2,21381.68,4861.95,4;0,8,0,3,0,0,1573861.96,406352.56,66;0,8,0,3,0,1,97441.08,21259.95,3;0,8,0,3,0,2,48653.30,15667.63,5;0,8,0,3,1,0,807747.95,224554.30,32;0,8,0,3,1,1,107058.06,23068.96,5;0,8,0,3,1,2,45394.69,11096.10,10;0,8,1,0,0,0,1087723.54,274827.60,66;0,8,1,0,0,1,97677.57,18857.80,5;0,8,1,0,0,2,137116.76,32555.15,5;0,8,1,0,1,0,404045.52,103603.50,27;0,8,1,0,1,1,108906.71,27841.92,5;0,8,1,0,1,2,36426.28,8862.48,2;0,8,1,1,0,0,857900.82,213685.78,62;0,8,1,1,0,1,97043.09,29306.09,6;0,8,1,1,0,2,142825.91,30219.21,10;0,8,1,1,1,0,607942.31,144806.91,34;0,8,1,1,1,1,69081.81,9584.03,3;0,8,1,1,1,2,22654.08,6160.48,3;0,8,1,2,0,0,715853.49,187677.44,41;0,8,1,2,0,1,60448.83,15104.71,4;0,8,1,2,0,2,63516.98,15975.09,5;0,8,1,2,1,0,466191.69,135591.59,26;0,8,1,2,1,1,17175.06,4554.10,2;0,8,1,2,1,2,19180.28,6861.09,2;0,8,1,3,0,0,739614.09,185776.58,43;0,8,1,3,0,1,111499.42,30110.86,6;0,8,1,3,0,2,78611.52,27834.31,3;0,8,1,3,1,0,356741.36,72513.52,19;0,8,1,3,1,1,19623.47,4787.26,2;0,8,2,0,0,0,452042.46,135522.73,54;0,8,2,0,0,1,46475.88,9591.76,9;0,8,2,0,0,2,34285.73,6215.85,9;0,8,2,0,1,0,233756.37,60408.03,35;0,8,2,0,1,1,10699.72,2750.64,1;0,8,2,0,1,2,58241.14,13736.12,6;0,8,2,1,0,0,398177.62,104675.42,53;0,8,2,1,0,1,63000.95,18033.96,6;0,8,2,1,0,2,29984.68,10281.71,5;0,8,2,1,1,0,346842.41,90490.04,39;0,8,2,1,1,1,24937.89,6475.75,4;0,8,2,1,1,2,54039.92,12502.52,8;0,8,2,2,0,0,460601.46,117389.83,53;0,8,2,2,0,1,54795.55,13093.06,8;0,8,2,2,0,2,58193.82,14923.18,7;0,8,2,2,1,0,207028.18,53152.72,29;0,8,2,2,1,1,19351.46,2939.61,2;0,8,2,2,1,2,21940.11,5374.79,2;0,8,2,3,0,0,231803.79,58938.67,36;0,8,2,3,0,1,50183.92,17412.43,8;0,8,2,3,0,2,10881.47,2335.45,3;0,8,2,3,1,0,128171.44,33983.15,24;0,8,2,3,1,2,55744.15,14325.38,6;0,8,3,0,0,0,309303.87,81136.18,67;0,8,3,0,0,1,17179.67,3701.20,4;0,8,3,0,0,2,39891.77,8124.87,9;0,8,3,0,1,0,127537.11,34322.45,30;0,8,3,0,1,1,34674.06,10835.07,8;0,8,3,0,1,2,12580.87,2460.06,2;0,8,3,1,0,0,320729.19,74827.32,63;0,8,3,1,0,1,10588.87,1984.08,5;0,8,3,1,0,2,51762.57,12331.76,8;0,8,3,1,1,0,150439.16,36820.81,37;0,8,3,1,1,1,14120.66,3424.15,3;0,8,3,1,1,2,49342.23,12098.75,9;0,8,3,2,0,0,195306.74,54455.13,46;0,8,3,2,0,1,26830.39,7712.31,6;0,8,3,2,0,2,52450.03,12403.79,8;0,8,3,2,1,0,136225.56,38038.68,28;0,8,3,2,1,1,24279.29,5251.78,5;0,8,3,2,1,2,3457.65,1311.12,1;0,8,3,3,0,0,182608.83,49167.64,31;0,8,3,3,0,1,4273.32,653.22,2;0,8,3,3,0,2,4883.49,959.73,2;0,8,3,3,1,0,123174.21,32690.50,27;0,8,3,3,1,1,22410.83,4648.98,3;0,8,3,3,1,2,2053.66,525.60,1;0,8,4,0,0,0,115516.51,28841.93,38;0,8,4,0,0,1,6894.30,2046.15,4;0,8,4,0,0,2,10107.00,1986.19,5;0,8,4,0,1,0,104812.60,27609.45,37;0,8,4,0,1,1,2572.74,539.23,2;0,8,4,0,1,2,2104.18,560.52,1;0,8,4,1,0,0,123907.40,35078.94,42;0,8,4,1,0,1,14056.94,3468.28,7;0,8,4,1,0,2,16101.60,3529.26,6;0,8,4,1,1,0,46946.34,13640.19,20;0,8,4,1,1,1,11412.63,1973.35,2;0,8,4,1,1,2,16619.23,6610.72,2;0,8,4,2,0,0,146280.92,39633.32,45;0,8,4,2,0,1,10351.49,2982.25,4;0,8,4,2,0,2,7444.90,2275.08,2;0,8,4,2,1,0,68160.68,16869.64,19;0,8,4,2,1,1,9180.97,2466.36,3;0,8,4,2,1,2,12289.28,3073.40,4;0,8,4,3,0,0,81161.23,20838.19,30;0,8,4,3,0,1,3327.34,680.43,3;0,8,4,3,0,2,618.98,182.62,1;0,8,4,3,1,0,30516.30,8453.97,14;0,8,4,3,1,1,3648.15,547.76,1;0,8,4,3,1,2,6951.97,1781.78,4;0,9,0,0,0,0,1717299.62,485856.39,69;0,9,0,0,0,1,12238.07,3843.37,3;0,9,0,0,0,2,216566.32,61704.56,11;0,9,0,0,1,0,1373917.90,322874.07,62;0,9,0,0,1,1,56926.48,12243.96,5;0,9,0,0,1,2,71617.11,20861.52,3;0,9,0,1,0,0,1528957.69,372030.11,62;0,9,0,1,0,1,163567.62,53346.70,8;0,9,0,1,0,2,188879.56,41053.76,13;0,9,0,1,1,0,1108309.58,306037.98,48;0,9,0,1,1,1,10874.38,2350.69,1;0,9,0,1,1,2,139505.00,34575.95,2;0,9,0,2,0,0,1304289.01,340367.63,58;0,9,0,2,0,1,19262.10,3224.15,3;0,9,0,2,0,2,175915.59,37972.54,7;0,9,0,2,1,0,579077.16,132554.67,28;0,9,0,2,1,1,56221.77,17857.60,4;0,9,0,2,1,2,164445.37,53244.25,6;0,9,0,3,0,0,1528504.60,402879.47,46;0,9,0,3,0,1,198360.44,65300.88,9;0,9,0,3,0,2,59826.23,12738.00,1;0,9,0,3,1,0,650877.00,187974.60,38;0,9,0,3,1,1,203394.64,66939.41,6;0,9,0,3,1,2,112677.78,35590.75,6;0,9,1,0,0,0,703282.79,183432.24,45;0,9,1,0,0,1,138658.75,36800.14,9;0,9,1,0,0,2,67235.38,17700.69,5;0,9,1,0,1,0,579154.45,156938.50,32;0,9,1,0,1,1,51933.76,13652.39,3;0,9,1,0,1,2,54080.80,14729.27,4;0,9,1,1,0,0,1122503.07,273369.72,57;0,9,1,1,0,1,91717.94,24555.07,5;0,9,1,1,0,2,142543.88,44274.08,5;0,9,1,1,1,0,703144.35,199410.05,32;0,9,1,1,1,1,94838.75,25485.90,4;0,9,1,1,1,2,3926.16,1075.17,1;0,9,1,2,0,0,692870.17,201723.52,41;0,9,1,2,0,1,12072.64,3332.59,2;0,9,1,2,0,2,59455.15,10561.37,5;0,9,1,2,1,0,562962.42,136789.70,32;0,9,1,2,1,1,111749.63,28618.66,6;0,9,1,2,1,2,24420.59,3080.35,1;0,9,1,3,0,0,492044.58,116581.64,33;0,9,1,3,0,1,58856.89,12686.76,4;0,9,1,3,0,2,63905.73,18325.28,5;0,9,1,3,1,0,544220.20,150139.43,29;0,9,1,3,1,1,46986.74,7671.81,2;0,9,1,3,1,2,29876.38,11528.54,1;0,9,2,0,0,0,375116.17,86920.10,51;0,9,2,0,0,1,37647.05,10838.26,7;0,9,2,0,0,2,47616.28,9175.59,7;0,9,2,0,1,0,349942.95,91775.51,41;0,9,2,0,1,1,30594.13,7404.75,3;0,9,2,0,1,2,26474.43,8349.11,5;0,9,2,1,0,0,405919.62,105991.79,59;0,9,2,1,0,1,33446.13,7344.95,5;0,9,2,1,0,2,35261.00,8693.50,8;0,9,2,1,1,0,235341.89,62616.07,36;0,9,2,1,1,1,4849.49,643.60,2;0,9,2,1,1,2,19683.42,5250.48,4;0,9,2,2,0,0,343573.67,86517.81,43;0,9,2,2,0,1,27263.78,9023.98,5;0,9,2,2,0,2,35797.01,9372.88,3;0,9,2,2,1,0,151001.82,29454.24,22;0,9,2,2,1,1,4652.20,894.19,3;0,9,2,2,1,2,24219.53,4588.65,3;0,9,2,3,0,0,202082.73,57532.18,32;0,9,2,3,0,1,8402.20,3306.23,2;0,9,2,3,0,2,37402.32,10326.35,6;0,9,2,3,1,0,112949.26,27998.72,22;0,9,2,3,1,1,43872.15,15727.11,3;0,9,2,3,1,2,28370.68,8780.72,2;0,9,3,0,0,0,336389.30,82830.37,73;0,9,3,0,0,1,20569.27,5287.44,6;0,9,3,0,0,2,37112.25,9183.56,7;0,9,3,0,1,0,156015.53,39609.48,41;0,9,3,0,1,2,21108.32,5002.43,5;0,9,3,1,0,0,351366.94,86255.64,70;0,9,3,1,0,1,28233.88,7721.36,5;0,9,3,1,0,2,2461.75,484.23,1;0,9,3,1,1,0,170451.09,42223.06,31;0,9,3,1,1,1,5153.66,1488.66,2;0,9,3,2,0,0,164312.58,41640.42,41;0,9,3,2,0,1,46670.60,13178.10,11;0,9,3,2,0,2,17910.85,5167.34,4;0,9,3,2,1,0,129390.84,33042.51,31;0,9,3,2,1,1,21998.89,7354.53,2;0,9,3,2,1,2,9814.90,3211.74,4;0,9,3,3,0,0,236332.96,65434.47,44;0,9,3,3,0,1,24939.90,4748.09,5;0,9,3,3,0,2,38295.95,8645.95,8;0,9,3,3,1,0,179171.00,52738.04,32;0,9,3,3,1,1,2613.37,587.66,2;0,9,3,3,1,2,15960.11,2923.62,4;0,9,4,0,0,0,110318.48,30847.29,38;0,9,4,0,0,1,11433.69,3015.09,5;0,9,4,0,0,2,11597.47,2877.12,6;0,9,4,0,1,0,33683.03,10924.66,14;0,9,4,0,1,1,8733.04,3092.22,4;0,9,4,0,1,2,5253.01,1056.45,4;0,9,4,1,0,0,109275.80,24627.25,35;0,9,4,1,0,1,24015.19,5624.47,6;0,9,4,1,0,2,9928.59,2328.16,6;0,9,4,1,1,0,78566.47,17091.79,25;0,9,4,1,1,1,13532.89,2048.84,4;0,9,4,1,1,2,34930.48,9270.97,4;0,9,4,2,0,0,97946.94,25951.85,32;0,9,4,2,0,1,8414.02,2180.44,4;0,9,4,2,0,2,33553.28,10875.16,5;0,9,4,2,1,0,29586.13,9171.28,10;0,9,4,2,1,1,12231.09,3181.48,5;0,9,4,2,1,2,17141.52,5747.43,2;0,9,4,3,0,0,72570.76,20452.56,30;0,9,4,3,0,1,9586.83,1453.54,2;0,9,4,3,0,2,17317.33,3412.49,6;0,9,4,3,1,0,90094.46,20862.71,25;0,9,4,3,1,1,4784.02,755.01,1;0,9,4,3,1,2,4304.48,1293.24,1;0,10,0,0,0,0,2232367.68,567798.11,85;0,10,0,0,0,1,243055.80,76309.81,12;0,10,0,0,0,2,322624.16,88458.47,12;0,10,0,0,1,0,1100277.10,297231.72,40;0,10,0,0,1,1,95147.70,19555.80,3;0,10,0,0,1,2,170321.57,46364.93,4;0,10,0,1,0,0,1649193.57,390186.71,83;0,10,0,1,0,1,198256.36,56261.13,8;0,10,0,1,0,2,414826.14,119914.03,13;0,10,0,1,1,0,1073320.67,253558.54,44;0,10,0,1,1,1,219409.51,64820.83,5;0,10,0,1,1,2,16532.39,5896.77,2;0,10,0,2,0,0,1177868.09,286522.04,72;0,10,0,2,0,1,53784.59,11165.96,5;0,10,0,2,0,2,115720.94,31063.20,7;0,10,0,2,1,0,1489256.72,396396.95,54;0,10,0,2,1,1,14612.05,3807.10,1;0,10,0,2,1,2,87879.97,34435.90,3;0,10,0,3,0,0,1164030.95,311303.82,54;0,10,0,3,0,1,61472.42,18593.65,4;0,10,0,3,0,2,298146.45,59255.08,7;0,10,0,3,1,0,980331.92,227761.39,37;0,10,0,3,1,1,88023.11,23564.16,4;0,10,0,3,1,2,31665.58,-1870.68,2;0,10,1,0,0,0,1018080.66,278146.05,56;0,10,1,0,0,1,67344.56,13478.62,5;0,10,1,0,0,2,118392.60,26265.03,7;0,10,1,0,1,0,342312.79,81980.80,22;0,10,1,0,1,1,42135.63,9961.30,3;0,10,1,0,1,2,72699.22,20753.80,4;0,10,1,1,0,0,939488.91,250980.07,62;0,10,1,1,0,1,217325.95,66112.13,9;0,10,1,1,0,2,125540.63,35562.05,8;0,10,1,1,1,0,480504.18,130643.63,29;0,10,1,1,1,1,25605.65,4829.03,4;0,10,1,1,1,2,69294.05,20773.50,3;0,10,1,2,0,0,771923.88,208099.69,46;0,10,1,2,0,1,89606.68,19734.22,5;0,10,1,2,0,2,37659.75,8780.77,4;0,10,1,2,1,0,384679.91,93296.07,25;0,10,1,2,1,1,56326.09,13778.91,2;0,10,1,2,1,2,46795.52,14502.99,2;0,10,1,3,0,0,660032.23,169292.21,37;0,10,1,3,0,1,102930.67,26579.98,6;0,10,1,3,0,2,75932.17,19955.59,7;0,10,1,3,1,0,508787.66,128024.58,25;0,10,1,3,1,1,36437.04,8555.42,3;0,10,1,3,1,2,48204.14,11792.80,3;0,10,2,0,0,0,394495.60,101757.88,66;0,10,2,0,0,1,50336.24,15049.40,7;0,10,2,0,0,2,27402.13,8130.40,6;0,10,2,0,1,0,257555.13,69815.66,37;0,10,2,0,1,1,20805.99,2750.21,5;0,10,2,0,1,2,22436.99,8437.50,4;0,10,2,1,0,0,537982.07,137779.98,75;0,10,2,1,0,1,86113.21,24974.88,11;0,10,2,1,0,2,29663.24,8202.78,4;0,10,2,1,1,0,149484.63,38363.52,27;0,10,2,1,1,1,8694.76,2902.32,3;0,10,2,1,1,2,21007.88,6167.47,4;0,10,2,2,0,0,290300.22,71232.49,50;0,10,2,2,0,1,18814.73,5760.84,1;0,10,2,2,0,2,61515.02,20656.48,5;0,10,2,2,1,0,231497.75,58516.19,34;0,10,2,2,1,2,13802.91,4358.52,3;0,10,2,3,0,0,231887.25,64125.82,42;0,10,2,3,0,1,8593.78,3272.12,2;0,10,2,3,0,2,36408.38,9274.23,7;0,10,2,3,1,0,90830.45,19349.83,19;0,10,2,3,1,1,3950.19,453.41,2;0,10,2,3,1,2,1002.29,297.46,1;0,10,3,0,0,0,355933.11,91934.35,65;0,10,3,0,0,1,36103.59,10558.72,9;0,10,3,0,0,2,14891.41,3385.80,4;0,10,3,0,1,0,203964.64,51083.73,38;0,10,3,0,1,1,15239.96,3967.42,4;0,10,3,0,1,2,13200.76,2852.74,3;0,10,3,1,0,0,387921.56,106723.40,72;0,10,3,1,0,1,50548.90,12774.57,12;0,10,3,1,0,2,26478.74,7482.31,6;0,10,3,1,1,0,237308.40,67735.52,43;0,10,3,1,1,1,31165.45,5295.78,6;0,10,3,1,1,2,31697.43,4989.55,7;0,10,3,2,0,0,229244.03,61279.98,55;0,10,3,2,0,1,31622.54,8952.62,7;0,10,3,2,0,2,27906.04,6250.66,6;0,10,3,2,1,0,170600.99,45670.14,32;0,10,3,2,1,1,21417.48,6313.16,8;0,10,3,2,1,2,14744.40,3652.98,3;0,10,3,3,0,0,209492.66,57081.65,44;0,10,3,3,0,1,29774.72,4453.26,6;0,10,3,3,0,2,58428.88,17512.33,9;0,10,3,3,1,0,79964.07,17892.97,23;0,10,3,3,1,1,5172.80,1188.77,2;0,10,3,3,1,2,1999.72,400.39,2;0,10,4,0,0,0,147203.40,33791.09,44;0,10,4,0,0,1,5746.07,1208.00,2;0,10,4,0,0,2,21554.35,5635.99,5;0,10,4,0,1,0,63226.31,16096.69,20;0,10,4,0,1,2,6451.06,1688.85,1;0,10,4,1,0,0,116221.71,33405.24,34;0,10,4,1,0,1,13208.15,3170.41,6;0,10,4,1,0,2,11949.04,1785.60,2;0,10,4,1,1,0,58569.09,15720.50,25;0,10,4,1,1,1,4163.71,817.72,1;0,10,4,1,1,2,1344.38,398.46,1;0,10,4,2,0,0,114943.91,34016.62,36;0,10,4,2,0,1,2608.34,691.41,2;0,10,4,2,0,2,20456.75,6417.73,4;0,10,4,2,1,0,67674.64,16416.11,18;0,10,4,2,1,1,15970.53,4840.73,5;0,10,4,2,1,2,22831.12,5279.17,3;0,10,4,3,0,0,90403.45,21146.82,33;0,10,4,3,0,1,12763.14,3342.19,5;0,10,4,3,0,2,9211.26,1653.52,4;0,10,4,3,1,0,42920.63,14183.52,14;0,10,4,3,1,1,6725.39,1458.14,3;0,10,4,3,1,2,5858.18,2161.58,2;0,11,0,0,0,0,1196976.06,301235.14,61;0,11,0,0,0,1,154139.17,45585.06,9;0,11,0,0,0,2,379635.75,91499.15,11;0,11,0,0,1,0,907561.69,239218.84,44;0,11,0,0,1,1,148615.20,30045.86,6;0,11,0,0,1,2,95183.92,25656.53,7;0,11,0,1,0,0,2090784.46,532323.77,84;0,11,0,1,0,1,11618.97,3350.55,2;0,11,0,1,0,2,148124.27,49427.33,6;0,11,0,1,1,0,637404.46,189317.74,42;0,11,0,1,1,1,182722.96,57188.47,4;0,11,0,1,1,2,110700.37,33879.23,5;0,11,0,2,0,0,1773997.95,457362.43,72;0,11,0,2,0,1,168865.46,29772.42,5;0,11,0,2,0,2,300678.55,79523.35,15;0,11,0,2,1,0,853667.19,208664.31,36;0,11,0,2,1,1,60462.47,15352.78,4;0,11,0,2,1,2,102272.21,41196.37,2;0,11,0,3,0,0,1248380.38,307864.99,49;0,11,0,3,0,1,89228.63,27258.27,4;0,11,0,3,0,2,52904.90,15904.90,3;0,11,0,3,1,0,787248.36,226912.33,32;0,11,0,3,1,1,20691.87,5629.66,2;0,11,0,3,1,2,89159.03,24141.20,5;0,11,1,0,0,0,728245.85,200990.23,45;0,11,1,0,0,1,101086.75,23773.38,6;0,11,1,0,0,2,4258.16,1795.07,1;0,11,1,0,1,0,651250.50,141881.99,39;0,11,1,0,1,1,15778.24,5304.64,1;0,11,1,0,1,2,89490.53,18417.50,7;0,11,1,1,0,0,1094125.25,282504.37,58;0,11,1,1,0,1,55226.17,9611.74,4;0,11,1,1,0,2,84224.32,12293.92,6;0,11,1,1,1,0,549813.31,137921.68,32;0,11,1,1,1,1,16401.64,5622.96,2;0,11,1,1,1,2,36087.00,5807.10,1;0,11,1,2,0,0,679650.33,156834.37,45;0,11,1,2,0,1,129345.13,36793.62,8;0,11,1,2,0,2,39966.35,8509.11,3;0,11,1,2,1,0,359208.20,97050.96,24;0,11,1,2,1,1,49719.53,14277.38,2;0,11,1,2,1,2,4988.07,834.72,1;0,11,1,3,0,0,670249.08,175487.85,41;0,11,1,3,0,1,105504.19,34308.12,4;0,11,1,3,0,2,77510.93,28209.42,5;0,11,1,3,1,0,276660.60,86712.78,17;0,11,1,3,1,1,25385.48,-972.45,1;0,11,1,3,1,2,9562.50,355.14,1;0,11,2,0,0,0,472518.95,122385.32,65;0,11,2,0,0,1,23840.68,4495.67,3;0,11,2,0,0,2,46419.68,14394.21,6;0,11,2,0,1,0,220827.08,61802.13,31;0,11,2,0,1,1,49293.14,12290.19,6;0,11,2,0,1,2,23118.00,6338.68,3;0,11,2,1,0,0,390041.36,98220.15,61;0,11,2,1,0,1,29192.23,10142.34,4;0,11,2,1,0,2,30479.45,7356.03,4;0,11,2,1,1,0,252802.89,62492.65,35;0,11,2,1,1,1,12372.78,2449.02,2;0,11,2,1,1,2,41894.21,14651.94,4;0,11,2,2,0,0,259249.27,67352.83,44;0,11,2,2,0,1,66607.14,19244.90,5;0,11,2,2,0,2,75395.46,20537.43,7;0,11,2,2,1,0,206002.47,45782.88,30;0,11,2,2,1,1,3329.10,940.83,1;0,11,2,2,1,2,16088.51,4350.64,3;0,11,2,3,0,0,139450.21,42103.02,33;0,11,2,3,0,1,56677.51,13363.53,6;0,11,2,3,0,2,35905.36,6007.46,3;0,11,2,3,1,0,183569.36,43389.89,27;0,11,2,3,1,1,23600.43,6511.93,2;0,11,2,3,1,2,11004.00,2782.12,2;0,11,3,0,0,0,334772.55,81154.42,71;0,11,3,0,0,1,24899.53,7303.66,6;0,11,3,0,0,2,39128.58,8983.67,9;0,11,3,0,1,0,218707.19,59347.86,40;0,11,3,0,1,1,28943.22,9246.03,6;0,11,3,0,1,2,6738.77,2201.38,2;0,11,3,1,0,0,282344.95,74786.41,57;0,11,3,1,0,1,56922.77,14460.27,10;0,11,3,1,0,2,31037.58,5815.20,7;0,11,3,1,1,0,172709.71,46418.43,38;0,11,3,1,1,1,16995.29,3207.95,4;0,11,3,1,1,2,37560.96,8855.75,10;0,11,3,2,0,0,332264.29,80158.51,71;0,11,3,2,0,1,7294.74,1924.24,3;0,11,3,2,0,2,51008.24,14580.14,8;0,11,3,2,1,0,123447.97,26306.08,26;0,11,3,2,1,1,19548.45,4098.69,4;0,11,3,2,1,2,48320.31,11785.28,7;0,11,3,3,0,0,256625.02,69846.62,41;0,11,3,3,0,1,20205.88,4726.28,4;0,11,3,3,0,2,40998.36,10957.39,6;0,11,3,3,1,0,112824.83,27237.03,23;0,11,3,3,1,1,16741.82,4220.16,4;0,11,3,3,1,2,9582.22,1905.23,2;0,11,4,0,0,0,98945.93,24893.42,38;0,11,4,0,0,1,10331.44,2180.31,3;0,11,4,0,0,2,16319.81,3165.31,8;0,11,4,0,1,0,77332.09,19042.70,25;0,11,4,0,1,1,897.93,143.81,2;0,11,4,1,0,0,139940.92,34146.71,50;0,11,4,1,0,1,10185.69,3613.95,4;0,11,4,1,0,2,11791.97,3839.32,7;0,11,4,1,1,0,78747.91,17444.98,28;0,11,4,1,1,1,5968.87,1451.03,3;0,11,4,1,1,2,3992.11,724.61,2;0,11,4,2,0,0,122211.60,31542.65,39;0,11,4,2,0,2,22845.62,5214.30,7;0,11,4,2,1,0,82535.46,22656.76,20;0,11,4,2,1,2,13843.57,2740.27,4;0,11,4,3,0,0,140721.50,37289.04,44;0,11,4,3,0,1,15249.10,2459.67,5;0,11,4,3,0,2,2805.47,663.56,2;0,11,4,3,1,0,41987.26,12834.31,12;0,12,0,0,0,0,2150959.47,583491.44,90;0,12,0,0,0,1,178160.16,36814.75,7;0,12,0,0,0,2,235619.19,62439.95,10;0,12,0,0,1,0,1318750.70,326690.55,58;0,12,0,0,1,1,71504.71,19232.27,5;0,12,0,0,1,2,234471.53,52724.76,6;0,12,0,1,0,0,2269857.10,613164.61,98;0,12,0,1,0,1,221757.42,42935.86,8;0,12,0,1,0,2,140217.98,35275.71,13;0,12,0,1,1,0,899487.43,255626.69,41;0,12,0,1,1,1,194931.57,55149.55,4;0,12,0,1,1,2,281832.88,72914.31,6;0,12,0,2,0,0,1678867.68,422450.54,70;0,12,0,2,0,1,262685.34,71961.69,8;0,12,0,2,0,2,345204.79,128479.59,8;0,12,0,2,1,0,928488.88,262244.48,43;0,12,0,2,1,1,181934.34,46746.02,8;0,12,0,2,1,2,119848.17,26231.34,6;0,12,0,3,0,0,1094878.15,279758.10,58;0,12,0,3,0,1,387449.11,109181.59,9;0,12,0,3,0,2,124658.56,28832.31,11;0,12,0,3,1,0,645914.45,169816.04,36;0,12,0,3,1,1,83080.67,16138.20,2;0,12,0,3,1,2,53825.51,10399.67,3;0,12,1,0,0,0,1081776.22,257220.46,61;0,12,1,0,0,1,126425.15,21764.56,6;0,12,1,0,0,2,143119.77,32095.41,9;0,12,1,0,1,0,652208.92,199981.44,33;0,12,1,0,1,1,152206.47,50639.43,6;0,12,1,0,1,2,12400.91,2538.25,2;0,12,1,1,0,0,1105610.57,282962.32,62;0,12,1,1,0,1,48494.11,14231.97,5;0,12,1,1,0,2,32045.27,7855.35,2;0,12,1,1,1,0,512338.38,131884.28,32;0,12,1,1,1,1,31837.78,-1919.26,2;0,12,1,1,1,2,71818.46,16989.42,6;0,12,1,2,0,0,826762.76,207680.17,48;0,12,1,2,0,1,22781.23,4939.66,2;0,12,1,2,0,2,53235.95,11264.93,5;0,12,1,2,1,0,241897.23,56730.00,17;0,12,1,2,1,1,59242.86,11123.54,3;0,12,1,2,1,2,40069.13,7833.73,2;0,12,1,3,0,0,712791.44,220067.54,43;0,12,1,3,0,1,80270.87,15093.90,6;0,12,1,3,0,2,54178.96,17707.56,3;0,12,1,3,1,0,388226.55,87829.87,20;0,12,1,3,1,1,11515.21,2486.15,2;0,12,1,3,1,2,33722.22,10194.02,2;0,12,2,0,0,0,464230.25,116943.37,61;0,12,2,0,0,1,57201.31,18545.57,7;0,12,2,0,0,2,29408.24,5955.59,6;0,12,2,0,1,0,327745.22,73267.78,43;0,12,2,0,1,1,26596.80,8718.47,3;0,12,2,0,1,2,11225.13,2002.08,3;0,12,2,1,0,0,423434.64,114478.64,67;0,12,2,1,0,1,52564.75,14425.88,7;0,12,2,1,0,2,49219.79,15107.48,5;0,12,2,1,1,0,138961.56,38380.48,21;0,12,2,1,1,1,14606.82,3114.60,3;0,12,2,1,1,2,12081.37,4082.61,5;0,12,2,2,0,0,339395.09,90979.66,53;0,12,2,2,0,1,19717.41,5489.53,3;0,12,2,2,0,2,44157.11,10312.92,9;0,12,2,2,1,0,271687.79,57905.02,40;0,12,2,2,1,1,1171.54,267.97,1;0,12,2,2,1,2,29866.85,6990.68,6;0,12,2,3,0,0,337630.74,92953.89,43;0,12,2,3,0,1,23382.32,6417.71,5;0,12,2,3,0,2,13412.15,2828.87,3;0,12,2,3,1,0,184602.65,46708.80,31;0,12,2,3,1,1,15347.85,4115.00,2;0,12,2,3,1,2,23587.09,5322.60,3;0,12,3,0,0,0,265894.42,75651.55,68;0,12,3,0,0,1,23124.81,5514.50,8;0,12,3,0,0,2,39256.76,8603.11,6;0,12,3,0,1,0,243410.20,61635.53,44;0,12,3,0,1,2,49675.33,14862.50,7;0,12,3,1,0,0,263851.42,77204.64,59;0,12,3,1,0,1,9877.79,2180.42,2;0,12,3,1,0,2,58169.30,16156.72,12;0,12,3,1,1,0,184623.32,50676.25,42;0,12,3,1,1,1,18494.45,3622.01,7;0,12,3,1,1,2,13829.22,3506.16,5;0,12,3,2,0,0,247867.43,66111.67,58;0,12,3,2,0,1,43621.15,9190.45,6;0,12,3,2,0,2,20999.14,3889.85,6;0,12,3,2,1,0,124956.43,35287.77,24;0,12,3,2,1,1,17627.32,2285.95,3;0,12,3,2,1,2,5175.51,1411.95,2;0,12,3,3,0,0,152108.81,36276.97,40;0,12,3,3,0,1,19383.98,4264.42,5;0,12,3,3,0,2,22706.39,5253.30,5;0,12,3,3,1,0,128476.40,32751.26,23;0,12,3,3,1,1,15117.57,3965.23,3;0,12,3,3,1,2,18282.86,4622.83,4;0,12,4,0,0,0,104979.66,26174.17,35;0,12,4,0,0,1,3763.85,864.50,4;0,12,4,0,0,2,11676.28,1747.60,6;0,12,4,0,1,0,61459.58,16892.69,30;0,12,4,0,1,2,4464.10,1362.22,1;0,12,4,1,0,0,143010.31,37224.50,49;0,12,4,1,0,1,5152.24,1927.43,4;0,12,4,1,0,2,7017.63,1987.74,3;0,12,4,1,1,0,111081.64,32734.64,38;0,12,4,1,1,1,25148.85,7334.40,5;0,12,4,1,1,2,14346.02,3423.88,3;0,12,4,2,0,0,119715.90,31596.10,35;0,12,4,2,0,1,4988.91,934.13,2;0,12,4,2,0,2,12129.65,3265.84,5;0,12,4,2,1,0,94122.44,27570.76,30;0,12,4,2,1,1,1777.38,497.27,3;0,12,4,2,1,2,11884.34,3387.29,3;0,12,4,3,0,0,78797.78,17716.14,24;0,12,4,3,0,1,8320.98,2007.81,2;0,12,4,3,0,2,14563.02,3663.09,5;0,12,4,3,1,0,68766.18,21518.99,28;0,12,4,3,1,2,6534.44,1381.95,3;1,1,0,0,0,0,2350690.28,562698.81,106;1,1,0,0,0,1,226252.92,36321.55,11;1,1,0,0,0,2,141231.63,28079.83,7;1,1,0,0,1,0,782913.73,213754.09,32;1,1,0,0,1,1,159776.78,39783.68,11;1,1,0,0,1,2,81534.84,15233.80,5;1,1,0,1,0,0,1740731.97,437422.50,77;1,1,0,1,0,1,150225.55,47836.08,8;1,1,0,1,0,2,153884.20,45880.81,11;1,1,0,1,1,0,1020899.36,292396.79,52;1,1,0,1,1,1,223567.43,40921.23,8;1,1,0,1,1,2,192010.48,41464.49,4;1,1,0,2,0,0,2061625.92,536664.68,94;1,1,0,2,0,1,110163.84,27393.76,7;1,1,0,2,0,2,220638.37,54811.42,8;1,1,0,2,1,0,872666.99,216043.98,46;1,1,0,2,1,1,163069.74,38569.65,4;1,1,0,2,1,2,94178.70,19178.75,3;1,1,0,3,0,0,1431959.90,376944.74,60;1,1,0,3,0,1,61298.25,21216.04,4;1,1,0,3,0,2,175429.66,52487.19,7;1,1,0,3,1,0,535860.25,155016.76,26;1,1,0,3,1,1,36653.85,11822.20,3;1,1,0,3,1,2,99729.55,42175.44,2;1,1,1,0,0,0,780060.57,209745.15,50;1,1,1,0,0,1,82396.87,20926.91,5;1,1,1,0,0,2,121144.01,24076.50,5;1,1,1,0,1,0,622516.57,168143.95,31;1,1,1,0,1,1,78830.64,11365.07,4;1,1,1,0,1,2,85596.03,20296.41,6;1,1,1,1,0,0,880446.88,239788.97,59;1,1,1,1,0,1,87915.77,26727.89,7;1,1,1,1,0,2,147819.15,33644.21,11;1,1,1,1,1,0,371440.19,87980.21,31;1,1,1,1,1,1,31269.71,7741.48,2;1,1,1,1,1,2,10889.13,2426.02,1;1,1,1,2,0,0,736896.54,191595.25,43;1,1,1,2,0,1,40263.97,9133.54,3;1,1,1,2,0,2,66523.74,16687.77,4;1,1,1,2,1,0,652788.59,172818.58,31;1,1,1,2,1,1,23890.32,4631.23,3;1,1,1,2,1,2,42011.68,6878.64,1;1,1,1,3,0,0,446073.99,107596.95,31;1,1,1,3,0,1,107753.91,33302.12,5;1,1,1,3,0,2,99458.15,29352.38,6;1,1,1,3,1,0,337238.47,73896.28,21;1,1,1,3,1,1,54525.62,13337.86,2;1,1,2,0,0,0,336397.36,78632.54,61;1,1,2,0,0,1,29940.29,8117.87,5;1,1,2,0,0,2,37488.01,10029.37,8;1,1,2,0,1,0,254628.27,64303.77,40;1,1,2,0,1,1,23538.57,6825.35,4;1,1,2,0,1,2,27321.34,5499.05,4;1,1,2,1,0,0,312804.68,84581.32,46;1,1,2,1,0,1,35225.44,10483.40,5;1,1,2,1,0,2,56952.42,18522.15,5;1,1,2,1,1,0,298378.85,78423.74,40;1,1,2,1,1,1,15456.16,2769.42,4;1,1,2,1,1,2,23943.54,7567.86,4;1,1,2,2,0,0,415714.65,108545.47,59;1,1,2,2,0,1,38378.29,9598.57,5;1,1,2,2,0,2,61709.83,15099.61,9;1,1,2,2,1,0,210187.71,54454.31,28;1,1,2,2,1,1,18481.63,5351.15,6;1,1,2,2,1,2,2845.83,1000.61,2;1,1,2,3,0,0,283304.23,57936.91,38;1,1,2,3,0,1,45431.56,7507.85,5;1,1,2,3,0,2,50113.74,16316.52,6;1,1,2,3,1,0,95702.95,27544.96,21;1,1,2,3,1,1,17467.32,4482.76,4;1,1,2,3,1,2,42678.73,10206.86,6;1,1,3,0,0,0,394277.91,103103.36,82;1,1,3,0,0,1,53348.84,12567.95,14;1,1,3,0,0,2,4056.34,694.44,2;1,1,3,0,1,0,192921.41,49746.77,44;1,1,3,0,1,1,19084.04,2980.94,4;1,1,3,0,1,2,31200.39,7170.78,6;1,1,3,1,0,0,246549.99,65905.18,59;1,1,3,1,0,1,39327.52,8882.87,9;1,1,3,1,0,2,34762.48,7559.63,9;1,1,3,1,1,0,178404.18,44308.40,32;1,1,3,1,1,1,3041.27,1246.59,1;1,1,3,1,1,2,36485.22,8659.71,7;1,1,3,2,0,0,273847.10,71648.52,60;1,1,3,2,0,1,8988.93,2869.15,3;1,1,3,2,0,2,33478.92,3723.94,9;1,1,3,2,1,0,162821.20,42800.29,36;1,1,3,2,1,1,8399.91,1246.36,1;1,1,3,2,1,2,7663.83,2270.22,2;1,1,3,3,0,0,180050.90,48473.01,34;1,1,3,3,0,1,24702.26,6170.41,5;1,1,3,3,0,2,14031.54,2249.42,6;1,1,3,3,1,0,94133.71,21558.24,22;1,1,3,3,1,1,27467.99,8160.01,3;1,1,3,3,1,2,22121.43,5256.42,5;1,1,4,0,0,0,142293.24,36384.76,43;1,1,4,0,0,1,4170.15,1161.34,4;1,1,4,0,0,2,3909.92,918.51,3;1,1,4,0,1,0,66818.84,14330.14,29;1,1,4,0,1,1,6702.79,1168.67,3;1,1,4,0,1,2,9773.59,2837.15,4;1,1,4,1,0,0,146312.96,42247.52,46;1,1,4,1,0,1,35647.23,9781.70,8;1,1,4,1,0,2,19014.53,5267.66,5;1,1,4,1,1,0,79866.58,23261.27,24;1,1,4,1,1,1,12180.68,2927.05,4;1,1,4,1,1,2,15455.15,2773.77,6;1,1,4,2,0,0,140287.92,35047.91,45;1,1,4,2,0,1,14676.71,3312.88,4;1,1,4,2,0,2,9607.78,2886.78,4;1,1,4,2,1,0,79310.78,19522.45,25;1,1,4,2,1,1,587.78,156.51,1;1,1,4,2,1,2,2541.53,617.62,1;1,1,4,3,0,0,131881.45,30543.23,37;1,1,4,3,0,1,4135.00,718.88,3;1,1,4,3,0,2,12642.55,3945.60,3;1,1,4,3,1,0,59512.91,15140.54,22;1,1,4,3,1,1,7978.80,2634.25,2;1,1,4,3,1,2,5595.04,1468.03,2;1,2,0,0,0,0,1943032.84,475602.39,72;1,2,0,0,0,1,123879.19,20806.18,7;1,2,0,0,0,2,163658.41,24375.55,5;1,2,0,0,1,0,999053.35,294926.31,41;1,2,0,0,1,1,238141.73,58247.07,9;1,2,0,0,1,2,58984.39,14130.21,1;1,2,0,1,0,0,2184803.40,549896.96,83;1,2,0,1,0,1,190858.08,51754.66,7;1,2,0,1,0,2,63617.39,17303.22,5;1,2,0,1,1,0,1123732.23,286963.93,49;1,2,0,1,1,1,98791.68,20829.72,3;1,2,0,1,1,2,73502.91,17213.26,6;1,2,0,2,0,0,1275547.63,355355.84,60;1,2,0,2,0,1,122329.08,26345.96,3;1,2,0,2,0,2,268052.09,79444.71,13;1,2,0,2,1,0,768137.63,181001.31,35;1,2,0,2,1,1,147280.39,31056.34,4;1,2,0,2,1,2,163431.43,38745.59,6;1,2,0,3,0,0,1948715.30,503343.20,61;1,2,0,3,0,1,148103.62,42722.30,9;1,2,0,3,0,2,216852.15,56974.50,4;1,2,0,3,1,0,975989.45,236276.55,29;1,2,0,3,1,1,86541.78,14952.42,4;1,2,0,3,1,2,59085.58,13282.77,4;1,2,1,0,0,0,796040.11,173434.20,50;1,2,1,0,0,1,18830.62,3375.62,1;1,2,1,0,0,2,150327.22,44286.96,8;1,2,1,0,1,0,459896.95,123546.49,24;1,2,1,0,1,1,23720.95,5812.33,3;1,2,1,0,1,2,71502.17,13752.93,3;1,2,1,1,0,0,793003.04,236510.92,42;1,2,1,1,0,1,13357.95,3524.35,2;1,2,1,1,0,2,27679.12,7538.60,2;1,2,1,1,1,0,458019.67,99315.97,29;1,2,1,1,1,2,118244.40,22610.67,7;1,2,1,2,0,0,778531.36,192454.73,36;1,2,1,2,0,1,54374.95,15644.84,5;1,2,1,2,0,2,24677.62,7613.63,2;1,2,1,2,1,0,503991.86,138838.92,30;1,2,1,2,1,1,14140.03,2371.05,1;1,2,1,2,1,2,18598.60,7637.92,1;1,2,1,3,0,0,510079.42,135374.37,33;1,2,1,3,0,1,73624.66,24681.66,4;1,2,1,3,0,2,53108.67,16319.01,4;1,2,1,3,1,0,413818.50,119825.75,20;1,2,1,3,1,1,23566.75,6177.85,2;1,2,1,3,1,2,5870.79,673.26,1;1,2,2,0,0,0,470776.23,125118.43,69;1,2,2,0,0,1,40064.26,9596.09,8;1,2,2,0,0,2,61986.57,11643.37,7;1,2,2,0,1,0,187057.79,49209.59,24;1,2,2,0,1,1,20183.66,1568.40,5;1,2,2,0,1,2,30341.59,7057.08,4;1,2,2,1,0,0,335392.71,96194.79,47;1,2,2,1,0,1,53392.70,12967.12,8;1,2,2,1,0,2,30459.70,6192.92,4;1,2,2,1,1,0,255573.91,75362.77,36;1,2,2,1,1,1,17716.96,3616.29,3;1,2,2,1,1,2,15964.42,4000.66,4;1,2,2,2,0,0,260884.56,72849.77,37;1,2,2,2,0,1,38050.40,11620.38,5;1,2,2,2,0,2,66961.05,14408.82,9;1,2,2,2,1,0,195301.49,45004.32,31;1,2,2,2,1,1,8108.26,1465.83,3;1,2,2,2,1,2,7217.60,1716.33,2;1,2,2,3,0,0,181401.50,48741.96,32;1,2,2,3,0,1,36992.75,11850.15,6;1,2,2,3,0,2,21343.16,6077.86,4;1,2,2,3,1,0,150904.62,36286.60,23;1,2,2,3,1,1,30873.48,7338.00,1;1,2,2,3,1,2,45602.01,13475.36,5;1,2,3,0,0,0,271656.16,68233.15,61;1,2,3,0,0,1,51561.41,13126.76,10;1,2,3,0,0,2,39115.09,9073.05,8;1,2,3,0,1,0,203740.53,55294.73,47;1,2,3,0,1,1,35655.44,7699.47,6;1,2,3,0,1,2,7843.25,1401.45,2;1,2,3,1,0,0,296966.26,71630.97,65;1,2,3,1,0,1,11269.52,3358.35,3;1,2,3,1,0,2,40827.94,10633.67,10;1,2,3,1,1,0,111210.35,25411.45,26;1,2,3,1,1,1,25155.86,7315.93,6;1,2,3,1,1,2,11013.17,2835.47,2;1,2,3,2,0,0,320993.98,77743.15,60;1,2,3,2,0,1,17035.17,3204.34,3;1,2,3,2,0,2,30963.30,8287.83,6;1,2,3,2,1,0,171434.65,45261.62,36;1,2,3,2,1,1,4965.01,1472.43,2;1,2,3,2,1,2,26282.13,5709.68,5;1,2,3,3,0,0,207878.91,49515.97,42;1,2,3,3,0,1,17454.68,6008.87,5;1,2,3,3,0,2,35250.39,8247.99,7;1,2,3,3,1,0,94549.14,19669.18,31;1,2,3,3,1,1,10786.93,2122.49,4;1,2,3,3,1,2,29107.45,6009.37,4;1,2,4,0,0,0,139930.33,36373.19,42;1,2,4,0,0,1,6987.29,2405.38,3;1,2,4,0,0,2,23622.55,4516.49,6;1,2,4,0,1,0,55716.79,14288.98,16;1,2,4,0,1,1,4675.27,1658.99,2;1,2,4,0,1,2,1099.56,267.45,1;1,2,4,1,0,0,137981.85,35592.57,46;1,2,4,1,0,1,7740.29,2534.98,3;1,2,4,1,0,2,15492.41,5299.05,4;1,2,4,1,1,0,105277.04,24963.55,33;1,2,4,1,1,2,10128.23,3050.88,4;1,2,4,2,0,0,86191.28,23338.46,28;1,2,4,2,0,1,2370.28,367.88,2;1,2,4,2,0,2,14385.74,3913.72,8;1,2,4,2,1,0,73037.11,19460.82,25;1,2,4,2,1,1,11705.12,3661.94,3;1,2,4,2,1,2,5340.01,1709.81,3;1,2,4,3,0,0,67200.71,18295.57,27;1,2,4,3,0,1,18474.77,3991.68,4;1,2,4,3,0,2,13057.85,3571.60,3;1,2,4,3,1,0,57232.98,16134.08,15;1,2,4,3,1,2,11600.34,4647.51,2;1,3,0,0,0,0,1919067.09,413894.91,93;1,3,0,0,0,1,84321.56,11029.56,8;1,3,0,0,0,2,196230.68,54427.88,10;1,3,0,0,1,0,964010.98,271306.95,48;1,3,0,0,1,1,55667.37,11783.02,4;1,3,0,0,1,2,209616.03,52770.35,6;1,3,0,1,0,0,1500716.42,394432.33,67;1,3,0,1,0,1,163899.58,46685.77,10;1,3,0,1,0,2,543267.33,148983.03,15;1,3,0,1,1,0,1032468.34,283149.18,42;1,3,0,1,1,1,94051.70,16633.35,5;1,3,0,1,1,2,179521.43,51939.41,8;1,3,0,2,0,0,1649728.11,438761.70,84;1,3,0,2,0,1,328823.84,91394.63,10;1,3,0,2,0,2,240119.19,47771.88,8;1,3,0,2,1,0,661780.96,196150.40,33;1,3,0,2,1,1,28906.71,6985.87,2;1,3,0,2,1,2,86101.70,25602.33,7;1,3,0,3,0,0,1140486.09,266744.76,57;1,3,0,3,0,1,86196.31,18397.80,6;1,3,0,3,0,2,206371.17,58329.61,13;1,3,0,3,1,0,774005.24,172183.02,35;1,3,0,3,1,1,13161.84,4850.52,1;1,3,0,3,1,2,3407.31,526.80,1;1,3,1,0,0,0,989578.67,251572.37,58;1,3,1,0,0,1,35815.70,9048.04,3;1,3,1,0,0,2,166667.81,41996.69,9;1,3,1,0,1,0,460993.60,108195.39,34;1,3,1,0,1,1,58185.12,17564.97,3;1,3,1,1,0,0,618658.01,153791.22,45;1,3,1,1,0,1,21268.54,6396.79,2;1,3,1,1,0,2,115048.85,32060.86,5;1,3,1,1,1,0,574757.60,128707.71,39;1,3,1,1,1,1,39185.69,5962.67,2;1,3,1,1,1,2,56233.24,16082.02,5;1,3,1,2,0,0,777351.51,188197.28,49;1,3,1,2,0,1,15622.06,3146.95,1;1,3,1,2,0,2,112717.12,30421.90,4;1,3,1,2,1,0,444663.01,124745.80,28;1,3,1,2,1,1,63185.08,9730.32,3;1,3,1,2,1,2,63959.54,19507.24,3;1,3,1,3,0,0,777590.03,236600.64,39;1,3,1,3,0,1,10256.17,3237.14,1;1,3,1,3,0,2,55040.42,19072.28,4;1,3,1,3,1,0,339971.62,80668.97,20;1,3,1,3,1,1,55058.39,13261.21,3;1,3,1,3,1,2,37193.23,9454.83,3;1,3,2,0,0,0,398733.45,111198.73,58;1,3,2,0,0,1,23233.27,5157.74,2;1,3,2,0,0,2,71825.84,17232.39,10;1,3,2,0,1,0,237336.86,63658.75,31;1,3,2,0,1,1,28059.03,10255.88,3;1,3,2,0,1,2,19124.30,4251.18,5;1,3,2,1,0,0,431285.33,93975.87,58;1,3,2,1,0,1,57516.55,11916.70,6;1,3,2,1,0,2,48991.33,13375.30,11;1,3,2,1,1,0,299696.68,84520.68,36;1,3,2,1,1,1,44879.08,17028.20,2;1,3,2,1,1,2,30435.59,9579.85,5;1,3,2,2,0,0,277966.37,71747.60,39;1,3,2,2,0,1,18317.86,4712.92,6;1,3,2,2,0,2,37199.73,8568.38,7;1,3,2,2,1,0,190083.43,43854.07,31;1,3,2,2,1,1,26419.45,6200.16,5;1,3,2,2,1,2,23979.84,7202.74,5;1,3,2,3,0,0,324668.60,91760.64,49;1,3,2,3,0,1,13404.98,3175.24,4;1,3,2,3,0,2,77090.21,24089.76,8;1,3,2,3,1,0,164401.28,42667.24,24;1,3,2,3,1,1,30160.02,10043.88,3;1,3,2,3,1,2,63393.67,17944.16,7;1,3,3,0,0,0,262121.48,67847.25,51;1,3,3,0,0,1,37018.43,12649.08,8;1,3,3,0,0,2,64095.28,16616.22,9;1,3,3,0,1,0,223002.55,60301.64,45;1,3,3,0,1,1,13768.63,3908.31,3;1,3,3,0,1,2,33763.54,6565.50,4;1,3,3,1,0,0,309155.69,80978.68,66;1,3,3,1,0,1,17320.18,4084.72,3;1,3,3,1,0,2,8691.26,2385.74,4;1,3,3,1,1,0,165995.18,40529.43,33;1,3,3,1,1,1,33822.88,10659.08,6;1,3,3,1,1,2,34411.66,11631.53,5;1,3,3,2,0,0,236369.98,62624.90,51;1,3,3,2,0,1,14376.63,3896.37,5;1,3,3,2,0,2,31790.14,9923.50,7;1,3,3,2,1,0,122934.94,33670.31,26;1,3,3,2,1,1,17843.44,3499.38,5;1,3,3,2,1,2,42802.00,13049.18,6;1,3,3,3,0,0,175465.64,53837.78,40;1,3,3,3,0,1,14622.15,3289.98,2;1,3,3,3,0,2,8244.69,1643.78,3;1,3,3,3,1,0,137275.37,35900.62,30;1,3,3,3,1,1,12480.17,2320.34,5;1,3,3,3,1,2,13284.85,4348.61,3;1,3,4,0,0,0,106325.74,25675.44,41;1,3,4,0,0,2,5441.04,1180.56,4;1,3,4,0,1,0,62147.17,14202.12,25;1,3,4,0,1,1,7348.45,2926.58,1;1,3,4,0,1,2,5741.39,1262.64,5;1,3,4,1,0,0,165752.11,43165.37,48;1,3,4,1,0,1,13642.38,3168.57,6;1,3,4,1,0,2,21091.29,4781.67,5;1,3,4,1,1,0,102966.03,25402.99,29;1,3,4,1,1,1,2964.02,954.68,2;1,3,4,1,1,2,2341.97,481.42,2;1,3,4,2,0,0,85830.67,19948.81,36;1,3,4,2,0,1,12311.79,2805.06,4;1,3,4,2,0,2,6701.33,1296.89,5;1,3,4,2,1,0,80100.58,23556.47,27;1,3,4,2,1,1,14589.67,1948.92,3;1,3,4,2,1,2,10475.39,2863.32,3;1,3,4,3,0,0,72225.76,17101.95,23;1,3,4,3,0,1,3923.53,939.94,1;1,3,4,3,0,2,3608.55,1108.06,2;1,3,4,3,1,0,65544.37,16447.99,18;1,3,4,3,1,1,10828.55,3952.08,1;1,3,4,3,1,2,1160.11,362.95,2;1,4,0,0,0,0,1872398.06,524403.20,87;1,4,0,0,0,1,169267.95,34115.58,8;1,4,0,0,0,2,157329.29,45984.48,9;1,4,0,0,1,0,1092502.04,304833.20,46;1,4,0,0,1,1,111894.60,21544.28,6;1,4,0,0,1,2,236077.25,51986.98,6;1,4,0,1,0,0,1512074.95,393418.19,77;1,4,0,1,0,1,210986.51,61133.33,10;1,4,0,1,0,2,109321.38,18092.97,6;1,4,0,1,1,0,926941.26,212289.98,42;1,4,0,1,1,1,206091.51,47344.49,6;1,4,0,1,1,2,274643.90,74149.69,6;1,4,0,2,0,0,1628316.83,442861.25,67;1,4,0,2,0,1,222926.12,72250.31,6;1,4,0,2,0,2,161522.18,49522.93,9;1,4,0,2,1,0,1010007.03,305813.67,38;1,4,0,2,1,1,198521.57,45694.13,6;1,4,0,2,1,2,140270.57,29523.61,5;1,4,0,3,0,0,1020027.24,263605.74,43;1,4,0,3,0,1,22484.63,7354.31,3;1,4,0,3,0,2,27233.17,4067.18,4;1,4,0,3,1,0,434651.49,124884.38,26;1,4,0,3,1,1,45547.71,9584.47,5;1,4,0,3,1,2,76622.28,26283.13,7;1,4,1,0,0,0,703837.06,186263.28,42;1,4,1,0,0,1,43694.29,14176.38,5;1,4,1,0,0,2,44394.50,6986.27,4;1,4,1,0,1,0,625778.06,152664.99,39;1,4,1,0,1,1,83737.35,28063.41,5;1,4,1,0,1,2,99361.00,24193.15,5;1,4,1,1,0,0,747569.28,175950.65,53;1,4,1,1,0,1,131589.21,32709.01,8;1,4,1,1,0,2,195645.51,61736.89,7;1,4,1,1,1,0,642431.56,172219.33,37;1,4,1,1,1,1,86000.56,28162.56,6;1,4,1,1,1,2,48477.60,16265.80,2;1,4,1,2,0,0,819842.80,215369.61,42;1,4,1,2,0,1,106034.14,23444.73,6;1,4,1,2,0,2,96944.99,28690.20,6;1,4,1,2,1,0,561199.16,144562.29,29;1,4,1,2,1,1,68659.21,22274.39,3;1,4,1,2,1,2,10287.22,1812.69,1;1,4,1,3,0,0,487732.10,133260.70,37;1,4,1,3,0,1,26909.39,4985.01,2;1,4,1,3,0,2,72349.31,13880.86,5;1,4,1,3,1,0,289334.87,82879.54,17;1,4,1,3,1,1,33327.19,9379.06,2;1,4,1,3,1,2,51584.05,5743.61,2;1,4,2,0,0,0,368694.04,91081.64,60;1,4,2,0,0,1,10813.79,2690.10,3;1,4,2,0,0,2,26692.80,6986.01,7;1,4,2,0,1,0,265135.67,68183.35,44;1,4,2,0,1,1,21078.67,4999.01,6;1,4,2,0,1,2,18742.35,4997.23,4;1,4,2,1,0,0,503417.49,131255.31,71;1,4,2,1,0,1,28358.41,4773.51,4;1,4,2,1,0,2,47805.76,10449.96,9;1,4,2,1,1,0,229155.91,65807.42,33;1,4,2,1,1,1,16628.65,3731.14,3;1,4,2,1,1,2,22102.68,6207.09,5;1,4,2,2,0,0,418225.66,109700.49,63;1,4,2,2,0,1,14340.51,4758.89,2;1,4,2,2,0,2,23709.48,3775.28,4;1,4,2,2,1,0,162206.31,44401.43,26;1,4,2,2,1,1,12879.32,3058.52,3;1,4,2,2,1,2,47504.48,16065.29,4;1,4,2,3,0,0,303924.82,86902.06,42;1,4,2,3,0,1,24215.65,7825.26,5;1,4,2,3,0,2,50818.80,11127.79,7;1,4,2,3,1,0,179442.25,47152.74,22;1,4,2,3,1,1,9990.40,2841.54,2;1,4,2,3,1,2,6957.05,2298.48,1;1,4,3,0,0,0,346425.33,88647.69,70;1,4,3,0,0,1,46397.45,11244.28,10;1,4,3,0,0,2,25395.55,6085.41,6;1,4,3,0,1,0,192068.90,42874.68,42;1,4,3,0,1,1,4361.97,1574.77,1;1,4,3,0,1,2,5592.31,1668.19,4;1,4,3,1,0,0,350188.01,96804.07,70;1,4,3,1,0,1,26155.85,8516.78,4;1,4,3,1,0,2,39724.97,7480.64,8;1,4,3,1,1,0,157247.53,38695.86,33;1,4,3,1,1,1,12022.68,1905.58,3;1,4,3,1,1,2,12963.86,3217.22,3;1,4,3,2,0,0,294895.78,68665.05,61;1,4,3,2,0,1,21235.70,4627.32,5;1,4,3,2,0,2,23822.09,7678.81,5;1,4,3,2,1,0,177362.59,40282.93,35;1,4,3,2,1,1,21800.14,8015.65,4;1,4,3,2,1,2,9315.89,1917.77,4;1,4,3,3,0,0,224725.34,58629.37,48;1,4,3,3,0,1,22261.89,6336.56,6;1,4,3,3,0,2,27115.12,8485.29,5;1,4,3,3,1,0,135019.85,35542.28,27;1,4,3,3,1,1,30362.84,7669.98,8;1,4,3,3,1,2,10348.10,2330.54,3;1,4,4,0,0,0,180513.44,53452.69,49;1,4,4,0,0,1,18360.61,5667.81,6;1,4,4,0,0,2,14455.32,4096.70,5;1,4,4,0,1,0,66764.41,15690.47,26;1,4,4,0,1,1,6978.96,2427.19,3;1,4,4,0,1,2,7634.63,1461.67,4;1,4,4,1,0,0,147731.07,43650.67,36;1,4,4,1,0,1,23508.90,6817.00,8;1,4,4,1,0,2,20914.14,7986.29,4;1,4,4,1,1,0,71736.19,19835.71,21;1,4,4,1,1,1,5337.90,690.04,2;1,4,4,1,1,2,4716.31,352.36,2;1,4,4,2,0,0,68654.27,16992.07,25;1,4,4,2,0,1,12291.49,3362.25,3;1,4,4,2,0,2,8344.08,2190.49,3;1,4,4,2,1,0,35087.12,9840.44,20;1,4,4,2,1,2,1849.30,446.99,1;1,4,4,3,0,0,77265.85,23025.46,17;1,4,4,3,0,1,7397.32,1879.93,3;1,4,4,3,0,2,2452.54,524.99,2;1,4,4,3,1,0,29955.11,9151.04,10;1,4,4,3,1,1,14420.25,4228.43,4;1,4,4,3,1,2,15386.68,4466.08,6;1,5,0,0,0,0,2456311.67,651129.88,98;1,5,0,0,0,1,77274.34,25749.65,6;1,5,0,0,0,2,271408.24,66204.97,10;1,5,0,0,1,0,1050482.91,290912.68,52;1,5,0,0,1,1,92857.52,22995.80,5;1,5,0,0,1,2,137978.76,41065.54,7;1,5,0,1,0,0,1950834.72,524780.79,87;1,5,0,1,0,1,60215.32,16878.64,8;1,5,0,1,0,2,119370.80,38429.81,9;1,5,0,1,1,0,786568.42,203183.97,45;1,5,0,1,1,1,148506.12,38706.69,4;1,5,0,1,1,2,229534.12,50461.30,7;1,5,0,2,0,0,1218963.13,368650.06,72;1,5,0,2,0,1,186039.34,52072.34,9;1,5,0,2,0,2,87532.57,25139.26,7;1,5,0,2,1,0,961410.83,256576.59,45;1,5,0,2,1,1,71530.86,9091.41,3;1,5,0,2,1,2,131611.96,23268.99,4;1,5,0,3,0,0,1494232.04,374799.73,66;1,5,0,3,0,1,35550.27,9743.14,8;1,5,0,3,0,2,341761.52,99269.23,11;1,5,0,3,1,0,447077.70,115922.19,31;1,5,0,3,1,1,89860.23,19466.70,2;1,5,0,3,1,2,24219.33,6696.93,6;1,5,1,0,0,0,999847.88,246727.38,58;1,5,1,0,0,1,63462.57,16707.07,2;1,5,1,0,0,2,203035.05,65031.97,9;1,5,1,0,1,0,449675.24,116051.17,30;1,5,1,0,1,1,54928.10,19061.93,3;1,5,1,0,1,2,80640.46,17733.72,8;1,5,1,1,0,0,720346.55,174347.27,50;1,5,1,1,0,1,126553.73,46511.47,7;1,5,1,1,0,2,86385.48,28287.43,6;1,5,1,1,1,0,458019.49,117347.56,27;1,5,1,1,1,1,36618.17,11240.72,2;1,5,1,1,1,2,81728.98,23449.78,5;1,5,1,2,0,0,708318.90,170498.27,43;1,5,1,2,0,1,9028.56,3013.92,1;1,5,1,2,0,2,166858.99,51589.83,8;1,5,1,2,1,0,504098.85,138426.25,30;1,5,1,2,1,1,51792.11,10161.11,4;1,5,1,2,1,2,15867.65,4887.49,2;1,5,1,3,0,0,778763.14,181280.60,39;1,5,1,3,0,1,95709.27,27234.12,7;1,5,1,3,0,2,132274.49,40153.49,5;1,5,1,3,1,0,260037.00,55500.31,16;1,5,1,3,1,1,22015.01,4434.74,1;1,5,1,3,1,2,35672.65,8815.80,4;1,5,2,0,0,0,413119.97,108860.90,56;1,5,2,0,0,1,14614.20,3497.93,3;1,5,2,0,0,2,35919.98,9279.59,7;1,5,2,0,1,0,287382.50,76710.01,42;1,5,2,0,1,1,16843.31,4970.65,1;1,5,2,0,1,2,28724.24,8359.89,6;1,5,2,1,0,0,346503.56,86385.25,47;1,5,2,1,0,1,36657.79,10425.97,7;1,5,2,1,0,2,53185.70,13266.31,7;1,5,2,1,1,0,205177.26,57209.51,37;1,5,2,1,1,1,24451.53,4990.12,5;1,5,2,1,1,2,45738.29,9028.86,5;1,5,2,2,0,0,440398.93,112888.82,55;1,5,2,2,0,1,11943.58,2480.63,2;1,5,2,2,0,2,33523.33,9088.61,5;1,5,2,2,1,0,193578.14,46812.49,34;1,5,2,2,1,1,31012.27,5925.63,4;1,5,2,2,1,2,52133.88,11217.25,6;1,5,2,3,0,0,168697.65,48165.57,31;1,5,2,3,0,1,52616.45,18518.26,5;1,5,2,3,0,2,38483.72,11425.34,7;1,5,2,3,1,0,173194.77,46889.42,23;1,5,2,3,1,1,23065.40,2676.52,3;1,5,2,3,1,2,21420.35,3053.20,2;1,5,3,0,0,0,305496.72,70805.19,65;1,5,3,0,0,1,32074.34,8572.02,7;1,5,3,0,0,2,27913.16,7123.91,5;1,5,3,0,1,0,181120.59,45447.73,42;1,5,3,0,1,1,9106.30,2369.70,5;1,5,3,0,1,2,33635.01,6526.89,5;1,5,3,1,0,0,343033.74,90206.61,73;1,5,3,1,0,1,46723.90,10366.97,9;1,5,3,1,0,2,30958.07,8380.87,8;1,5,3,1,1,0,169597.44,41497.72,37;1,5,3,1,1,1,2225.13,63.99,1;1,5,3,1,1,2,21984.84,6559.67,5;1,5,3,2,0,0,256441.49,67611.31,59;1,5,3,2,0,1,41814.62,13185.39,8;1,5,3,2,0,2,31873.95,9565.05,6;1,5,3,2,1,0,148729.79,42069.31,30;1,5,3,2,1,1,7818.16,2354.05,2;1,5,3,2,1,2,35096.90,7371.60,8;1,5,3,3,0,0,236699.48,65487.33,48;1,5,3,3,0,1,31585.45,7982.38,7;1,5,3,3,0,2,9333.19,2900.74,1;1,5,3,3,1,0,119922.84,32392.36,26;1,5,3,3,1,1,8617.51,1929.59,2;1,5,3,3,1,2,7078.95,998.60,3;1,5,4,0,0,0,119110.82,30807.30,40;1,5,4,0,0,1,18042.03,4315.45,5;1,5,4,0,0,2,9323.55,3729.70,4;1,5,4,0,1,0,68088.61,17411.75,24;1,5,4,0,1,1,7315.26,1993.95,2;1,5,4,0,1,2,1792.66,262.61,2;1,5,4,1,0,0,107565.24,25583.46,34;1,5,4,1,0,1,3678.15,1134.76,2;1,5,4,1,0,2,14347.73,3589.36,8;1,5,4,1,1,0,105326.57,29109.89,32;1,5,4,1,1,1,7014.24,2785.27,3;1,5,4,1,1,2,8076.87,3012.54,1;1,5,4,2,0,0,123685.69,32443.51,47;1,5,4,2,0,1,9313.10,1885.60,5;1,5,4,2,0,2,19176.19,5747.68,5;1,5,4,2,1,0,67405.64,17093.58,19;1,5,4,2,1,1,11750.35,4027.29,2;1,5,4,2,1,2,5601.37,852.83,4;1,5,4,3,0,0,135996.31,39183.16,34;1,5,4,3,0,1,14895.17,3567.44,4;1,5,4,3,0,2,24052.93,6210.28,4;1,5,4,3,1,0,60281.84,14409.64,21;1,5,4,3,1,1,3070.23,768.14,2;1,5,4,3,1,2,6490.57,1154.17,3;1,6,0,0,0,0,1683559.92,385164.93,94;1,6,0,0,0,1,199656.64,45968.34,10;1,6,0,0,0,2,90768.03,25547.33,8;1,6,0,0,1,0,1240727.80,296417.23,51;1,6,0,0,1,1,132693.75,47530.27,3;1,6,0,0,1,2,5711.49,1279.43,3;1,6,0,1,0,0,1642359.25,395402.62,77;1,6,0,1,0,1,224423.82,73990.98,10;1,6,0,1,0,2,102122.87,38955.74,4;1,6,0,1,1,0,816256.55,213906.89,47;1,6,0,1,1,1,54561.28,11638.51,5;1,6,0,1,1,2,192062.15,50643.22,6;1,6,0,2,0,0,1569150.64,441463.79,64;1,6,0,2,0,1,112446.97,26955.39,11;1,6,0,2,0,2,259298.87,84433.18,12;1,6,0,2,1,0,954503.52,249844.25,47;1,6,0,2,1,1,195105.91,39163.29,6;1,6,0,2,1,2,188075.00,60066.29,4;1,6,0,3,0,0,1374138.20,352672.58,61;1,6,0,3,0,1,365899.24,113434.49,9;1,6,0,3,0,2,127027.77,41993.95,8;1,6,0,3,1,0,536976.77,144585.83,33;1,6,0,3,1,1,11461.96,3658.50,2;1,6,0,3,1,2,127998.99,19476.67,4;1,6,1,0,0,0,1007002.66,289377.19,56;1,6,1,0,0,1,122416.82,28555.17,5;1,6,1,0,0,2,93843.84,26394.29,8;1,6,1,0,1,0,752367.85,197602.19,39;1,6,1,0,1,1,20089.79,4932.50,3;1,6,1,0,1,2,30736.91,9853.45,3;1,6,1,1,0,0,715628.48,183078.33,46;1,6,1,1,0,1,85466.62,19227.75,4;1,6,1,1,0,2,82881.26,23195.65,7;1,6,1,1,1,0,563382.89,170342.31,35;1,6,1,1,1,1,101366.23,30090.14,6;1,6,1,1,1,2,77823.22,21624.01,5;1,6,1,2,0,0,868993.65,215914.84,38;1,6,1,2,0,1,80926.13,28794.67,3;1,6,1,2,0,2,106841.89,33138.94,6;1,6,1,2,1,0,433957.40,103616.74,22;1,6,1,2,1,1,36199.40,5036.33,2;1,6,1,2,1,2,15472.42,6364.28,1;1,6,1,3,0,0,476346.99,117615.32,34;1,6,1,3,0,1,65443.69,15324.95,3;1,6,1,3,0,2,10780.81,3939.56,1;1,6,1,3,1,0,379327.07,79798.53,26;1,6,1,3,1,1,43213.26,11486.49,3;1,6,1,3,1,2,42817.86,9013.51,1;1,6,2,0,0,0,347099.28,99312.93,49;1,6,2,0,0,1,22301.53,6537.43,5;1,6,2,0,0,2,27982.37,8378.03,6;1,6,2,0,1,0,205271.87,55831.10,29;1,6,2,0,1,1,14768.48,1744.40,3;1,6,2,0,1,2,32604.17,12054.73,3;1,6,2,1,0,0,312816.86,69497.99,55;1,6,2,1,0,1,24246.31,4878.99,5;1,6,2,1,0,2,38350.09,8542.66,8;1,6,2,1,1,0,206238.93,54347.81,33;1,6,2,1,1,1,22244.74,6506.51,3;1,6,2,1,1,2,29048.12,7309.07,7;1,6,2,2,0,0,412004.33,100850.96,58;1,6,2,2,0,1,42213.43,9837.96,10;1,6,2,2,0,2,10269.64,2788.65,1;1,6,2,2,1,0,147347.42,47602.10,19;1,6,2,2,1,1,17996.81,5504.40,3;1,6,2,2,1,2,21846.45,4459.45,3;1,6,2,3,0,0,311073.04,81052.30,42;1,6,2,3,0,1,41050.96,10263.66,4;1,6,2,3,0,2,36947.49,6967.28,4;1,6,2,3,1,0,168781.57,44117.71,21;1,6,2,3,1,1,14922.22,4716.19,2;1,6,2,3,1,2,24814.54,3686.55,4;1,6,3,0,0,0,230485.34,47806.32,59;1,6,3,0,0,1,25347.94,7170.23,5;1,6,3,0,0,2,44010.27,11246.03,10;1,6,3,0,1,0,149611.39,36169.34,35;1,6,3,0,1,1,3826.17,1216.63,1;1,6,3,0,1,2,14924.60,4276.03,3;1,6,3,1,0,0,268524.35,70671.12,64;1,6,3,1,0,1,33671.12,8645.07,8;1,6,3,1,0,2,70573.49,19370.64,18;1,6,3,1,1,0,196377.22,49378.11,44;1,6,3,1,1,1,30127.28,8027.13,6;1,6,3,1,1,2,22639.88,5351.86,6;1,6,3,2,0,0,247638.81,70791.69,49;1,6,3,2,0,1,36857.15,12000.36,7;1,6,3,2,0,2,54616.00,14620.29,10;1,6,3,2,1,0,150989.49,38841.09,27;1,6,3,2,1,1,15298.92,3869.79,4;1,6,3,2,1,2,1168.45,375.35,1;1,6,3,3,0,0,205912.60,52840.83,50;1,6,3,3,0,1,4631.55,645.85,2;1,6,3,3,0,2,15110.52,5018.85,3;1,6,3,3,1,0,72916.72,19331.62,17;1,6,3,3,1,1,17667.78,4274.26,2;1,6,3,3,1,2,8816.05,2284.25,2;1,6,4,0,0,0,159681.22,37030.97,44;1,6,4,0,0,1,5458.80,1222.75,2;1,6,4,0,0,2,919.89,83.98,2;1,6,4,0,1,0,96954.99,26247.21,31;1,6,4,0,1,1,4265.32,1073.03,3;1,6,4,0,1,2,805.82,157.01,2;1,6,4,1,0,0,220477.91,63802.04,53;1,6,4,1,0,1,24244.74,6634.77,6;1,6,4,1,0,2,22756.80,5488.84,6;1,6,4,1,1,0,61951.02,15657.90,27;1,6,4,1,1,1,9083.81,2025.55,3;1,6,4,1,1,2,22796.65,6407.13,7;1,6,4,2,0,0,86159.34,20869.39,34;1,6,4,2,0,1,14609.19,4524.44,3;1,6,4,2,0,2,2144.40,441.16,2;1,6,4,2,1,0,57228.48,15707.88,16;1,6,4,2,1,1,9243.12,2261.87,7;1,6,4,2,1,2,15127.34,5303.43,3;1,6,4,3,0,0,127472.95,33722.82,33;1,6,4,3,0,1,8179.82,2188.62,3;1,6,4,3,0,2,11317.26,3924.27,5;1,6,4,3,1,0,52686.91,15240.96,16;1,6,4,3,1,2,18920.15,4108.19,5;1,7,0,0,0,0,2021244.28,530854.09,91;1,7,0,0,0,1,108558.43,26328.22,6;1,7,0,0,0,2,311595.05,82203.39,12;1,7,0,0,1,0,1153159.84,339584.32,50;1,7,0,0,1,1,69160.65,15617.17,6;1,7,0,0,1,2,166991.29,47498.93,6;1,7,0,1,0,0,1392326.93,334513.58,72;1,7,0,1,0,1,203935.41,45277.15,9;1,7,0,1,0,2,239913.50,71001.48,9;1,7,0,1,1,0,849341.24,221690.49,43;1,7,0,1,1,1,133925.73,24156.32,6;1,7,0,1,1,2,150190.27,43032.48,5;1,7,0,2,0,0,1427214.39,344172.57,65;1,7,0,2,0,1,113498.67,22447.60,5;1,7,0,2,0,2,253707.62,90875.74,10;1,7,0,2,1,0,983191.88,282287.00,45;1,7,0,2,1,1,47120.84,8320.02,3;1,7,0,2,1,2,55205.31,16376.70,5;1,7,0,3,0,0,839305.86,210822.23,49;1,7,0,3,0,1,194651.75,36002.05,6;1,7,0,3,0,2,174375.63,45365.53,9;1,7,0,3,1,0,695777.23,203323.48,33;1,7,0,3,1,1,4837.94,1587.15,2;1,7,0,3,1,2,156596.03,47792.51,3;1,7,1,0,0,0,915442.77,204479.33,53;1,7,1,0,0,1,41862.77,14410.88,3;1,7,1,0,0,2,286553.01,63870.53,9;1,7,1,0,1,0,443142.09,113792.10,35;1,7,1,0,1,1,62860.74,16334.75,4;1,7,1,0,1,2,43343.07,12227.94,5;1,7,1,1,0,0,926365.80,235505.52,46;1,7,1,1,0,1,58911.19,17592.21,3;1,7,1,1,0,2,68433.77,20571.78,5;1,7,1,1,1,0,350691.91,92154.90,23;1,7,1,1,1,1,33207.65,5355.03,2;1,7,1,1,1,2,157529.77,45882.18,6;1,7,1,2,0,0,643963.00,156839.23,43;1,7,1,2,0,1,38262.17,9727.69,2;1,7,1,2,0,2,138113.35,36006.64,8;1,7,1,2,1,0,581304.84,140798.32,29;1,7,1,2,1,1,45187.72,11808.70,2;1,7,1,3,0,0,560202.64,153317.54,32;1,7,1,3,0,1,179205.15,51484.31,8;1,7,1,3,0,2,100589.17,24818.80,4;1,7,1,3,1,0,295617.89,81810.53,18;1,7,1,3,1,1,21062.81,5859.76,4;1,7,1,3,1,2,37610.28,6597.07,3;1,7,2,0,0,0,382155.25,84706.26,70;1,7,2,0,0,1,55034.34,12844.23,9;1,7,2,0,0,2,17554.05,3421.47,6;1,7,2,0,1,0,250580.00,67584.88,38;1,7,2,0,1,1,12415.70,2029.31,4;1,7,2,0,1,2,28595.84,8061.56,5;1,7,2,1,0,0,313138.95,87109.68,50;1,7,2,1,0,1,42416.66,10733.33,3;1,7,2,1,0,2,67139.07,15693.50,12;1,7,2,1,1,0,220031.15,63917.28,37;1,7,2,1,1,1,37233.84,8354.39,5;1,7,2,1,1,2,40285.73,10369.14,5;1,7,2,2,0,0,456966.98,126777.08,50;1,7,2,2,0,1,30018.92,7446.05,6;1,7,2,2,0,2,15048.79,4361.04,3;1,7,2,2,1,0,194371.68,49887.36,27;1,7,2,2,1,1,7388.44,2067.42,2;1,7,2,2,1,2,19953.18,5253.14,3;1,7,2,3,0,0,269082.60,81284.26,37;1,7,2,3,0,1,41889.41,10168.77,5;1,7,2,3,0,2,20012.88,5711.06,4;1,7,2,3,1,0,180130.48,44388.25,25;1,7,2,3,1,1,5861.70,1192.03,1;1,7,2,3,1,2,16756.72,3904.72,4;1,7,3,0,0,0,303648.13,71784.02,68;1,7,3,0,0,1,17935.39,5092.33,3;1,7,3,0,0,2,38501.39,11396.02,9;1,7,3,0,1,0,148825.59,33400.36,33;1,7,3,0,1,1,15426.76,2768.39,3;1,7,3,0,1,2,27970.28,6824.33,8;1,7,3,1,0,0,276416.05,72064.09,66;1,7,3,1,0,1,29987.57,9663.93,8;1,7,3,1,0,2,32628.09,11608.74,7;1,7,3,1,1,0,248804.77,62832.88,51;1,7,3,1,1,1,18314.80,5814.84,5;1,7,3,1,1,2,43842.41,13871.58,6;1,7,3,2,0,0,289262.03,77738.54,63;1,7,3,2,0,1,61667.12,15047.53,9;1,7,3,2,0,2,48012.05,11286.20,8;1,7,3,2,1,0,113447.39,25104.78,26;1,7,3,2,1,1,11126.83,3817.73,3;1,7,3,2,1,2,65075.87,16371.66,8;1,7,3,3,0,0,232626.12,57732.96,51;1,7,3,3,0,1,35797.33,9865.90,9;1,7,3,3,0,2,13355.54,2488.15,5;1,7,3,3,1,0,123058.08,32473.81,27;1,7,3,3,1,1,8984.37,2828.20,2;1,7,3,3,1,2,22123.54,4259.26,4;1,7,4,0,0,0,110490.85,33092.08,38;1,7,4,0,0,1,11994.16,3900.94,3;1,7,4,0,0,2,14795.61,2692.29,6;1,7,4,0,1,0,81473.84,19089.62,21;1,7,4,0,1,1,18262.21,5486.23,5;1,7,4,0,1,2,14175.60,4559.36,2;1,7,4,1,0,0,133375.81,32311.73,46;1,7,4,1,0,1,7045.86,2218.92,3;1,7,4,1,0,2,16570.61,5033.06,9;1,7,4,1,1,0,71794.02,18315.66,27;1,7,4,1,1,1,12071.07,2521.10,1;1,7,4,1,1,2,13564.55,4117.92,5;1,7,4,2,0,0,120697.81,33797.70,45;1,7,4,2,0,1,15565.06,4366.92,6;1,7,4,2,0,2,19269.83,3815.83,6;1,7,4,2,1,0,46249.75,11521.65,17;1,7,4,2,1,2,9172.09,2950.81,3;1,7,4,3,0,0,85186.90,23689.64,27;1,7,4,3,0,1,15675.69,4917.41,4;1,7,4,3,0,2,7917.38,2090.34,5;1,7,4,3,1,0,41140.34,9256.82,15;1,7,4,3,1,1,6514.74,2133.54,3;1,7,4,3,1,2,16085.71,3458.00,2;1,8,0,0,0,0,2064360.62,483867.94,98;1,8,0,0,0,1,113810.53,35947.58,4;1,8,0,0,0,2,411844.94,115703.94,16;1,8,0,0,1,0,1582424.92,423460.90,69;1,8,0,0,1,1,65294.15,24573.85,4;1,8,0,0,1,2,127321.05,38520.62,6;1,8,0,1,0,0,1835081.25,494857.29,79;1,8,0,1,0,1,75954.18,23738.83,6;1,8,0,1,0,2,324275.03,56600.11,11;1,8,0,1,1,0,1239863.18,302163.60,56;1,8,0,1,1,1,5493.17,1159.04,1;1,8,0,1,1,2,40626.93,8046.94,8;1,8,0,2,0,0,1196849.15,283760.07,68;1,8,0,2,0,1,113607.59,26847.74,8;1,8,0,2,0,2,205457.12,56468.74,10;1,8,0,2,1,0,927495.46,226212.18,42;1,8,0,2,1,1,62605.77,14070.36,6;1,8,0,2,1,2,12733.01,2122.91,3;1,8,0,3,0,0,1356132.74,342523.35,54;1,8,0,3,0,1,110723.18,24097.69,8;1,8,0,3,0,2,212082.44,76354.56,8;1,8,0,3,1,0,1019081.00,268219.01,37;1,8,0,3,1,1,29014.69,5869.25,3;1,8,0,3,1,2,24438.98,8123.11,2;1,8,1,0,0,0,723176.11,178045.42,54;1,8,1,0,0,1,76884.00,16689.93,6;1,8,1,0,0,2,69234.44,19587.34,6;1,8,1,0,1,0,607935.76,152774.75,42;1,8,1,0,1,1,25695.32,7832.52,2;1,8,1,0,1,2,52131.09,17177.46,5;1,8,1,1,0,0,899441.30,254896.61,51;1,8,1,1,0,1,52198.18,14323.21,3;1,8,1,1,0,2,27275.15,5605.86,2;1,8,1,1,1,0,405548.48,101960.82,24;1,8,1,1,1,1,79419.07,16960.54,4;1,8,1,1,1,2,91621.82,14614.09,3;1,8,1,2,0,0,841826.54,203179.78,52;1,8,1,2,0,1,15554.53,2373.29,2;1,8,1,2,0,2,95952.22,30662.13,5;1,8,1,2,1,0,445798.01,111641.21,28;1,8,1,2,1,1,95426.35,21423.72,4;1,8,1,2,1,2,146715.22,47270.42,6;1,8,1,3,0,0,757523.54,194793.37,48;1,8,1,3,0,1,66917.46,20908.46,4;1,8,1,3,0,2,18297.12,3258.46,2;1,8,1,3,1,0,406712.43,115371.84,22;1,8,1,3,1,1,65621.53,13790.12,3;1,8,1,3,1,2,30944.01,6371.10,3;1,8,2,0,0,0,461940.46,112212.09,66;1,8,2,0,0,1,13363.22,3419.77,4;1,8,2,0,0,2,16402.48,5231.60,5;1,8,2,0,1,0,336896.61,87624.82,46;1,8,2,0,1,1,17985.45,4245.45,3;1,8,2,0,1,2,60530.05,15079.09,9;1,8,2,1,0,0,494847.35,125410.46,65;1,8,2,1,0,1,26632.69,2972.45,5;1,8,2,1,0,2,50254.74,13517.42,6;1,8,2,1,1,0,256281.98,72397.54,36;1,8,2,1,1,1,29790.72,5410.99,4;1,8,2,1,1,2,38033.72,11820.71,5;1,8,2,2,0,0,304404.72,73045.04,47;1,8,2,2,0,1,45300.89,13104.36,7;1,8,2,2,0,2,35907.53,8906.63,3;1,8,2,2,1,0,280850.86,71620.96,36;1,8,2,2,1,1,23403.06,7314.93,3;1,8,2,2,1,2,30674.61,5701.44,4;1,8,2,3,0,0,211604.67,50213.50,33;1,8,2,3,0,1,24379.16,6328.58,5;1,8,2,3,0,2,3531.26,775.96,1;1,8,2,3,1,0,350029.62,92253.78,40;1,8,2,3,1,2,33564.93,13203.08,4;1,8,3,0,0,0,306682.39,82814.45,64;1,8,3,0,0,1,9162.22,2219.95,3;1,8,3,0,0,2,29663.37,6106.22,8;1,8,3,0,1,0,198934.00,50569.24,44;1,8,3,0,1,1,8239.73,2724.79,2;1,8,3,0,1,2,11851.45,2651.64,3;1,8,3,1,0,0,270183.74,67173.87,62;1,8,3,1,0,1,26085.34,9196.90,6;1,8,3,1,0,2,18082.33,3602.49,4;1,8,3,1,1,0,220154.34,59453.54,47;1,8,3,1,1,1,32168.76,6502.75,7;1,8,3,1,1,2,26239.18,4853.72,6;1,8,3,2,0,0,181875.35,51636.81,44;1,8,3,2,0,1,55421.42,12371.51,9;1,8,3,2,0,2,27020.36,7798.51,5;1,8,3,2,1,0,123859.17,26105.47,32;1,8,3,2,1,1,24178.12,8354.26,4;1,8,3,2,1,2,16765.39,3965.47,3;1,8,3,3,0,0,190739.31,55828.51,41;1,8,3,3,0,1,20988.85,3224.93,6;1,8,3,3,0,2,26951.56,5230.51,6;1,8,3,3,1,0,140808.32,35876.03,26;1,8,3,3,1,1,9415.77,1858.85,2;1,8,3,3,1,2,20490.10,3557.05,5;1,8,4,0,0,0,122845.48,36158.00,39;1,8,4,0,0,1,7508.70,1873.63,4;1,8,4,0,0,2,23542.65,6978.68,7;1,8,4,0,1,0,57507.38,14620.09,24;1,8,4,0,1,1,10287.51,3318.16,5;1,8,4,0,1,2,14432.81,3247.53,5;1,8,4,1,0,0,161213.17,38080.85,49;1,8,4,1,0,1,5464.81,1470.99,4;1,8,4,1,0,2,4504.93,1209.55,3;1,8,4,1,1,0,94277.88,22779.37,25;1,8,4,1,1,1,4134.39,411.92,2;1,8,4,1,1,2,10880.73,3309.68,5;1,8,4,2,0,0,113116.12,26272.80,26;1,8,4,2,0,1,23860.70,7153.27,6;1,8,4,2,0,2,13567.30,4684.28,4;1,8,4,2,1,0,83270.13,22850.02,27;1,8,4,2,1,1,3127.38,705.63,3;1,8,4,2,1,2,8236.04,2441.35,5;1,8,4,3,0,0,103537.50,28997.04,26;1,8,4,3,0,1,18955.72,7298.11,2;1,8,4,3,0,2,7121.86,1818.90,2;1,8,4,3,1,0,60858.91,15190.76,21;1,8,4,3,1,2,14461.91,1980.30,5;1,9,0,0,0,0,1420630.08,338028.94,82;1,9,0,0,0,1,278197.94,67738.87,11;1,9,0,0,0,2,343477.94,100360.57,14;1,9,0,0,1,0,791902.45,158614.74,42;1,9,0,0,1,1,39316.14,10878.18,4;1,9,0,0,1,2,175949.42,38431.58,5;1,9,0,1,0,0,1441166.65,366741.13,79;1,9,0,1,0,1,143841.51,41817.91,9;1,9,0,1,0,2,592106.04,184708.11,15;1,9,0,1,1,0,1127340.74,305005.82,47;1,9,0,1,1,1,177009.63,37467.30,8;1,9,0,1,1,2,263639.83,75743.49,4;1,9,0,2,0,0,1571361.70,474282.10,71;1,9,0,2,0,1,112725.49,34029.28,7;1,9,0,2,0,2,198932.85,56322.67,13;1,9,0,2,1,0,1097764.95,312211.00,52;1,9,0,2,1,1,16716.53,3294.42,2;1,9,0,2,1,2,67680.81,23869.09,7;1,9,0,3,0,0,886559.79,214019.69,43;1,9,0,3,0,1,55637.45,13352.05,4;1,9,0,3,0,2,217835.28,31154.56,11;1,9,0,3,1,0,665875.74,170586.24,31;1,9,0,3,1,1,73550.75,13231.88,4;1,9,0,3,1,2,19247.44,4320.61,3;1,9,1,0,0,0,1121782.09,309182.79,61;1,9,1,0,0,1,69308.46,22943.43,6;1,9,1,0,0,2,95403.75,23730.99,7;1,9,1,0,1,0,695133.41,185716.99,37;1,9,1,0,1,2,52651.34,13514.04,5;1,9,1,1,0,0,660864.90,163791.20,43;1,9,1,1,0,1,12020.59,2482.26,1;1,9,1,1,0,2,52016.90,11449.09,5;1,9,1,1,1,0,714464.71,205785.02,45;1,9,1,1,1,1,83021.02,25793.59,3;1,9,1,1,1,2,10784.54,2881.61,1;1,9,1,2,0,0,737234.13,176385.64,42;1,9,1,2,0,1,14496.45,2537.33,1;1,9,1,2,0,2,187299.14,44633.14,9;1,9,1,2,1,0,461932.44,117423.66,33;1,9,1,2,1,1,26547.26,6766.15,2;1,9,1,2,1,2,47796.64,14000.85,3;1,9,1,3,0,0,361019.78,85266.82,23;1,9,1,3,0,1,66267.96,17999.66,4;1,9,1,3,0,2,66674.17,21442.03,6;1,9,1,3,1,0,303019.54,78275.11,19;1,9,1,3,1,2,62973.74,19488.56,4;1,9,2,0,0,0,364267.39,90824.52,60;1,9,2,0,0,1,32945.18,9206.92,8;1,9,2,0,0,2,55091.34,16785.69,12;1,9,2,0,1,0,277627.70,80610.24,36;1,9,2,0,1,1,8635.44,2770.41,2;1,9,2,0,1,2,40842.80,11881.30,5;1,9,2,1,0,0,512901.10,130844.15,74;1,9,2,1,0,1,76832.72,18684.49,9;1,9,2,1,0,2,48721.20,10994.96,8;1,9,2,1,1,0,308136.64,73771.77,44;1,9,2,1,1,1,16840.70,4112.00,3;1,9,2,1,1,2,35410.70,8882.12,5;1,9,2,2,0,0,269412.08,70927.82,36;1,9,2,2,0,1,39942.47,6328.12,3;1,9,2,2,0,2,28991.73,6272.54,7;1,9,2,2,1,0,149039.50,28798.52,23;1,9,2,2,1,1,25371.39,3325.73,2;1,9,2,2,1,2,7177.51,2304.69,3;1,9,2,3,0,0,324494.58,90709.76,42;1,9,2,3,0,1,24900.86,4268.18,3;1,9,2,3,0,2,12079.93,2810.03,3;1,9,2,3,1,0,207055.55,59911.60,24;1,9,2,3,1,1,4298.41,980.97,2;1,9,2,3,1,2,11184.80,971.46,2;1,9,3,0,0,0,295212.21,80569.20,64;1,9,3,0,0,1,25647.38,6072.52,6;1,9,3,0,0,2,23803.60,8025.93,6;1,9,3,0,1,0,236631.78,65999.67,47;1,9,3,0,1,1,35819.65,8406.91,6;1,9,3,0,1,2,13709.17,3746.62,4;1,9,3,1,0,0,275299.59,73156.47,63;1,9,3,1,0,1,22322.95,5634.12,6;1,9,3,1,0,2,60480.32,18959.92,10;1,9,3,1,1,0,214331.88,50328.11,40;1,9,3,1,1,1,22652.10,7515.86,6;1,9,3,1,1,2,19804.12,3140.61,4;1,9,3,2,0,0,291282.70,72184.73,62;1,9,3,2,0,1,11691.54,2030.16,4;1,9,3,2,0,2,34349.38,11301.39,8;1,9,3,2,1,0,152875.99,39739.96,30;1,9,3,2,1,1,26884.35,6300.01,5;1,9,3,2,1,2,34063.67,8974.59,5;1,9,3,3,0,0,238860.78,63545.97,46;1,9,3,3,0,1,7241.52,1444.61,3;1,9,3,3,0,2,36041.69,9377.41,8;1,9,3,3,1,0,142083.46,32871.00,31;1,9,3,3,1,1,7697.30,1557.16,2;1,9,3,3,1,2,8960.82,3289.97,1;1,9,4,0,0,0,120041.25,36162.17,34;1,9,4,0,0,1,9324.31,2692.06,4;1,9,4,0,0,2,13838.06,2948.66,6;1,9,4,0,1,0,49706.18,12454.96,23;1,9,4,0,1,1,7376.89,2120.59,2;1,9,4,0,1,2,11395.38,3236.57,5;1,9,4,1,0,0,108626.16,25651.51,40;1,9,4,1,0,1,11428.15,699.15,3;1,9,4,1,0,2,8783.41,2190.94,4;1,9,4,1,1,0,57322.28,11764.24,24;1,9,4,1,1,1,17715.96,2842.12,3;1,9,4,1,1,2,9731.60,2715.93,3;1,9,4,2,0,0,140175.43,37277.32,39;1,9,4,2,0,1,859.37,315.20,1;1,9,4,2,0,2,739.96,284.56,1;1,9,4,2,1,0,71502.81,19860.00,17;1,9,4,2,1,1,2061.52,560.08,1;1,9,4,2,1,2,4308.52,1320.88,2;1,9,4,3,0,0,128800.87,35160.88,40;1,9,4,3,0,1,10877.23,2615.80,3;1,9,4,3,0,2,1402.96,0.68,1;1,9,4,3,1,0,53238.95,12759.24,21;1,9,4,3,1,2,2468.60,499.81,2;1,10,0,0,0,0,1938639.13,477160.72,79;1,10,0,0,0,1,91296.31,30279.81,6;1,10,0,0,0,2,310290.85,67988.65,10;1,10,0,0,1,0,1400926.50,411940.37,58;1,10,0,0,1,1,69242.95,16244.35,7;1,10,0,0,1,2,69732.87,17464.16,5;1,10,0,1,0,0,1680111.02,432456.97,76;1,10,0,1,0,1,45548.17,12008.12,6;1,10,0,1,0,2,177800.04,24698.45,7;1,10,0,1,1,0,1007151.78,222764.25,50;1,10,0,1,1,1,6053.79,1008.93,2;1,10,0,1,1,2,40895.01,5411.57,6;1,10,0,2,0,0,1811026.73,420186.75,76;1,10,0,2,0,1,73927.34,19027.70,4;1,10,0,2,0,2,188690.93,48922.57,8;1,10,0,2,1,0,1068628.08,265153.53,34;1,10,0,2,1,1,56552.27,17441.49,3;1,10,0,2,1,2,143323.96,45894.50,7;1,10,0,3,0,0,1729638.42,397963.19,72;1,10,0,3,0,1,157092.28,35843.43,6;1,10,0,3,0,2,201170.49,45843.39,12;1,10,0,3,1,0,704048.49,191046.07,32;1,10,0,3,1,1,29211.97,10090.65,3;1,10,0,3,1,2,74189.01,24079.71,5;1,10,1,0,0,0,651523.42,172285.81,36;1,10,1,0,0,1,80731.77,12797.84,5;1,10,1,0,0,2,70916.66,19744.55,4;1,10,1,0,1,0,523774.97,140194.54,27;1,10,1,0,1,1,92498.09,24200.55,4;1,10,1,0,1,2,43689.13,9443.80,4;1,10,1,1,0,0,860321.07,208480.84,51;1,10,1,1,0,1,124324.24,28080.90,9;1,10,1,1,0,2,32360.25,11564.65,1;1,10,1,1,1,0,512313.77,140442.56,31;1,10,1,1,1,1,38399.45,7888.04,3;1,10,1,1,1,2,76404.76,21515.52,3;1,10,1,2,0,0,829790.91,223881.24,50;1,10,1,2,0,1,81131.06,23828.44,5;1,10,1,2,0,2,188297.13,47383.30,11;1,10,1,2,1,0,506338.02,110672.93,32;1,10,1,2,1,1,7590.48,2748.69,1;1,10,1,2,1,2,12092.01,2512.72,2;1,10,1,3,0,0,514401.64,115647.51,31;1,10,1,3,0,1,95777.00,27706.90,7;1,10,1,3,0,2,26077.49,9382.32,1;1,10,1,3,1,0,391702.16,99893.68,23;1,10,1,3,1,1,61977.65,10338.95,3;1,10,1,3,1,2,22593.24,5810.93,3;1,10,2,0,0,0,516503.56,132896.40,64;1,10,2,0,0,1,27502.07,8449.93,4;1,10,2,0,0,2,73818.59,18106.46,8;1,10,2,0,1,0,228764.14,57795.39,32;1,10,2,0,1,1,11071.30,2908.33,4;1,10,2,0,1,2,15162.09,4155.40,4;1,10,2,1,0,0,404235.43,105689.62,61;1,10,2,1,0,1,20698.92,6198.05,3;1,10,2,1,0,2,80423.66,19235.70,11;1,10,2,1,1,0,253530.03,69559.94,38;1,10,2,1,1,1,32056.63,8966.38,7;1,10,2,1,1,2,14948.67,3936.43,5;1,10,2,2,0,0,355767.03,82354.61,46;1,10,2,2,0,1,43673.77,9889.20,8;1,10,2,2,0,2,55080.58,14916.82,9;1,10,2,2,1,0,219875.77,54575.67,35;1,10,2,2,1,1,7673.00,2470.73,2;1,10,2,2,1,2,31175.43,8271.53,5;1,10,2,3,0,0,289159.87,84527.99,36;1,10,2,3,0,1,29262.46,8361.55,4;1,10,2,3,0,2,2443.52,954.18,1;1,10,2,3,1,0,204638.08,49315.45,27;1,10,2,3,1,1,1161.16,443.47,1;1,10,2,3,1,2,54313.53,15131.63,6;1,10,3,0,0,0,279596.48,75577.34,66;1,10,3,0,0,1,30614.73,9693.56,7;1,10,3,0,0,2,30517.85,9354.63,5;1,10,3,0,1,0,113651.66,28102.32,28;1,10,3,0,1,1,27370.96,9388.42,5;1,10,3,0,1,2,16987.31,3414.13,5;1,10,3,1,0,0,416740.28,106470.39,79;1,10,3,1,0,1,52605.51,14222.23,10;1,10,3,1,0,2,52348.31,10735.82,9;1,10,3,1,1,0,219133.07,48809.71,49;1,10,3,1,1,1,25602.64,6384.60,8;1,10,3,1,1,2,29193.46,7821.48,8;1,10,3,2,0,0,220668.46,63015.34,51;1,10,3,2,0,1,34005.21,9123.39,7;1,10,3,2,0,2,30839.94,8427.39,8;1,10,3,2,1,0,199059.93,60196.37,35;1,10,3,2,1,1,11383.06,3005.96,4;1,10,3,2,1,2,33544.38,10332.34,5;1,10,3,3,0,0,168665.63,40318.71,37;1,10,3,3,0,1,13047.65,3898.68,2;1,10,3,3,0,2,19799.31,7002.57,4;1,10,3,3,1,0,134852.75,37147.37,25;1,10,3,3,1,2,27755.07,7278.33,7;1,10,4,0,0,0,136768.55,35155.27,47;1,10,4,0,0,1,11343.98,2619.29,6;1,10,4,0,0,2,12355.62,2890.16,3;1,10,4,0,1,0,82606.26,20156.09,31;1,10,4,0,1,1,31752.50,8389.17,7;1,10,4,0,1,2,10203.92,3188.10,3;1,10,4,1,0,0,159401.10,44726.55,53;1,10,4,1,0,1,5095.33,2130.63,2;1,10,4,1,0,2,18914.25,4893.10,5;1,10,4,1,1,0,109384.49,29201.83,37;1,10,4,1,1,1,19188.24,3830.31,4;1,10,4,1,1,2,12277.09,3818.00,2;1,10,4,2,0,0,143421.74,41100.38,44;1,10,4,2,0,1,21730.69,4121.21,4;1,10,4,2,0,2,25886.26,8813.01,6;1,10,4,2,1,0,61593.96,16030.52,19;1,10,4,2,1,1,6983.53,1689.78,3;1,10,4,3,0,0,84546.85,22082.21,40;1,10,4,3,0,1,14576.99,3024.99,5;1,10,4,3,0,2,7815.88,1807.39,3;1,10,4,3,1,0,52378.71,10707.26,13;1,10,4,3,1,1,1555.91,357.05,2;1,10,4,3,1,2,14652.98,3697.47,4;1,11,0,0,0,0,1721767.90,424002.44,87;1,11,0,0,0,1,74647.03,23645.84,9;1,11,0,0,0,2,216149.35,60265.80,6;1,11,0,0,1,0,1060571.18,295319.11,54;1,11,0,0,1,1,42647.26,11076.76,5;1,11,0,0,1,2,150549.45,36676.85,6;1,11,0,1,0,0,1660874.89,415537.32,62;1,11,0,1,0,1,425103.37,107441.32,13;1,11,0,1,0,2,460217.50,103731.87,13;1,11,0,1,1,0,1360436.16,363936.91,42;1,11,0,1,1,1,6341.47,1718.56,3;1,11,0,1,1,2,46972.94,9119.69,6;1,11,0,2,0,0,1599187.29,388375.89,70;1,11,0,2,0,1,102818.69,19840.78,6;1,11,0,2,0,2,323311.63,73967.47,14;1,11,0,2,1,0,865351.82,232550.53,43;1,11,0,2,1,1,116907.78,28625.97,4;1,11,0,3,0,0,936856.27,239505.71,49;1,11,0,3,0,1,152871.13,24374.29,6;1,11,0,3,0,2,186918.38,58951.11,8;1,11,0,3,1,0,570717.74,128154.67,33;1,11,0,3,1,1,132742.20,42480.64,5;1,11,0,3,1,2,95260.91,16387.98,5;1,11,1,0,0,0,1097247.15,293732.80,57;1,11,1,0,0,1,113290.34,22665.89,6;1,11,1,0,0,2,116261.68,25957.16,7;1,11,1,0,1,0,439573.17,121316.59,27;1,11,1,0,1,1,70593.26,11854.46,3;1,11,1,0,1,2,13455.37,2380.37,1;1,11,1,1,0,0,915970.55,244982.91,54;1,11,1,1,0,1,120792.25,40773.51,5;1,11,1,1,0,2,189481.36,54463.09,12;1,11,1,1,1,0,431890.10,111799.63,30;1,11,1,1,1,1,60070.26,22203.56,3;1,11,1,1,1,2,46107.53,10957.61,4;1,11,1,2,0,0,612523.77,153463.58,39;1,11,1,2,0,1,104608.46,27014.55,4;1,11,1,2,0,2,170625.30,44649.62,8;1,11,1,2,1,0,544484.25,142307.40,32;1,11,1,2,1,1,36137.10,11239.83,3;1,11,1,2,1,2,55401.30,17058.11,2;1,11,1,3,0,0,433946.74,113189.11,37;1,11,1,3,0,1,33175.95,8384.76,3;1,11,1,3,0,2,61778.73,13629.65,3;1,11,1,3,1,0,486531.06,141499.74,26;1,11,1,3,1,1,22583.26,4833.77,1;1,11,1,3,1,2,42080.00,12812.33,3;1,11,2,0,0,0,454838.62,116270.46,73;1,11,2,0,0,1,27202.58,8359.55,6;1,11,2,0,0,2,79181.78,20711.79,9;1,11,2,0,1,0,297421.13,73033.45,43;1,11,2,0,1,1,8203.36,2424.65,2;1,11,2,0,1,2,60200.37,13376.36,7;1,11,2,1,0,0,416507.45,101026.69,65;1,11,2,1,0,2,28135.24,3687.98,7;1,11,2,1,1,0,346029.72,91814.82,42;1,11,2,1,1,1,21067.16,7583.18,2;1,11,2,1,1,2,48471.08,13103.76,9;1,11,2,2,0,0,304222.61,73159.40,53;1,11,2,2,0,1,18975.45,4292.64,3;1,11,2,2,0,2,31655.76,8415.89,10;1,11,2,2,1,0,229175.03,55685.47,36;1,11,2,2,1,1,30378.22,8860.40,3;1,11,2,2,1,2,16388.04,4258.69,6;1,11,2,3,0,0,353989.34,89290.40,43;1,11,2,3,0,1,15800.13,3154.92,4;1,11,2,3,0,2,17367.41,4646.90,4;1,11,2,3,1,0,298267.66,82352.01,30;1,11,2,3,1,1,21479.43,4141.18,3;1,11,2,3,1,2,57239.97,11017.77,8;1,11,3,0,0,0,288590.61,74631.17,58;1,11,3,0,0,1,38581.15,11092.09,9;1,11,3,0,0,2,31502.91,7702.47,10;1,11,3,0,1,0,174018.16,42798.72,35;1,11,3,0,1,1,14087.68,3094.73,4;1,11,3,0,1,2,23515.63,4511.11,5;1,11,3,1,0,0,275515.00,73089.24,58;1,11,3,1,0,1,36266.11,11343.00,5;1,11,3,1,0,2,15558.79,3881.03,3;1,11,3,1,1,0,202911.79,50433.78,41;1,11,3,1,1,1,12098.85,3991.30,4;1,11,3,1,1,2,16832.51,5073.73,4;1,11,3,2,0,0,225645.52,60962.20,50;1,11,3,2,0,1,22398.24,6669.46,5;1,11,3,2,0,2,43739.25,7399.18,8;1,11,3,2,1,0,159582.43,41418.03,40;1,11,3,2,1,1,19089.16,5675.54,3;1,11,3,2,1,2,18641.89,6445.35,5;1,11,3,3,0,0,228422.91,56047.25,48;1,11,3,3,0,1,30115.06,6765.65,4;1,11,3,3,0,2,16072.16,5151.97,3;1,11,3,3,1,0,58686.07,16301.72,15;1,11,3,3,1,1,28766.20,7787.37,5;1,11,3,3,1,2,14866.04,3831.86,5;1,11,4,0,0,0,120848.99,30768.10,39;1,11,4,0,0,1,18950.10,4541.11,6;1,11,4,0,0,2,2895.76,703.50,2;1,11,4,0,1,0,76121.96,15947.67,24;1,11,4,0,1,1,7700.23,1746.20,2;1,11,4,0,1,2,5755.54,1762.28,2;1,11,4,1,0,0,93496.70,20427.61,39;1,11,4,1,0,1,17486.07,6237.75,4;1,11,4,1,0,2,14997.19,4739.39,7;1,11,4,1,1,0,74967.50,20689.33,23;1,11,4,1,1,1,6834.30,1582.26,2;1,11,4,1,1,2,7518.54,1829.33,3;1,11,4,2,0,0,149999.72,42415.68,43;1,11,4,2,0,1,8273.78,1249.67,3;1,11,4,2,0,2,47918.84,10017.44,12;1,11,4,2,1,0,90899.31,22428.61,25;1,11,4,2,1,1,7531.34,536.13,1;1,11,4,3,0,0,73932.89,19989.77,19;1,11,4,3,0,1,7939.09,2139.03,4;1,11,4,3,0,2,31160.07,7819.03,7;1,11,4,3,1,0,78432.04,20077.58,19;1,11,4,3,1,1,25543.01,8326.58,6;1,11,4,3,1,2,6151.21,1917.34,4;1,12,0,0,0,0,1984452.56,512353.99,70;1,12,0,0,0,1,294334.09,70491.60,12;1,12,0,0,0,2,474507.85,113085.35,14;1,12,0,0,1,0,987277.75,237658.96,45;1,12,0,0,1,1,208374.47,48010.52,6;1,12,0,0,1,2,221404.64,52764.87,5;1,12,0,1,0,0,1778509.20,485004.28,75;1,12,0,1,0,1,171370.96,44508.82,7;1,12,0,1,0,2,161889.67,39703.67,7;1,12,0,1,1,0,606670.79,144801.89,36;1,12,0,1,1,1,103408.32,10151.30,2;1,12,0,1,1,2,204446.38,56644.06,10;1,12,0,2,0,0,1593093.00,363436.03,60;1,12,0,2,0,1,123650.81,27538.24,5;1,12,0,2,0,2,200456.76,52028.57,8;1,12,0,2,1,0,847271.48,180319.13,30;1,12,0,2,1,1,62486.07,15617.18,3;1,12,0,2,1,2,17098.98,6736.54,3;1,12,0,3,0,0,1162101.30,297639.49,59;1,12,0,3,0,1,155796.21,58600.06,5;1,12,0,3,0,2,70176.44,21807.79,8;1,12,0,3,1,0,993413.91,255373.05,42;1,12,0,3,1,1,80860.62,23355.27,8;1,12,0,3,1,2,55699.78,15117.17,1;1,12,1,0,0,0,910055.91,224652.14,56;1,12,1,0,0,1,28119.17,6693.41,4;1,12,1,0,0,2,16587.49,1480.26,1;1,12,1,0,1,0,431738.52,130220.01,24;1,12,1,0,1,1,9298.21,302.14,1;1,12,1,0,1,2,29048.39,6451.57,1;1,12,1,1,0,0,937044.06,248876.75,56;1,12,1,1,0,1,112122.42,28529.59,5;1,12,1,1,0,2,130972.83,36822.34,6;1,12,1,1,1,0,355591.25,85369.11,25;1,12,1,1,1,1,14056.14,4170.78,1;1,12,1,1,1,2,72611.10,15992.78,4;1,12,1,2,0,0,363531.53,97714.80,28;1,12,1,2,0,1,164008.73,47080.38,8;1,12,1,2,0,2,11240.41,2893.77,2;1,12,1,2,1,0,695748.55,172306.97,34;1,12,1,2,1,2,19703.06,1657.83,1;1,12,1,3,0,0,738119.51,191820.14,42;1,12,1,3,0,1,199740.28,50275.40,6;1,12,1,3,0,2,106377.30,29242.88,5;1,12,1,3,1,0,302829.70,86406.00,18;1,12,1,3,1,1,7900.37,953.16,1;1,12,1,3,1,2,36100.07,3629.00,1;1,12,2,0,0,0,574363.00,137910.26,70;1,12,2,0,0,1,79947.13,13475.42,8;1,12,2,0,0,2,35291.93,8699.50,6;1,12,2,0,1,0,232278.27,56890.27,37;1,12,2,0,1,1,7736.89,2136.29,2;1,12,2,0,1,2,18330.24,4593.33,5;1,12,2,1,0,0,385263.92,104066.65,65;1,12,2,1,0,1,65920.40,20754.15,7;1,12,2,1,0,2,39829.59,10138.22,7;1,12,2,1,1,0,322825.14,81599.53,46;1,12,2,1,1,1,18834.23,3424.98,4;1,12,2,1,1,2,29051.26,5738.08,7;1,12,2,2,0,0,329565.79,90101.46,50;1,12,2,2,0,1,19871.39,5223.95,5;1,12,2,2,0,2,14420.05,3998.03,4;1,12,2,2,1,0,205795.62,53294.77,32;1,12,2,2,1,1,19356.53,7761.92,2;1,12,2,2,1,2,48280.11,15765.50,6;1,12,2,3,0,0,177473.62,48811.87,34;1,12,2,3,0,1,2342.33,486.66,1;1,12,2,3,0,2,75201.88,22520.04,7;1,12,2,3,1,0,118236.07,28922.88,17;1,12,2,3,1,1,6040.27,2142.68,2;1,12,2,3,1,2,15472.22,4198.02,3;1,12,3,0,0,0,305948.90,83023.35,65;1,12,3,0,0,1,31046.37,7906.14,7;1,12,3,0,0,2,92804.69,23729.36,17;1,12,3,0,1,0,165517.69,40862.42,38;1,12,3,0,1,2,10332.93,2754.29,4;1,12,3,1,0,0,299157.90,73375.23,71;1,12,3,1,0,1,18390.60,4912.06,5;1,12,3,1,0,2,57124.63,12418.25,10;1,12,3,1,1,0,122578.71,35364.07,28;1,12,3,1,1,1,11199.93,3029.51,2;1,12,3,1,1,2,17619.71,5279.66,4;1,12,3,2,0,0,266811.61,72233.17,48;1,12,3,2,0,1,23046.42,9301.08,3;1,12,3,2,0,2,11034.78,2437.94,2;1,12,3,2,1,0,126915.92,29047.43,27;1,12,3,2,1,1,22856.34,7005.39,4;1,12,3,2,1,2,16323.06,5306.97,5;1,12,3,3,0,0,227829.64,56524.60,48;1,12,3,3,0,1,30822.24,8330.67,7;1,12,3,3,0,2,8566.40,2363.50,2;1,12,3,3,1,0,98415.16,22957.12,21;1,12,3,3,1,1,17415.35,2927.46,3;1,12,3,3,1,2,29875.04,6223.42,5;1,12,4,0,0,0,133464.72,35332.47,40;1,12,4,0,0,1,26731.14,6530.12,6;1,12,4,0,0,2,29399.65,7723.72,6;1,12,4,0,1,0,96677.94,25588.94,30;1,12,4,0,1,1,7798.99,3110.90,1;1,12,4,0,1,2,6745.37,1533.08,2;1,12,4,1,0,0,133812.07,37210.19,38;1,12,4,1,0,1,16962.18,4420.26,4;1,12,4,1,0,2,15108.62,3994.37,3;1,12,4,1,1,0,53586.59,11522.18,19;1,12,4,1,1,2,9076.53,1797.51,2;1,12,4,2,0,0,131879.03,29616.10,43;1,12,4,2,0,1,14578.06,3780.11,4;1,12,4,2,0,2,21755.59,3378.27,3;1,12,4,2,1,0,39325.10,9114.03,12;1,12,4,2,1,1,10043.90,3248.42,5;1,12,4,3,0,0,53549.86,12990.36,26;1,12,4,3,0,1,1685.44,238.80,1;1,12,4,3,1,0,50727.00,13386.36,12;1,12,4,3,1,1,4590.44,607.70,1;1,12,4,3,1,2,10298.44,2173.24,4';
+    /* row = [year(0=2024,1=2025), month, category, region, channel, status, sales, profit, orders] */
+    var rows=CUBE.split(';').map(function(l){return l.split(',').map(Number);});
+    var D={
+      y:{label:'Year',items:['2024','2025'],ix:0},
+      c:{label:'Category',items:['Electronics','Furniture','Home & Kitchen','Fashion','Beauty & Personal Care'],ix:2},
+      r:{label:'Region',items:['South','North','West','East'],ix:3},
+      h:{label:'Channel',items:['Online','Store'],ix:4},
+      s:{label:'Status',items:['Delivered','Returned','Cancelled'],ix:5}
+    };
+    var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var F={y:new Set(),ym:new Set(),c:new Set(),r:new Set(),h:new Set(),s:new Set()};
+    var MEAS='sales', MI={sales:6,profit:7,orders:8}, MN={sales:'Sales',profit:'Profit',orders:'Orders'};
+    function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+    function toggle(set,v){ if(set.has(v)) set.delete(v); else set.add(v); }
+    function ymLabel(i){ return MONTHS[i%12]+' '+(2024+Math.floor(i/12)); }
+
+    /* does a row survive every active filter except (optionally) one dimension? */
+    function pass(r,skip){
+      return (skip==='y'||!F.y.size||F.y.has(r[0])) &&
+             (skip==='ym'||!F.ym.size||F.ym.has(r[0]*12+r[1]-1)) &&
+             (skip==='c'||!F.c.size||F.c.has(r[2])) &&
+             (skip==='r'||!F.r.size||F.r.has(r[3])) &&
+             (skip==='h'||!F.h.size||F.h.has(r[4])) &&
+             (skip==='s'||!F.s.size||F.s.has(r[5]));
+    }
+    function agg(skip,key,n,m){
+      var out=[]; for(var i=0;i<n;i++) out.push(0);
+      for(var k=0;k<rows.length;k++){ var r=rows[k]; if(pass(r,skip)) out[key(r)]+=r[m]; }
+      return out;
+    }
+
+    /* ---------- number formats ---------- */
+    function money(v){ return v>=1e6?'₹'+(v/1e6).toFixed(2)+'M':(v>=1e3?'₹'+(v/1e3).toFixed(1)+'K':'₹'+Math.round(v)); }
+    function fv(v,m){ return m==='orders'?Math.round(v).toLocaleString('en-US'):money(v); }
+    function axis(v,m){
+      if(m==='orders') return Math.round(v).toLocaleString('en-US');
+      return v>=1e6?'₹'+(v/1e6).toFixed(1)+'M':(v>=1e3?'₹'+Math.round(v/1e3)+'K':'₹'+Math.round(v));
+    }
+    function kMoney(v){ return v>=1e6?'₹'+(v/1e6).toFixed(2)+'<i>M</i>':(v>=1e3?'₹'+(v/1e3).toFixed(1)+'<i>K</i>':'₹'+Math.round(v)); }
+    function kPct(v){ return v.toFixed(2)+'<i>%</i>'; }
+    function kInt(v){ return Math.round(v).toLocaleString('en-US'); }
+    function ticks(lo,hi,n){
+      var span=(hi-lo)||1, raw=span/n, mag=Math.pow(10,Math.floor(Math.log10(raw))), f=raw/mag;
+      var step=(f<1.5?1:(f<3?2:(f<7?5:10)))*mag, out=[], v=Math.floor(lo/step)*step;
+      for(; v<hi+step; v+=step) out.push(+v.toFixed(6));
+      return out;
+    }
+
+    /* ---------- build static parts once ---------- */
+    ['c','r','h'].forEach(function(d){
+      $('#hb-'+d).innerHTML=D[d].items.map(function(n,i){
+        return '<li><button type="button" class="hbr" data-d="'+d+'" data-i="'+i+'" aria-pressed="false"><span class="l">'+esc(n)+'</span><span class="t"><i></i></span><span class="v"></span></button></li>';
+      }).join('');
+    });
+    ['c','r'].forEach(function(d){
+      $('.dd[data-d="'+d+'"] .dd-menu',root).innerHTML=D[d].items.map(function(n,i){
+        return '<label><input type="checkbox" data-d="'+d+'" data-i="'+i+'"> '+esc(n)+'</label>';
+      }).join('');
+    });
+    var C=2*Math.PI*56;
+    $('#donut').innerHTML=
+      '<svg viewBox="0 0 160 160" role="group" aria-label="Orders by status">'+
+      D.s.items.map(function(n,i){ return '<circle class="seg seg'+i+'" data-d="s" data-i="'+i+'" cx="80" cy="80" r="56" transform="rotate(-90 80 80)" tabindex="0" role="button" aria-pressed="false" aria-label="'+n+'"></circle>'; }).join('')+
+      '<text class="dn-total" x="80" y="82"></text><text class="dn-sub" x="80" y="100">ORDERS</text></svg>'+
+      '<div class="lgs">'+D.s.items.map(function(n,i){ return '<button type="button" class="lgb" data-d="s" data-i="'+i+'" aria-pressed="false"><i class="seg'+i+'" style="background:'+['var(--blue)','hsl(calc(var(--h) + 52) 90% 62%)','hsl(calc(var(--h) - 52) 90% 62%)'][i]+'"></i><span class="l">'+n+'</span><span class="v"></span></button>'; }).join('')+'</div>';
+
+    /* ---------- KPI cards (tween between values when anime.js is around) ---------- */
+    var revealed=false;
+    function setK(id,val,html){
+      var el=$('#'+id), from=el._v||0; el._v=val; el.innerHTML=html(val);
+      if(revealed && window.anime && !PF.reduce && document.visibilityState==='visible' && from!==val){
+        var o={v:from};
+        anime({targets:o,v:val,duration:550,easing:'easeOutQuad',update:function(){ el.innerHTML=html(o.v); },complete:function(){ el.innerHTML=html(val); }});
+      }
+    }
+    function renderKpis(){
+      var S=0,P=0,RET=0,CAN=0;
+      for(var k=0;k<rows.length;k++){ var r=rows[k]; if(!pass(r)) continue; S+=r[6]; P+=r[7]; if(r[5]===1) RET+=r[8]; if(r[5]===2) CAN+=r[8]; }
+      setK('k-sales',S,kMoney); setK('k-profit',P,kMoney); setK('k-margin',S?P/S*100:0,kPct); setK('k-ret',RET,kInt); setK('k-can',CAN,kInt);
+    }
+
+    /* ---------- trend chart (inline SVG) ---------- */
+    var TS={mons:[],V:[],X:null,Y:null}, tip=$('.tip',root), trendHost=$('#trendSvg');
+    function renderTrend(){
+      var W=Math.max(300,Math.round(trendHost.clientWidth)||720), narrow=W<520, H=narrow?220:250, L=narrow?48:58, R=12, T=16, B=30;
+      var vals=agg('ym',function(r){return r[0]*12+r[1]-1;},24,MI[MEAS]);
+      var mons=[]; for(var i=0;i<24;i++) if(!F.y.size||F.y.has(i>=12?1:0)) mons.push(i);
+      var V=mons.map(function(i){return vals[i];});
+      var mn=Math.min.apply(null,V), mx=Math.max.apply(null,V), pad=(mx-mn)*.18||mx*.1||1;
+      var tk=ticks(Math.max(0,mn-pad),mx+pad*.6,4), yLo=tk[0], yHi=tk[tk.length-1];
+      function X(k){ return L+(W-L-R)*(V.length>1?k/(V.length-1):.5); }
+      function Y(v){ return T+(H-T-B)*(1-(v-yLo)/((yHi-yLo)||1)); }
+      TS={mons:mons,V:V,X:X,Y:Y,W:W,H:H};
+      var s='<svg viewBox="0 0 '+W+' '+H+'" role="group" aria-label="Monthly '+MN[MEAS].toLowerCase()+' trend">'+
+        '<defs><linearGradient id="trendFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" style="stop-color:var(--blue);stop-opacity:.28"/><stop offset="100%" style="stop-color:var(--blue);stop-opacity:0"/></linearGradient></defs>';
+      tk.forEach(function(t){ s+='<line class="gl" x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(t).toFixed(1)+'" y2="'+Y(t).toFixed(1)+'"/><text x="'+(L-10)+'" y="'+(Y(t)+3).toFixed(1)+'" text-anchor="end">'+axis(t,MEAS)+'</text>'; });
+      var step=V.length>12?(narrow?4:3):(narrow?3:2);
+      mons.forEach(function(m,k){ if(k%step===0) s+='<text x="'+X(k).toFixed(1)+'" y="'+(H-8)+'" text-anchor="middle">'+MONTHS[m%12]+' '+(m<12?'24':'25')+'</text>'; });
+      var pts=V.map(function(v,k){return [X(k),Y(v)];}), d='M'+pts[0][0].toFixed(1)+','+pts[0][1].toFixed(1);
+      for(var j=0;j<pts.length-1;j++){
+        var p0=pts[j-1]||pts[j], p1=pts[j], p2=pts[j+1], p3=pts[j+2]||p2, q=.18;
+        d+=' C'+(p1[0]+(p2[0]-p0[0])*q).toFixed(1)+','+(p1[1]+(p2[1]-p0[1])*q).toFixed(1)+' '+(p2[0]-(p3[0]-p1[0])*q).toFixed(1)+','+(p2[1]-(p3[1]-p1[1])*q).toFixed(1)+' '+p2[0].toFixed(1)+','+p2[1].toFixed(1);
+      }
+      s+='<path class="area" d="'+d+' L'+X(V.length-1).toFixed(1)+','+(H-B)+' L'+X(0).toFixed(1)+','+(H-B)+' Z"/><path class="line" d="'+d+'"/>';
+      s+='<line class="cur" y1="'+T+'" y2="'+(H-B)+'" x1="0" x2="0"/>';
+      var pk=V.indexOf(mx), anySel=F.ym.size>0;
+      s+='<g class="dots">';
+      pts.forEach(function(p,k){
+        var sel=F.ym.has(mons[k]);
+        s+='<circle class="dot'+(k===pk?' peak':'')+(sel?' sel':'')+(anySel&&!sel?' dim':'')+'" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="'+(k===pk||sel?5:3.2)+'"/>';
+      });
+      s+='</g>';
+      pts.forEach(function(p,k){
+        s+='<circle class="hit" data-k="'+k+'" cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="11" tabindex="0" role="button" aria-pressed="'+F.ym.has(mons[k])+'" aria-label="'+ymLabel(mons[k])+': '+fv(V[k],MEAS)+'"/>';
+      });
+      s+='</svg>';
+      trendHost.innerHTML=s;
+      var line=$('.line',trendHost); try{ line.style.setProperty('--len',Math.ceil(line.getTotalLength())+''); }catch(e){}
+      $('#t-trend').textContent='Monthly '+MN[MEAS].toLowerCase()+' trend';
+    }
+    function nearest(e){
+      var svg=$('svg',trendHost), r=svg.getBoundingClientRect(), sx=(e.clientX-r.left)/r.width*TS.W;
+      var n=TS.V.length; if(!n) return -1;
+      var X0=TS.X(0), X1=TS.X(n-1);
+      return Math.max(0,Math.min(n-1,n>1?Math.round((sx-X0)/(X1-X0)*(n-1)):0));
+    }
+    function showTip(e){
+      var k=nearest(e); if(k<0) return;
+      var svg=$('svg',trendHost), r=svg.getBoundingClientRect(), cur=$('.cur',trendHost);
+      cur.setAttribute('x1',TS.X(k)); cur.setAttribute('x2',TS.X(k)); cur.style.opacity=1;
+      tip.innerHTML=ymLabel(TS.mons[k])+' · <b>'+fv(TS.V[k],MEAS)+'</b>';
+      tip.style.left=(TS.X(k)/TS.W*r.width)+'px'; tip.style.top=(TS.Y(TS.V[k])/TS.H*r.height)+'px'; tip.style.opacity=1;
+    }
+    function hideTip(){ var c=$('.cur',trendHost); if(c) c.style.opacity=0; tip.style.opacity=0; }
+    if('ResizeObserver' in window){
+      var lastW=0;
+      new ResizeObserver(function(){ var w=Math.round(trendHost.clientWidth); if(w&&w!==lastW){ lastW=w; renderTrend(); } }).observe(trendHost);
+    }
+    trendHost.addEventListener('pointermove',showTip);
+    trendHost.addEventListener('pointerdown',showTip);
+    trendHost.addEventListener('pointerleave',hideTip);
+    trendHost.addEventListener('click',function(e){ var k=nearest(e); if(k<0) return; toggle(F.ym,TS.mons[k]); render(); });
+    trendHost.addEventListener('keydown',function(e){
+      var t=e.target.closest('.hit'); if(!t||(e.key!=='Enter'&&e.key!==' ')) return;
+      e.preventDefault(); toggle(F.ym,TS.mons[+t.dataset.k]); render();
+      var again=$('.hit[data-k="'+t.dataset.k+'"]',trendHost); if(again) again.focus();
+    });
+
+    /* ---------- bar charts, donut, insights ---------- */
+    function renderBars(){
+      ['c','r','h'].forEach(function(d){
+        var n=D[d].items.length, vals=agg(d,function(r){return r[D[d].ix];},n,MI[MEAS]);
+        var tot=vals.reduce(function(a,b){return a+b;},0), mx=Math.max.apply(null,vals)||1;
+        $$('.hbr',$('#hb-'+d)).forEach(function(b,i){
+          $('i',b).style.width=(vals[i]/mx*100).toFixed(1)+'%';
+          $('.v',b).textContent=fv(vals[i],MEAS);
+          b.title=D[d].items[i]+' · '+fv(vals[i],MEAS)+(tot?' · '+(vals[i]/tot*100).toFixed(1)+'% of total':'');
+          b.setAttribute('aria-pressed',String(F[d].has(i)));
+          b.classList.toggle('dim',F[d].size>0&&!F[d].has(i));
+          b.classList.toggle('lead',vals[i]===mx&&mx>0);
+        });
+        $('#t-'+d).textContent=MN[MEAS]+' by '+D[d].label.toLowerCase();
+      });
+    }
+    function renderDonut(){
+      var cnt=agg('s',function(r){return r[5];},3,8), tot=cnt[0]+cnt[1]+cnt[2], cum=0;
+      $$('.seg',$('#donut')).forEach(function(c,i){
+        var len=tot?cnt[i]/tot*C:0;
+        c.style.strokeDasharray=Math.max(0,len-(len>3?2:0)).toFixed(2)+' '+C.toFixed(2);
+        c.style.strokeDashoffset=(-cum).toFixed(2); cum+=len;
+        c.setAttribute('aria-pressed',String(F.s.has(i)));
+        c.setAttribute('aria-label',D.s.items[i]+': '+Math.round(cnt[i]).toLocaleString('en-US')+' orders');
+        c.classList.toggle('dim',F.s.size>0&&!F.s.has(i));
+      });
+      $$('.lgb',$('#donut')).forEach(function(b,i){
+        $('.v',b).textContent=Math.round(cnt[i]).toLocaleString('en-US')+(tot?' · '+(cnt[i]/tot*100).toFixed(1)+'%':'');
+        b.setAttribute('aria-pressed',String(F.s.has(i)));
+        b.classList.toggle('dim',F.s.size>0&&!F.s.has(i));
+      });
+      $('.dn-total',$('#donut')).textContent=Math.round(tot).toLocaleString('en-US');
+    }
+    function renderInsights(){
+      ['c','r','h'].forEach(function(d){
+        var vals=agg('',function(r){return r[D[d].ix];},D[d].items.length,MI[MEAS]), mx=Math.max.apply(null,vals);
+        $('#in-'+d).textContent=mx>0?D[d].items[vals.indexOf(mx)]:'—';
+      });
+    }
+
+    /* ---------- slicers + active-filter chips ---------- */
+    function renderControls(){
+      $$('[data-sl]',root).forEach(function(b){ b.setAttribute('aria-pressed',String(F[b.dataset.sl].has(+b.dataset.i))); });
+      $$('[data-m]',root).forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.m===MEAS)); });
+      ['c','r'].forEach(function(d){
+        var dd=$('.dd[data-d="'+d+'"]',root), set=F[d];
+        $$('input',dd).forEach(function(inp){ inp.checked=set.has(+inp.dataset.i); });
+        $('summary',dd).textContent=set.size===0?'All':(set.size===1?D[d].items[Array.from(set)[0]]:set.size+' selected');
+        dd.classList.toggle('on',set.size>0);
+      });
+      var chips='', any=false;
+      ['y','c','r','h','s'].forEach(function(d){
+        Array.from(F[d]).sort().forEach(function(i){ any=true; chips+='<button type="button" class="af" data-d="'+d+'" data-i="'+i+'" aria-label="Remove filter '+esc(D[d].label+': '+D[d].items[i])+'">'+esc(D[d].label+': '+D[d].items[i])+'</button>'; });
+      });
+      Array.from(F.ym).sort(function(a,b){return a-b;}).forEach(function(i){ any=true; chips+='<button type="button" class="af" data-d="ym" data-i="'+i+'" aria-label="Remove filter Month: '+ymLabel(i)+'">Month: '+ymLabel(i)+'</button>'; });
+      $('#biActive').innerHTML=chips;
+      $('#biReset').hidden=!any;
+    }
+
+    function render(){ renderKpis(); renderTrend(); renderBars(); renderDonut(); renderInsights(); renderControls(); }
+
+    /* ---------- events ---------- */
+    root.addEventListener('click',function(e){
+      var t=e.target.closest('.hbr,.seg,.lgb,[data-sl],[data-m],.af,#biReset'); if(!t) return;
+      if(t.matches('.hbr,.seg,.lgb')) toggle(F[t.dataset.d],+t.dataset.i);
+      else if(t.matches('[data-sl]')) toggle(F[t.dataset.sl],+t.dataset.i);
+      else if(t.matches('[data-m]')) MEAS=t.dataset.m;
+      else if(t.matches('.af')) F[t.dataset.d].delete(+t.dataset.i);
+      else if(t.id==='biReset') Object.keys(F).forEach(function(k){ F[k].clear(); });
+      render();
+    });
+    root.addEventListener('keydown',function(e){
+      var t=e.target.closest('.seg'); if(t&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); toggle(F.s,+t.dataset.i); render(); var a=$('.seg[data-i="'+t.dataset.i+'"]',root); if(a) a.focus(); }
+    });
+    root.addEventListener('change',function(e){
+      var inp=e.target.closest('.dd-menu input'); if(!inp) return;
+      if(inp.checked) F[inp.dataset.d].add(+inp.dataset.i); else F[inp.dataset.d].delete(+inp.dataset.i);
+      render();
+    });
+    document.addEventListener('click',function(e){ $$('.dd[open]',root).forEach(function(dd){ if(!dd.contains(e.target)) dd.removeAttribute('open'); }); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') $$('.dd[open]',root).forEach(function(dd){ dd.removeAttribute('open'); }); });
+
+    render();
+
+    /* first time the dashboard scrolls into view, count the KPIs up from zero */
+    if('IntersectionObserver' in window){
+      var kio=new IntersectionObserver(function(es){
+        if(!es[0].isIntersecting) return;
+        kio.disconnect();
+        if(window.anime && !PF.reduce && document.visibilityState==='visible'){
+          $$('.bi-kpi strong',root).forEach(function(el){
+            var to=el._v||0, fmt=el.id==='k-sales'||el.id==='k-profit'?kMoney:(el.id==='k-margin'?kPct:kInt), o={v:0};
+            anime({targets:o,v:to,duration:1600,delay:200,easing:'easeOutExpo',update:function(){ el.innerHTML=fmt(o.v); },complete:function(){ el.innerHTML=fmt(to); }});
+          });
+        }
+        revealed=true;
+      },{threshold:.2});
+      kio.observe(root);
+    }else revealed=true;
+  })();
+
+  /* ---------- count-up + bars (anime.js when present, else final values stay) ---------- */
+  function fmt(v,dec,suf,pre){
+    return (pre||'')+v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+(suf?'<i>'+suf+'</i>':'');
+  }
+  function countUp(el){
+    var end=parseFloat(el.dataset.count), dec=+el.dataset.dec, suf=el.dataset.suffix||'', pre=el.dataset.prefix||'', o={v:0};
+    el.innerHTML=fmt(0,dec,suf,pre);
+    anime({targets:o,v:end,duration:1600,delay:200,easing:'easeOutExpo',
+      update:function(){ el.innerHTML=fmt(o.v,dec,suf,pre); },
+      complete:function(){ el.innerHTML=fmt(end,dec,suf,pre); }});
+  }
+  function growBars(scope){
+    var bars=$$('.bars i',scope); if(!bars.length) return;
+    anime.set(bars,{scaleY:0});
+    anime({targets:bars,scaleY:1,duration:1200,delay:anime.stagger(70,{start:300}),easing:'easeOutElastic(1,.75)'});
+  }
+
+  /* ---------- generic reveal (CSS transitions; anime.js extras layered on top) ---------- */
+  var rv=$$('.rv');
+  if(reduce||!('IntersectionObserver' in window)){
+    rv.forEach(function(e){e.classList.add('in')});
+  }else{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var t=e.target;
+        if(window.anime){
+          $$('[data-count]',t).forEach(countUp);
+          if($('.bars',t)) growBars(t);
+        }
+        t.classList.add('in');
+        io.unobserve(t);
+      });
+    },{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(e){io.observe(e)});
+  }
+
+  /* ---------- anime.js layer ---------- */
+  PF.on('anime',function(){
+    d.classList.add('has-anime');
+    if(reduce){ d.classList.remove('wait'); return; }
+    var A=window.anime;
+
+    /* Hero: letters fall from the sky and arrange into the name */
+    var h1=$('#name'), g=$('.grad',h1);
+    var heroTargets=[$('.eyebrow'),$('.role'),$('.lede')].concat($$('.cta .btn'));
+    var entrance=d.classList.contains('wait'); /* false if the failsafe already fired: skip, show final state */
+    var chs=[];
+
+    /* Roadmap: the Data Analyst node appears, the dots pop in one by one, the ML Engineer node appears,
+       then a wave of light keeps travelling along the trail toward the goal */
+    var rm=$('#roadmap'), rmNodes=$$('.rm-node',rm||document), rmDots=$$('.rm-track i',rm||document);
+    function rmWave(){
+      if(!rmDots.length) return;
+      A({targets:rmDots,
+        opacity:[{value:1,duration:320},{value:.35,duration:520}],
+        scale:[{value:1.9,duration:320},{value:1,duration:520}],
+        delay:A.stagger(110),endDelay:500,loop:true,easing:'easeInOutSine'});
+    }
+    function playRoadmap(){
+      if(!rm) return;
+      if(!entrance){ rmWave(); return; }
+      A.timeline({easing:'easeOutCubic'})
+        .add({targets:rmNodes[0],opacity:1,translateY:0,duration:700})
+        .add({targets:rmDots,opacity:.35,scale:1,duration:380,delay:A.stagger(75)},'-=250')
+        .add({targets:rmNodes[1],opacity:1,translateY:0,duration:700},'-=250')
+        .finished.then(rmWave);
+    }
+    /* Rotating role line under the name: each phrase slides up and out, the next one rises in */
+    var roleEl=$('.rw'), roles=['Data Analyst','BI Dashboard Builder','ML Engineer in the making'], ri=0;
+    function roleCycle(){
+      if(!roleEl) return;
+      setTimeout(function next(){
+        A({targets:roleEl,translateY:-14,opacity:0,duration:320,easing:'easeInCubic',complete:function(){
+          ri=(ri+1)%roles.length; roleEl.textContent=roles[ri];
+          A.set(roleEl,{translateY:14,opacity:0});
+          A({targets:roleEl,translateY:0,opacity:1,duration:520,easing:'easeOutBack(1.5)',complete:function(){ setTimeout(next,ri===roles.length-1?3000:2100); }});
+        }});
+      },2200);
+    }
+
+    if(entrance){
+      A.set(rmNodes,{opacity:0,translateY:18});
+      A.set(rmDots,{opacity:0,scale:0});
+    }
+
+    if(entrance){
+      var words=h1.getAttribute('aria-label').split(' ');
+      g.textContent='';
+      words.forEach(function(w){
+        var ws=document.createElement('span'); ws.className='word';
+        w.split('').forEach(function(c){
+          var s=document.createElement('span'); s.className='lt'; s.setAttribute('aria-hidden','true'); s.textContent=c;
+          ws.appendChild(s); chs.push(s);
+        });
+        g.appendChild(ws);
+      });
+      /* a short, gentle drop: the letters start just above their place and stay readable on the way down */
+      A.set(chs,{
+        translateY:function(){return -rand(150,300);},
+        translateX:function(){return rand(-24,24);},
+        rotate:function(){return rand(-32,32);},
+        opacity:0
+      });
+      A.set(heroTargets,{opacity:0,translateY:16});
+      d.classList.remove('wait'); /* inline styles now hold the pre-state, so nothing flashes */
+
+      A.timeline({easing:'easeOutQuad'})
+        .add({
+          targets:chs,
+          translateY:{value:0,duration:1000,easing:'easeOutBack(1.5)'},
+          translateX:{value:0,duration:900,easing:'easeOutCubic'},
+          rotate:{value:0,duration:900,easing:'easeOutCubic'},
+          opacity:{value:1,duration:350,easing:'linear'},
+          delay:A.stagger(45,{start:100})
+        })
+        .add({
+          targets:heroTargets,
+          opacity:1,translateY:0,
+          duration:900,easing:'easeOutCubic',
+          delay:A.stagger(130)
+        },'-=650')
+        .finished.then(function(){ magnetReady=true; playRoadmap(); roleCycle(); });
+    }else{ playRoadmap(); roleCycle(); }
+
+    /* Glow: breathing + cursor-follow parallax */
+    var glow=$('.glow'), glowI=$('.glow i');
+    A({targets:glowI,scale:[1,1.09],opacity:[1,.6],duration:4500,direction:'alternate',loop:true,easing:'easeInOutSine'});
+    var magnetReady=!entrance;
+    if(fine){
+      var hero=$('.hero'), gTick=false, gx=0, gy=0;
+      hero.addEventListener('pointermove',function(e){
+        gx=(e.clientX/innerWidth-.5)*-44; gy=(e.clientY/innerHeight-.5)*-32;
+        if(gTick) return; gTick=true;
+        requestAnimationFrame(function(){
+          gTick=false; A.remove(glow);
+          A({targets:glow,translateX:gx,translateY:gy,duration:1100,easing:'easeOutQuad'});
+        });
+      });
+
+      /* Magnetic Download Resume button */
+      var btn=$('.btn-primary'), cta=$('.cta'), mTick=false, mx=0, my=0, inside=false;
+      cta.addEventListener('pointermove',function(e){
+        if(!magnetReady) return;
+        var r=btn.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+        var dx=e.clientX-cx, dy=e.clientY-cy, dist=Math.hypot(dx,dy);
+        if(dist<120){ mx=dx*.28; my=dy*.4; inside=true; } else { mx=0; my=0; if(!inside) return; inside=false; }
+        if(mTick) return; mTick=true;
+        requestAnimationFrame(function(){
+          mTick=false; A.remove(btn);
+          if(mx||my) A({targets:btn,translateX:mx,translateY:my,duration:300,easing:'easeOutQuad'});
+          else A({targets:btn,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
+        });
+      });
+      cta.addEventListener('pointerleave',function(){
+        if(!magnetReady||!inside) return; inside=false; A.remove(btn);
+        A({targets:btn,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
+      });
+    }
+
+    /* Education boxes: each one drops in from above and lands with a small bounce */
+    if('IntersectionObserver' in window){
+      var edu=$('.edu'), boxes=$$('.edu article');
+      if(edu&&boxes.length){
+        A.set(boxes,{translateY:function(){return -rand(120,180);},rotate:function(i){return i?3:-3;},opacity:0});
+        var eio=new IntersectionObserver(function(es){
+          if(!es[0].isIntersecting) return;
+          eio.disconnect();
+          A({targets:boxes,
+            translateY:{value:0,duration:1100,easing:'easeOutBounce'},
+            rotate:{value:0,duration:900,easing:'easeOutCubic'},
+            opacity:{value:1,duration:300,easing:'linear'},
+            delay:A.stagger(170)});
+        },{threshold:.25});
+        eio.observe(edu);
+      }
+    }
+
+    /* Section headings: words drop in and arrange as they scroll into view */
+    if('IntersectionObserver' in window){
+      var hs=$$('h2[data-split]');
+      hs.forEach(function(h){
+        var parts=h.textContent.split(' ');
+        h.textContent='';
+        parts.forEach(function(w,i){
+          if(i) h.appendChild(document.createTextNode(' '));
+          var s=document.createElement('span'); s.className='w'; s.textContent=w; h.appendChild(s);
+        });
+        A.set($$('.w',h),{
+          translateY:function(){return -rand(18,38);},
+          rotate:function(){return rand(-5,5);},
+          opacity:0
+        });
+      });
+      var hio=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(!e.isIntersecting) return;
+          hio.unobserve(e.target);
+          A({
+            targets:$$('.w',e.target),
+            translateY:{value:0,duration:800,easing:'easeOutBack(1.4)'},
+            rotate:{value:0,duration:700,easing:'easeOutCubic'},
+            opacity:{value:1,duration:350,easing:'linear'},
+            delay:A.stagger(70)
+          });
+        });
+      },{threshold:.4,rootMargin:'0px 0px -8% 0px'});
+      hs.forEach(function(h){hio.observe(h)});
+    }
+  });
+
+  /* ---------- skill playground (Matter.js) ---------- */
+  var pg=$('#pg'), stage=$('#pgStage');
+  if(!reduce && pg && stage){
+    PF.on('Matter',function(){
+      var fontsReady=(document.fonts&&document.fonts.ready)?Promise.race([document.fonts.ready,new Promise(function(r){setTimeout(r,1500)})]):Promise.resolve();
+      fontsReady.then(function(){ try{ initPlayground(window.Matter); }catch(err){ console.error('playground',err); stage.classList.remove('pg-live'); pg.classList.remove('pg-on'); } });
+    });
+  }
+
+  function initPlayground(M){
+    var Engine=M.Engine, Bodies=M.Bodies, Body=M.Body, Composite=M.Composite, Constraint=M.Constraint, Sleeping=M.Sleeping;
+    var CATS=[['prog','Programming'],['analysis','Data analysis'],['db','Databases'],['bi','Business intelligence'],['tools','Tools']];
+    var GAP=6, PADX=12, LABEL=34;
+    var chips=$$('.chip',stage);
+    /* measure while still in static flow, then switch to absolute positioning */
+    var sizes=chips.map(function(c){ return {w:Math.ceil(c.offsetWidth),h:Math.ceil(c.offsetHeight)}; });
+    chips.forEach(function(c,i){ c.style.width=sizes[i].w+'px'; c.style.height=sizes[i].h+'px'; });
+    var chipH=Math.max.apply(null,sizes.map(function(s){return s.h;}));
+    stage.classList.add('pg-live');
+    pg.classList.add('pg-on');
+
+    var cats=CATS.map(function(c){
+      var its=[],maxw=0,tot=0;
+      chips.forEach(function(el,k){ if(el.dataset.cat===c[0]){ its.push(k); maxw=Math.max(maxw,sizes[k].w); tot+=sizes[k].w+GAP; } });
+      return {key:c[0],label:c[1],its:its,maxw:maxw,tot:tot};
+    });
+    /* rough height a pile of this category needs in a bin of width bw (with slack for imperfect packing) */
+    function needH(cat,bw){
+      var avg=cat.tot/cat.its.length, perRow=Math.max(1,Math.floor((bw-PADX*2)/avg));
+      return LABEL+Math.ceil(Math.ceil(cat.its.length/perRow)*(chipH+GAP)*1.3)+14;
+    }
+
+    /* bins: one row of five on wide screens, two columns on tablets, one column on phones */
+    function layout(W){
+      var cols=W>=800?5:(W>=560?2:1), bins=[], rows=[], x, y=0;
+      var groups=[], widthsFor=null;
+      if(cols===5){
+        var mins=cats.map(function(c){return Math.max(c.maxw+PADX*2+4,c.label.length*8+54);}), sum=mins.reduce(function(a,b){return a+b;},0);
+        if(sum>W) cols=2;
+        else{
+          var extra=W-sum, wt=cats.reduce(function(a,c){return a+c.tot;},0);
+          widthsFor=cats.map(function(c,i){return mins[i]+extra*c.tot/wt;});
+          groups=[[0,1,2,3,4]];
+        }
+      }
+      if(cols===2) groups=[[0,1],[2,3],[4]];
+      if(cols===1) groups=cats.map(function(c,i){return [i];});
+      groups.forEach(function(g,gi){
+        var widths=g.map(function(ci){ return widthsFor?widthsFor[ci]:W/g.length; });
+        var rh=0;
+        g.forEach(function(ci,j){ rh=Math.max(rh,needH(cats[ci],widths[j])); });
+        x=0;
+        g.forEach(function(ci,j){ bins.push({ci:ci,row:gi,x:x,y:y,w:widths[j],h:rh}); x+=widths[j]; });
+        rows.push({y:y,h:rh}); y+=rh;
+      });
+      return {bins:bins,rows:rows,H:y};
+    }
+
+    var engine=Engine.create({enableSleeping:true});
+    engine.gravity.y=1.1; engine.positionIterations=8; engine.velocityIterations=6;
+    var W=stage.clientWidth, L=null, walls=[], binEls=[], items=[];
+
+    function build(){
+      L=layout(W);
+      stage.style.height=L.H+'px';
+      /* bins (decorative boxes with a label + count) */
+      binEls.forEach(function(e){ e.remove(); }); binEls=[];
+      L.bins.forEach(function(b){
+        var c=cats[b.ci], el=document.createElement('div');
+        el.className='pg-bin'; el.setAttribute('data-cat',c.key); el.setAttribute('aria-hidden','true');
+        el.style.cssText='left:'+(b.x+3)+'px;top:'+(b.y+3)+'px;width:'+(b.w-6)+'px;height:'+(b.h-6)+'px';
+        el.innerHTML='<b><span>'+c.label+'</span><i>'+c.its.length+'</i></b>';
+        stage.insertBefore(el,stage.firstChild); binEls.push(el);
+      });
+      /* physical walls: each row's walls only collide with that row's chips, so chips fall past the rows above */
+      if(walls.length) Composite.remove(engine.world,walls);
+      walls=[];
+      L.rows.forEach(function(row,r){
+        var f={category:1<<r,mask:0xFFFF}, o={isStatic:true,friction:.6,restitution:.05,collisionFilter:f};
+        var bottom=row.y+row.h;
+        walls.push(Bodies.rectangle(W/2,bottom+30,W+200,60,o));
+        walls.push(Bodies.rectangle(-15,bottom/2-1500,30,bottom+3000,o));
+        walls.push(Bodies.rectangle(W+15,bottom/2-1500,30,bottom+3000,o));
+        L.bins.forEach(function(b){
+          if(b.row===r && b.x>1) walls.push(Bodies.rectangle(b.x,bottom/2-1500,16,bottom+3000,o));
+        });
+      });
+      Composite.add(engine.world,walls);
+      /* chips: upright (infinite inertia) so every label stays readable; collide only inside their own row */
+      if(!items.length){
+        items=chips.map(function(el,i){
+          var s=sizes[i];
+          var b=Bodies.rectangle(W/2,-300,s.w,s.h,{chamfer:{radius:s.h/2},restitution:.12,friction:.45,frictionStatic:.8,frictionAir:.02,density:.0016,slop:.04});
+          Body.setInertia(b,Infinity);
+          Composite.add(engine.world,b);
+          return {el:el,body:b,w:s.w,h:s.h,bin:0};
+        });
+      }
+      items.forEach(function(it){
+        L.bins.forEach(function(b,bi){ if(cats[b.ci].key===it.el.dataset.cat) it.bin=bi; });
+        var r=L.bins[it.bin].row;
+        it.body.collisionFilter.category=1<<r; it.body.collisionFilter.mask=1<<r;
+      });
+    }
+    build();
+
+    function render(){
+      for(var i=0;i<items.length;i++){
+        var it=items[i], p=it.body.position;
+        it.el.style.transform='translate3d('+(p.x-it.w/2).toFixed(1)+'px,'+(p.y-it.h/2).toFixed(1)+'px,0)';
+      }
+    }
+    /* each chip appears just above the stage and drops into the bin for its group */
+    function drop(){
+      items.forEach(function(it,k){
+        var b=it.body, bn=L.bins[it.bin];
+        Sleeping.set(b,false);
+        Body.setPosition(b,{x:rand(bn.x+it.w/2+8,Math.max(bn.x+it.w/2+9,bn.x+bn.w-it.w/2-8)),y:-it.h-k*34-rand(0,20)});
+        Body.setVelocity(b,{x:0,y:rand(0,2)});
+      });
+      render(); start();
+    }
+
+    /* loop: fixed 60Hz steps, paused when off-screen, tab hidden, or everything is asleep */
+    var raf=0,running=false,last=0,acc=0,idle=0,visible=false,dragging=null,STEP=1000/60;
+    function tick(t){
+      if(!running) return;
+      acc+=Math.min(t-last,50); last=t;
+      var n=0;
+      while(acc>=STEP && n<3){ Engine.update(engine,STEP); acc-=STEP; n++; }
+      render();
+      var asleep=!dragging && items.every(function(it){return it.body.isSleeping;});
+      idle=asleep?idle+1:0;
+      if(idle>45){ stop(); return; }
+      raf=requestAnimationFrame(tick);
+    }
+    function start(){
+      idle=0;
+      if(running||!visible||document.hidden) return;
+      running=true; last=performance.now(); acc=0; raf=requestAnimationFrame(tick);
+    }
+    function stop(){ running=false; cancelAnimationFrame(raf); }
+
+    var dropped=false;
+    var vio=new IntersectionObserver(function(es){
+      visible=es[0].isIntersecting;
+      if(visible){ if(!dropped){ dropped=true; drop(); } else start(); } else stop();
+    },{threshold:.2});
+    vio.observe(stage);
+    document.addEventListener('visibilitychange',function(){ if(document.hidden) stop(); else start(); });
+    $('#pgDrop').addEventListener('click',function(){ visible=true; drop(); });
+
+    /* dragging: a soft spring between the pointer and the grabbed chip, kept inside its own bin */
+    function local(it,e){
+      var r=stage.getBoundingClientRect(), bn=L.bins[it.bin];
+      return {x:Math.max(bn.x+it.w/2+4,Math.min(bn.x+bn.w-it.w/2-4,e.clientX-r.left)),
+              y:Math.max(bn.y-90,Math.min(bn.y+bn.h-it.h/2-4,e.clientY-r.top))};
+    }
+    items.forEach(function(it){
+      var el=it.el;
+      el.addEventListener('pointerdown',function(e){
+        if(dragging||(e.pointerType==='mouse'&&e.button!==0)) return;
+        e.preventDefault();
+        try{el.setPointerCapture(e.pointerId);}catch(_){}
+        var pt=local(it,e), b=it.body;
+        Sleeping.set(b,false);
+        var c=Constraint.create({pointA:{x:pt.x,y:pt.y},bodyB:b,pointB:{x:0,y:0},stiffness:.12,damping:.2,length:0});
+        Composite.add(engine.world,c);
+        dragging={id:e.pointerId,item:it,c:c};
+        el.classList.add('grab');
+        start();
+      });
+      el.addEventListener('pointermove',function(e){
+        if(!dragging||dragging.id!==e.pointerId||dragging.item!==it) return;
+        var pt=local(it,e); dragging.c.pointA.x=pt.x; dragging.c.pointA.y=pt.y;
+        Sleeping.set(it.body,false);
+      });
+      function release(e){
+        if(!dragging||dragging.item!==it||(e&&e.pointerId!==undefined&&dragging.id!==e.pointerId)) return;
+        Composite.remove(engine.world,dragging.c);
+        var v=it.body.velocity, sp=Math.hypot(v.x,v.y);
+        if(sp>18) Body.setVelocity(it.body,{x:v.x*18/sp,y:v.y*18/sp}); /* cap the toss */
+        el.classList.remove('grab'); dragging=null; start();
+      }
+      el.addEventListener('pointerup',release);
+      el.addEventListener('pointercancel',release);
+      el.addEventListener('lostpointercapture',release);
+      el.addEventListener('contextmenu',function(e){e.preventDefault();});
+    });
+
+    /* width change (rotate phone, resize window): re-flow the bins and let everything drop in again */
+    if('ResizeObserver' in window){
+      new ResizeObserver(function(){
+        var nw=stage.clientWidth;
+        if(nw===W||!nw) return;
+        W=nw; build(); if(dropped) drop();
+      }).observe(stage);
+    }
+    render();
+  }
+})();
+</script>
+</body>
+</html>
