@@ -165,7 +165,7 @@ h2 .w{display:inline-block;will-change:transform,opacity}
 }
 
 /* project */
-\1.bi{margin-top:44px;border:1px solid var(--line);border-radius:24px;background:var(--surface);padding:clamp(16px,3vw,28px);box-shadow:0 30px 80px -44px var(--glow)}
+.bi{margin-top:36px;border:1px solid var(--line);border-radius:24px;background:var(--surface);padding:clamp(16px,3vw,28px);box-shadow:0 30px 80px -44px var(--glow)}
 .bi-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px 16px;flex-wrap:wrap}
 .bi-head b{display:block;font:500 17px var(--display);letter-spacing:-.01em}
 .bi-head div span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
@@ -264,15 +264,35 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .lgb .v{font:400 12px var(--mono);color:var(--text)}
 @media(max-width:900px){.bi-kpis{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.bi-grid{grid-template-columns:1fr}.bi-insights{grid-template-columns:1fr}.bi-kpis{grid-template-columns:1fr 1fr}.bi-kpi:last-child{grid-column:1/-1}.donut{grid-template-columns:1fr;justify-items:center}.lgs{width:100%}.pill.reset{margin-left:0}.pill,.dd summary{min-height:40px}}
-.project h3{font:500 clamp(21px,2.6vw,26px)/1.2 var(--display);letter-spacing:-.02em}
-.project p{color:var(--muted);margin-top:14px;font-size:16px}
+.my-projects-box{position:relative;display:inline-block;padding:14px 28px;margin-bottom:28px;border:1px solid var(--line);border-radius:20px;background:rgba(11,11,15,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),background .35s;overflow:hidden}
+.my-projects-box:hover{border-color:hsl(var(--h) 100% 62% / .6);background:linear-gradient(180deg,rgba(22,26,38,.85),rgba(11,11,15,.8));box-shadow:0 16px 40px -12px hsl(var(--h) 100% 62% / .35), 0 0 24px -2px hsl(var(--h) 100% 62% / .25)}
+.my-projects-box::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(350px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .2),transparent 70%);opacity:0;pointer-events:none;transition:opacity .3s}
+.my-projects-box:hover::before{opacity:1}
+.my-projects-title{font:600 clamp(24px,3.8vw,36px)/1.15 var(--display);letter-spacing:-.025em;color:var(--text);margin:0;display:flex;align-items:center;gap:12px}
+.my-projects-title::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
+
+.project-full-box{position:relative;padding:clamp(24px,4vw,44px);border:1px solid var(--line);border-radius:28px;background:rgba(11,11,15,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),background .35s;overflow:hidden}
+.project-full-box:hover{border-color:hsl(var(--h) 100% 62% / .5);background:linear-gradient(180deg,rgba(16,19,27,.8),rgba(11,11,15,.7));box-shadow:0 28px 70px -20px hsl(var(--h) 100% 62% / .25), 0 0 35px -4px hsl(var(--h) 100% 62% / .18)}
+.project-full-box::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(700px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .12),transparent 70%);opacity:0;pointer-events:none;transition:opacity .3s}
+.project-full-box:hover::before{opacity:1}
+
+.proj-hero-heading{font:500 clamp(28px,4.4vw,44px)/1.12 var(--display);letter-spacing:-.03em;max-width:22ch;margin-bottom:24px}
+.proj-copy h3{font:500 clamp(21px,2.6vw,26px)/1.2 var(--display);letter-spacing:-.02em}
+.proj-copy p{color:var(--muted);margin-top:14px;font-size:16px}
 .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;list-style:none;padding:0}
 .tags li{position:relative;display:inline-flex;align-items:center;justify-content:center;font:500 13px var(--mono);color:var(--text);background:rgba(16,16,23,.75);border:1px solid var(--line);padding:8px 16px;border-radius:12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:default;transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease,background .25s ease,color .25s ease;overflow:hidden}
 .tags li:hover{border-color:hsl(var(--h) 100% 62% / .65);background:hsl(var(--h) 100% 62% / .08);color:#fff;box-shadow:0 8px 24px -4px hsl(var(--h) 100% 62% / .35), 0 0 16px hsl(var(--h) 100% 62% / .2);transform:translateY(-2px);text-shadow:0 0 12px hsl(var(--h) 100% 62% / .4)}
 .tags li::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(140px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .22),transparent 70%);opacity:0;pointer-events:none;transition:opacity .2s}
 .tags li:hover::before{opacity:1}
-.link{display:inline-flex;align-items:center;gap:6px;color:var(--blue);margin-top:20px;font-weight:500;font-size:15px;min-height:44px}
-.link:hover{text-decoration:underline;text-underline-offset:4px}
+
+.github-box{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:12px 24px;border:1px solid hsl(var(--h) 100% 62% / .45);border-radius:14px;background:rgba(16,16,23,.85);color:var(--blue);font:500 15px var(--mono);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);cursor:pointer;text-decoration:none;transition:border-color .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),background .3s,color .3s;overflow:hidden;z-index:2}
+.github-box:hover{border-color:hsl(var(--h) 100% 62% / .85);background:hsl(var(--h) 100% 62% / .14);color:#ffffff;box-shadow:0 12px 30px -6px hsl(var(--h) 100% 62% / .4), 0 0 20px -2px hsl(var(--h) 100% 62% / .3);transform:translateY(-2px);text-decoration:none}
+.github-box::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(200px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .28),transparent 70%);opacity:0;pointer-events:none;transition:opacity .25s}
+.github-box:hover::before{opacity:1}
+.github-box svg{width:15px;height:15px;transition:transform .25s ease}
+.github-box:hover svg{transform:translateX(3px) translateY(-1px)}
+
+@media(max-width:700px){.project-full-box{padding:20px 16px;border-radius:20px}.my-projects-box{padding:12px 20px;border-radius:16px}.github-box{width:100%;justify-content:center;min-height:44px}}
 
 /* skills */
 .pg{margin-top:44px}
@@ -402,9 +422,11 @@ html.rv-on .rv.in{opacity:1;transform:none}
   <!-- 3. PROJECT -->
   <section id="work">
     <div class="wrap">
-      <p class="label rv">Selected project</p>
-      <h2 data-split>Retail sales, end&nbsp;to&nbsp;end.</h2>
-      <div class="project rv">
+      <div class="my-projects-box rv">
+        <h2 class="my-projects-title" data-split>My Projects</h2>
+      </div>
+      <div class="project-full-box rv">
+        <h2 class="proj-hero-heading" data-split>Retail sales, end&nbsp;to&nbsp;end.</h2>
         <div class="proj-copy">
           <h3>Retail Sales Performance &amp; Profitability Analytics</h3>
           <p>An end-to-end analysis of sales, profitability, order status and regional performance — from messy raw data to an interactive Power BI dashboard with KPI cards and slicers.</p>
@@ -412,7 +434,10 @@ html.rv-on .rv.in{opacity:1;transform:none}
           <ul class="tags" aria-label="Technologies used">
             <li>Python</li><li>Pandas</li><li>NumPy</li><li>Power BI</li><li>EDA</li>
           </ul>
-          <a class="link" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener">View on GitHub ›</a>
+          <a class="github-box" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener">
+            <span>View on GitHub</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </a>
         </div>
         <div class="bi" id="bi" role="group" aria-label="Interactive sales analytics dashboard">
           <div class="bi-head">
@@ -1304,7 +1329,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
 
 /* interactive cursor-tracking glow for about section, stat matrix boxes & project tech tags */
 (function(){
-  var cards = document.querySelectorAll('.about-card, .stat, .tags li');
+  var cards = document.querySelectorAll('.about-card, .stat, .tags li, .project-full-box, .my-projects-box, .github-box');
   cards.forEach(function(card){
     card.addEventListener('pointermove', function(e){
       var r = card.getBoundingClientRect();
