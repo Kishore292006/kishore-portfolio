@@ -40,12 +40,12 @@
   --line:rgba(255,255,255,.09);
   --text:#f5f5f7;
   --muted:#a1a1a6;
-  /* one hue (Lime) drives the whole accent: change --h, --bl and --on to re-colour the site */
-  --h:76; --bl:52%; --on:#0b1300;
-  --blue:hsl(var(--h) 100% 62%);
+  /* one hue (Netflix Red) drives the whole accent: change --h, --bl and --on to re-colour the site */
+  --h:357; --bl:46%; --on:#ffffff;
+  --blue:hsl(var(--h) 100% 60%);
   --blue-deep:hsl(var(--h) 100% var(--bl));
   --tint:hsl(var(--h) 100% 82%);
-  --glow:hsl(var(--h) 100% 62% / .22);
+  --glow:hsl(var(--h) 100% 55% / .26);
   --display:"SF Pro Display","Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   --body:"SF Pro Text","Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   --mono:"SF Mono","JetBrains Mono",ui-monospace,Menlo,monospace;
@@ -144,7 +144,7 @@ h2 .w{display:inline-block;will-change:transform,opacity}
 
 /* about card & stat matrix boxes */
 .about-card{position:relative;padding:clamp(28px,4.5vw,48px);border:1px solid var(--line);border-radius:28px;background:rgba(11,11,15,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),background .35s;overflow:hidden}
-.about-card:hover{border-color:hsl(var(--h) 100% 62% / .45);background:linear-gradient(180deg,rgba(18,20,28,.8),rgba(11,11,15,.7));box-shadow:0 24px 60px -20px hsl(var(--h) 100% 62% / .2), 0 0 30px -4px hsl(var(--h) 100% 62% / .12)}
+.about-card:hover{border-color:hsl(var(--h) 100% 62% / .45);background:linear-gradient(180deg,rgba(26,14,17,.85),rgba(11,11,15,.7));box-shadow:0 24px 60px -20px hsl(var(--h) 100% 62% / .2), 0 0 30px -4px hsl(var(--h) 100% 62% / .12)}
 .about-card::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(600px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .08),transparent 70%);opacity:0;pointer-events:none;transition:opacity .3s}
 .about-card:hover::before{opacity:1}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:560px;margin-top:44px}
@@ -265,14 +265,14 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 @media(max-width:900px){.bi-kpis{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.bi-grid{grid-template-columns:1fr}.bi-insights{grid-template-columns:1fr}.bi-kpis{grid-template-columns:1fr 1fr}.bi-kpi:last-child{grid-column:1/-1}.donut{grid-template-columns:1fr;justify-items:center}.lgs{width:100%}.pill.reset{margin-left:0}.pill,.dd summary{min-height:40px}}
 .my-projects-box{position:relative;display:inline-block;padding:14px 28px;margin-bottom:28px;border:1px solid var(--line);border-radius:20px;background:rgba(11,11,15,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),background .35s;overflow:hidden}
-.my-projects-box:hover{border-color:hsl(var(--h) 100% 62% / .6);background:linear-gradient(180deg,rgba(22,26,38,.85),rgba(11,11,15,.8));box-shadow:0 16px 40px -12px hsl(var(--h) 100% 62% / .35), 0 0 24px -2px hsl(var(--h) 100% 62% / .25)}
+.my-projects-box:hover{border-color:hsl(var(--h) 100% 62% / .6);background:linear-gradient(180deg,rgba(28,14,18,.85),rgba(11,11,15,.8));box-shadow:0 16px 40px -12px hsl(var(--h) 100% 62% / .35), 0 0 24px -2px hsl(var(--h) 100% 62% / .25)}
 .my-projects-box::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(350px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .2),transparent 70%);opacity:0;pointer-events:none;transition:opacity .3s}
 .my-projects-box:hover::before{opacity:1}
 .my-projects-title{font:600 clamp(24px,3.8vw,36px)/1.15 var(--display);letter-spacing:-.025em;color:var(--text);margin:0;display:flex;align-items:center;gap:12px}
 .my-projects-title::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue)}
 
 .project-full-box{position:relative;padding:clamp(24px,4vw,44px);border:1px solid var(--line);border-radius:28px;background:rgba(11,11,15,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),background .35s;overflow:hidden}
-.project-full-box:hover{border-color:hsl(var(--h) 100% 62% / .5);background:linear-gradient(180deg,rgba(16,19,27,.8),rgba(11,11,15,.7));box-shadow:0 28px 70px -20px hsl(var(--h) 100% 62% / .25), 0 0 35px -4px hsl(var(--h) 100% 62% / .18)}
+.project-full-box:hover{border-color:hsl(var(--h) 100% 62% / .5);background:linear-gradient(180deg,rgba(24,14,16,.8),rgba(11,11,15,.7));box-shadow:0 28px 70px -20px hsl(var(--h) 100% 62% / .25), 0 0 35px -4px hsl(var(--h) 100% 62% / .18)}
 .project-full-box::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(700px circle at var(--x,50%) var(--y,50%),hsl(var(--h) 100% 62% / .12),transparent 70%);opacity:0;pointer-events:none;transition:opacity .3s}
 .project-full-box:hover::before{opacity:1}
 
@@ -590,7 +590,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
   /* ---------- hero background: a drifting neural network that reaches toward the cursor ---------- */
   (function(){
     var cv=$('#net'), ctx=cv&&cv.getContext&&cv.getContext('2d'); if(!ctx) return;
-    var hero=cv.parentNode, W=0, H=0, N=[], pulses=[], mouse={x:-999,y:-999}, hue=76, frames=0, raf=0, running=false, onScreen=true, LINK=135;
+    var hero=cv.parentNode, W=0, H=0, N=[], pulses=[], mouse={x:-999,y:-999}, hue=357, frames=0, raf=0, running=false, onScreen=true, LINK=135;
     function readHue(){ var h=parseFloat(getComputedStyle(d).getPropertyValue('--h')); if(!isNaN(h)) hue=h; }
     function size(){
       var r=hero.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);

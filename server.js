@@ -136,11 +136,11 @@ function page(title, heading, message, linkText = 'Back to the homepage') {
 <style>
 html,body{height:100%;margin:0}
 body{background:#000;color:#cfd8e3;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;display:grid;place-items:center;text-align:center;padding:24px}
-h1{margin:0;font-size:clamp(72px,18vw,160px);line-height:1;color:#2f81ff;letter-spacing:-.04em}
+h1{margin:0;font-size:clamp(72px,18vw,160px);line-height:1;color:#e50914;letter-spacing:-.04em}
 h2{margin:.2em 0 .3em;font-weight:600;color:#fff;font-size:22px}
 p{margin:0 0 1.6em;color:#8b98a9}
-a{display:inline-block;color:#fff;background:#2f81ff;padding:.65em 1.4em;border-radius:999px;text-decoration:none;font-weight:600}
-a:hover,a:focus-visible{background:#5a9bff;outline:none}
+a{display:inline-block;color:#fff;background:#e50914;padding:.65em 1.4em;border-radius:999px;text-decoration:none;font-weight:600}
+a:hover,a:focus-visible{background:#ff2a35;outline:none}
 </style></head><body><main>
 <h1>${heading}</h1><h2>${title}</h2><p>${message}</p><a href="/">${linkText}</a>
 </main></body></html>`;
