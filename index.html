@@ -458,15 +458,24 @@ html.rv-on .rv.in{opacity:1;transform:none}
           <ul class="tags" aria-label="Technologies used">
             <li>Python</li><li>Pandas</li><li>NumPy</li><li>Power BI</li><li>EDA</li>
           </ul>
-          <a class="github-box" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener">
-            <span>View on GitHub</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-          </a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+            <a class="github-box" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener">
+              <span>View on GitHub</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+            <button type="button" class="github-box sales-preview-btn" id="openSalesModal" style="color:var(--text);border-color:var(--line)">
+              <span>View Power BI Report</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </button>
+          </div>
         </div>
         <div class="bi" id="bi" role="group" aria-label="Interactive sales analytics dashboard">
           <div class="bi-head">
             <div><b>Sales Analytics Dashboard</b><span>Retail Sales Performance · 2024–2025 · 49,975 cleaned records</span></div>
-            <span class="bi-tag">Power BI · interactive</span>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <span class="bi-tag">Power BI · interactive</span>
+              <button type="button" class="pill" id="biSalesModalBtn" style="font-size:12px;padding:4px 12px;min-height:28px">Full View</button>
+            </div>
           </div>
           <div class="bi-filters" role="toolbar" aria-label="Dashboard filters">
             <div class="fg"><span class="fl">Year</span><button type="button" class="pill" data-sl="y" data-i="0" aria-pressed="false">2024</button><button type="button" class="pill" data-sl="y" data-i="1" aria-pressed="false">2025</button></div>
@@ -652,6 +661,27 @@ html.rv-on .rv.in{opacity:1;transform:none}
       </div>
     </div>
   </section>
+
+<!-- Retail Sales Power BI Dashboard Modal -->
+<div class="nf-modal" id="salesModal" role="dialog" aria-modal="true" aria-label="Retail Sales Power BI Dashboard Preview" hidden>
+  <div class="nf-backdrop" id="salesModalBackdrop"></div>
+  <div class="nf-dialog">
+    <div class="nf-dialog-head">
+      <div>
+        <h3>Retail Sales Performance &amp; Profitability — Power BI Dashboard</h3>
+        <p>Interactive dashboard created in Microsoft Power BI Desktop</p>
+      </div>
+      <button type="button" class="nf-close" id="salesModalClose" aria-label="Close modal">✕</button>
+    </div>
+    <div class="nf-dialog-body">
+      <img src="images/sales_dashboard.png" alt="Retail Sales Performance and Profitability Analytics Power BI Dashboard screenshot with KPI cards, monthly sales trend, category and regional performance, channel breakdown, and key insights" loading="lazy">
+    </div>
+    <div class="nf-dialog-foot">
+      <span>Key Metrics: 49,975 Cleaned Records · ₹586.51M Sales · ₹151.50M Profit · 25.83% Margin</span>
+      <a class="btn btn-primary" href="https://github.com/Kishore292006/retail-sales-performance-analytics" target="_blank" rel="noopener" style="min-height:38px;padding:8px 18px;font-size:13px">View Repository</a>
+    </div>
+  </div>
+</div>
 
 <!-- Netflix Power BI Dashboard Modal -->
 <div class="nf-modal" id="netflixModal" role="dialog" aria-modal="true" aria-label="Netflix Power BI Dashboard Preview" hidden>
@@ -1026,6 +1056,24 @@ html.rv-on .rv.in{opacity:1;transform:none}
       },{threshold:.2});
       kio.observe(root);
     }else revealed=true;
+
+    var sModal=$('#salesModal'), sOpenBtn=$('#openSalesModal'), sModalBtn=$('#biSalesModalBtn'), sCloseBtn=$('#salesModalClose'), sBackdrop=$('#salesModalBackdrop');
+    function setSalesModal(open){
+      if(!sModal) return;
+      sModal.hidden=!open;
+      if(open) {
+        requestAnimationFrame(function(){ sModal.classList.add('is-open'); });
+        document.body.style.overflow='hidden';
+      } else {
+        sModal.classList.remove('is-open');
+        document.body.style.overflow='';
+      }
+    }
+    if(sOpenBtn) sOpenBtn.addEventListener('click',function(){ setSalesModal(true); });
+    if(sModalBtn) sModalBtn.addEventListener('click',function(){ setSalesModal(true); });
+    if(sCloseBtn) sCloseBtn.addEventListener('click',function(){ setSalesModal(false); });
+    if(sBackdrop) sBackdrop.addEventListener('click',function(){ setSalesModal(false); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&sModal&&!sModal.hidden) setSalesModal(false); });
   })();
 
 
