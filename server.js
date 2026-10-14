@@ -22,7 +22,7 @@ const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(ROOT, 'data'));
 const STATS_FILE = path.join(DATA_DIR, 'stats.json');
 const PDF_NAME = 'Mattapalli_Kishore_Resume.pdf';
 const PDF_ROUTE = '/' + PDF_NAME;
-const ASSET_DIRS = ['assets', 'public']; // served under /assets/* and /public/* if they exist
+const ASSET_DIRS = ['assets', 'public', 'images']; // served under /assets/*, /public/* and /images/* if they exist
 const MAX_CACHED_BYTES = 2 * 1024 * 1024; // compress-and-cache ceiling for text files
 
 const MIME = {

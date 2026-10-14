@@ -23,7 +23,7 @@ npm start            # or: node server.js
 |-------|-------------|
 | `GET /`, `/index.html` | The site (`no-cache`, ETag, gzip/brotli) |
 | `GET /Mattapalli_Kishore_Resume.pdf` | Resume, inline. Add `?download=1` to force a download. Counted. |
-| `GET /assets/*`, `/public/*` | Static files, only if those folders exist (1 day cache) |
+| `GET /assets/*`, `/public/*`, `/images/*` | Static files, only if those folders exist (1 day cache) |
 | `GET /api/stats` | `{"resumeDownloads": n, "since": "<iso>"}` (`no-store`) |
 | `GET /api/health` | `{"status":"ok","uptime":<seconds>}` |
 
