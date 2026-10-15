@@ -55,7 +55,7 @@
 *{box-sizing:border-box;margin:0}
 html{background:var(--bg);scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%}
 body{background:transparent;color:var(--text);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;position:relative}
-.bg-scroll-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;display:block}
+.bg-scroll-canvas{position:fixed;inset:0;width:100vw;height:100vh;z-index:-2;pointer-events:none;display:block;image-rendering:-webkit-optimize-contrast;image-rendering:high-quality;filter:contrast(1.06) brightness(1.02)}
 main,footer{position:relative;z-index:1}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
@@ -386,6 +386,66 @@ html.rv-on .rv.in{opacity:1;transform:none}
 #netflixTrendSvg svg text.col-label{fill:var(--text);font:500 10px var(--mono);text-anchor:middle}
 #netflixTrendSvg svg text.col-year{fill:var(--muted);font:400 10.5px var(--mono);text-anchor:middle}
 @media(max-width:700px){.nf-dialog-body{padding:8px}.nf-dialog-head{padding:12px 16px}.nf-dialog-foot{padding:12px 16px}}
+@media(min-width:960px){
+  .hero{
+    place-items:center end;
+    text-align:left;
+  }
+  main .wrap{
+    max-width:min(570px,42vw);
+    margin-left:auto;
+    margin-right:clamp(20px,3.5vw,50px);
+    padding-left:0;
+    padding-right:0;
+  }
+  .hero .wrap{
+    width:100%;
+    max-width:min(570px,42vw);
+    margin-left:auto;
+    margin-right:clamp(20px,3.5vw,50px);
+  }
+  .hero .lede{
+    margin:24px 0 0;
+  }
+  .hero .cta{
+    justify-content:flex-start;
+  }
+  .hero .roadmap{
+    margin:44px 0 0;
+    justify-content:flex-start;
+  }
+  .scroll-hint{
+    left:auto;
+    right:clamp(30px,5vw,70px);
+    transform:none;
+  }
+  .glow i{
+    left:24%;
+  }
+  .contact{
+    text-align:left;
+  }
+  .contact h2, .contact .sub{
+    margin-inline:0;
+  }
+  .contact .channels{
+    justify-content:flex-start;
+  }
+  footer .wrap{
+    max-width:min(570px,42vw);
+    margin-left:auto;
+    margin-right:clamp(20px,3.5vw,50px);
+    text-align:left;
+    padding-left:0;
+    padding-right:0;
+  }
+}
+@media(min-width:1400px){
+  main .wrap, .hero .wrap, footer .wrap{
+    max-width:640px;
+    margin-right:clamp(28px,4vw,64px);
+  }
+}
 </style>
 </head>
 <body>
@@ -1947,26 +2007,51 @@ html.rv-on .rv.in{opacity:1;transform:none}
     var ih = img.naturalHeight || img.height;
     if (!iw || !ih) return;
 
-    var scale = Math.max(cw / iw, ch / ih);
+    var isDesktop = window.innerWidth >= 960;
+    var baseScale = Math.max(cw / iw, ch / ih);
+    var scale = isDesktop ? (baseScale * 1.30) : baseScale;
     var sw = cw / scale;
     var sh = ch / scale;
-    var sx = (iw - sw) / 2;
-    var sy = (ih - sh) / 2;
+
+    var sx, sy;
+    if (isDesktop) {
+      var targetKishoreX = cw * 0.24;
+      var kishoreCenterSource = iw * 0.5;
+      sx = kishoreCenterSource - (targetKishoreX / scale);
+      sx = Math.max(0, Math.min(iw - sw, sx));
+      sy = Math.max(0, Math.min(ih - sh, (ih - sh) * 0.35));
+    } else {
+      sx = (iw - sw) / 2;
+      sy = (ih - sh) / 2;
+    }
 
     ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, cw, ch);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(img, Math.round(sx), Math.round(sy), Math.round(sw), Math.round(sh), 0, 0, cw, ch);
 
-    var vig = ctx.createRadialGradient(cw * 0.5, ch * 0.45, Math.min(cw, ch) * 0.25, cw * 0.5, ch * 0.5, Math.max(cw, ch) * 0.85);
-    vig.addColorStop(0, 'rgba(0, 0, 0, 0.4)');
-    vig.addColorStop(1, 'rgba(0, 0, 0, 0.78)');
-    ctx.fillStyle = vig;
-    ctx.fillRect(0, 0, cw, ch);
+    if (isDesktop) {
+      var grad = ctx.createLinearGradient(0, 0, cw, 0);
+      grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      grad.addColorStop(0.38, 'rgba(0, 0, 0, 0.04)');
+      grad.addColorStop(0.52, 'rgba(0, 0, 0, 0.38)');
+      grad.addColorStop(0.70, 'rgba(0, 0, 0, 0.82)');
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0.92)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, cw, ch);
+    } else {
+      var vig = ctx.createRadialGradient(cw * 0.5, ch * 0.42, Math.min(cw, ch) * 0.22, cw * 0.5, ch * 0.5, Math.max(cw, ch) * 0.85);
+      vig.addColorStop(0, 'rgba(0, 0, 0, 0.16)');
+      vig.addColorStop(1, 'rgba(0, 0, 0, 0.74)');
+      ctx.fillStyle = vig;
+      ctx.fillRect(0, 0, cw, ch);
+    }
 
     renderedFrame = frameIdx;
   }
 
   function resize() {
-    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var dpr = Math.max(1, Math.min(2.5, window.devicePixelRatio || 1));
     var w = window.innerWidth;
     var h = window.innerHeight;
     var pw = Math.round(w * dpr);
@@ -1975,6 +2060,8 @@ html.rv-on .rv.in{opacity:1;transform:none}
       cv.width = pw;
       cv.height = ph;
     }
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     if (firstLoaded) {
       render(renderedFrame > 0 ? renderedFrame : 1);
     }
