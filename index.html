@@ -2155,26 +2155,29 @@ html.rv-on .rv.in{opacity:1;transform:none}
     ctx.imageSmoothingQuality = 'high';
 
     if (isDesktop) {
-      // Shift background image towards the left so Kishore is framed clearly on the left
-      var scale = baseScale * 1.10;
+      // Shift background image towards the left so Kishore is totally visible on the left
+      var scale = ch / ih;
+      if (cw / iw > scale) scale = Math.max(scale, (cw / iw) * 0.85);
       var dw = Math.round(iw * scale);
       var dh = Math.round(ih * scale);
-      var dx = -Math.round(cw * 0.065);
-      if (dx + dw < cw) dx = cw - dw;
-      if (dx > 0) dx = 0;
-      var dy = Math.round((ch - dh) * 0.35);
-      if (dy + dh < ch) dy = ch - dh;
-      if (dy > 0) dy = 0;
+      // Center Kishore (source x~980) on the left quarter of the screen (~25% of screen width)
+      var targetX = cw * 0.25;
+      var kishoreCenterSource = 980;
+      var dx = Math.round(targetX - kishoreCenterSource * scale);
+      if (dx + 550 * scale < 0) {
+        dx = -Math.round(550 * scale);
+      }
+      var dy = Math.round((ch - dh) * 0.2);
 
       ctx.drawImage(img, 0, 0, iw, ih, dx, dy, dw, dh);
 
-      // Smooth horizontal gradient: keeps Kishore on the left clear and thick, darkening towards right for text contrast
+      // Smooth horizontal gradient: keeps Kishore totally clear on left, darkening towards right for text contrast
       var grad = ctx.createLinearGradient(0, 0, cw, 0);
       grad.addColorStop(0, 'rgba(0, 0, 0, 0.02)');
-      grad.addColorStop(0.24, 'rgba(0, 0, 0, 0.08)');
-      grad.addColorStop(0.44, 'rgba(0, 0, 0, 0.36)');
-      grad.addColorStop(0.68, 'rgba(0, 0, 0, 0.76)');
-      grad.addColorStop(1, 'rgba(0, 0, 0, 0.90)');
+      grad.addColorStop(0.32, 'rgba(0, 0, 0, 0.06)');
+      grad.addColorStop(0.52, 'rgba(0, 0, 0, 0.38)');
+      grad.addColorStop(0.72, 'rgba(0, 0, 0, 0.82)');
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0.94)');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, cw, ch);
     } else {
