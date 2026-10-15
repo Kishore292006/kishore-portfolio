@@ -555,7 +555,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 4 19 11 12 18 5 11 12 4"></polygon></svg>
           Explore Live Projects ↓
         </a>
-        <a class="btn btn-ghost" href="Mattapalli_Kishore_Resume.pdf" download="Mattapalli_Kishore_Resume.pdf">
+        <a class="btn btn-primary" href="Mattapalli_Kishore_Resume.pdf" download="Mattapalli_Kishore_Resume.pdf">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
           Download Resume
         </a>
@@ -1812,24 +1812,36 @@ html.rv-on .rv.in{opacity:1;transform:none}
         });
       });
 
-      /* Magnetic Download Resume button */
-      var btn=$('.btn-primary'), cta=$('.cta'), mTick=false, mx=0, my=0, inside=false;
-      cta.addEventListener('pointermove',function(e){
-        if(!magnetReady) return;
-        var r=btn.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
-        var dx=e.clientX-cx, dy=e.clientY-cy, dist=Math.hypot(dx,dy);
-        if(dist<120){ mx=dx*.28; my=dy*.4; inside=true; } else { mx=0; my=0; if(!inside) return; inside=false; }
-        if(mTick) return; mTick=true;
-        requestAnimationFrame(function(){
-          mTick=false; A.remove(btn);
-          if(mx||my) A({targets:btn,translateX:mx,translateY:my,duration:300,easing:'easeOutQuad'});
-          else A({targets:btn,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
+      /* Magnetic CTA buttons */
+      var cta=$('.cta'), ctaBtns=$$('.cta .btn');
+      if(cta&&ctaBtns.length){
+        cta.addEventListener('pointermove',function(e){
+          if(!magnetReady) return;
+          ctaBtns.forEach(function(b){
+            var r=b.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2;
+            var dx=e.clientX-cx, dy=e.clientY-cy, dist=Math.hypot(dx,dy);
+            if(dist<120){
+              b._inside=true;
+              A.remove(b);
+              A({targets:b,translateX:dx*.28,translateY:dy*.4,duration:300,easing:'easeOutQuad'});
+            }else if(b._inside){
+              b._inside=false;
+              A.remove(b);
+              A({targets:b,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
+            }
+          });
         });
-      });
-      cta.addEventListener('pointerleave',function(){
-        if(!magnetReady||!inside) return; inside=false; A.remove(btn);
-        A({targets:btn,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
-      });
+        cta.addEventListener('pointerleave',function(){
+          if(!magnetReady) return;
+          ctaBtns.forEach(function(b){
+            if(b._inside){
+              b._inside=false;
+              A.remove(b);
+              A({targets:b,translateX:0,translateY:0,duration:900,easing:'easeOutElastic(1,.5)'});
+            }
+          });
+        });
+      }
     }
 
     /* Education boxes: each one drops in from above and lands with a small bounce */
