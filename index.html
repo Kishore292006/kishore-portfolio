@@ -389,19 +389,125 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .bi-ecom{border-color:rgba(14,165,233,.25)}
 .ecom-nav-wrapper{margin:24px 0 18px}
 .ecom-nav-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
-.ecom-nav-title small{font:600 11.5px/1 var(--mono);color:#38bdf8;letter-spacing:.12em;text-transform:uppercase}
-.ecom-nav-title span{font:400 12px/1 var(--mono);color:var(--muted)}
-.ecom-tabs-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.ecom-tab-pill{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(18,22,32,.75);color:var(--muted);cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-align:left;position:relative;overflow:hidden}
-.ecom-tab-pill:hover{color:var(--text);border-color:rgba(14,165,233,.4);background:rgba(14,165,233,.08);transform:translateY(-2px)}
-.ecom-tab-pill.is-active{color:#fff;border-color:rgba(14,165,233,.75);background:linear-gradient(180deg,rgba(14,165,233,.22),rgba(14,165,233,.08));box-shadow:0 8px 24px -4px rgba(14,165,233,.35),inset 0 1px 0 rgba(255,255,255,.2)}
-.ecom-tab-pill.is-active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#38bdf8;box-shadow:0 0 10px #38bdf8}
-.ecom-tab-num{font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#38bdf8}
-.ecom-tab-name{font:500 13px/1.3 var(--display);letter-spacing:-.01em;color:inherit}
+.ecom-nav-title small{font:700 11.5px/1 var(--mono);color:#38bdf8;letter-spacing:.12em;text-transform:uppercase}
+.ecom-nav-title span{font:500 12px/1 var(--mono);color:var(--text);background:rgba(255,255,255,.06);padding:4px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.1)}
+.ecom-tabs-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+
+/* Page Tab Base Styling with High Contrast & Distinct Colored Themes */
+.ecom-tab-pill{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:6px;
+  padding:14px 16px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:all .25s cubic-bezier(.2,.8,.2,1);
+  text-align:left;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--tab-border);
+  background:var(--tab-bg);
+  box-shadow:0 4px 16px -2px rgba(0,0,0,.4);
+}
+.ecom-tab-pill:hover{
+  border-color:var(--tab-border-hover);
+  background:var(--tab-bg-hover);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px -4px var(--tab-glow);
+}
+.ecom-tab-pill.is-active{
+  border-color:var(--tab-c);
+  background:var(--tab-bg-active);
+  box-shadow:0 12px 30px -4px var(--tab-glow),inset 0 1px 0 rgba(255,255,255,.3);
+  transform:translateY(-1px);
+}
+.ecom-tab-pill.is-active::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  height:3.5px;
+  background:var(--tab-c);
+  box-shadow:0 0 12px var(--tab-c);
+}
+.ecom-tab-num{
+  display:inline-flex;
+  align-items:center;
+  font:700 10.5px/1 var(--mono);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--tab-c);
+  background:var(--tab-badge-bg);
+  border:1px solid var(--tab-border);
+  padding:3px 8px;
+  border-radius:6px;
+  transition:all .25s ease;
+}
+.ecom-tab-name{
+  font:600 13.5px/1.35 var(--display);
+  letter-spacing:-.01em;
+  color:#f8fafc;
+  transition:color .25s ease;
+}
+.ecom-tab-pill:hover .ecom-tab-name,
+.ecom-tab-pill.is-active .ecom-tab-name{
+  color:#ffffff;
+}
+
+/* Tab 1: Electric Sky Blue (Executive Sales) */
+.tab-p1{
+  --tab-c:#38bdf8;
+  --tab-border:rgba(56,189,248,.38);
+  --tab-border-hover:rgba(56,189,248,.75);
+  --tab-bg:linear-gradient(180deg,rgba(14,165,233,.16),rgba(14,165,233,.06));
+  --tab-bg-hover:linear-gradient(180deg,rgba(14,165,233,.26),rgba(14,165,233,.12));
+  --tab-bg-active:linear-gradient(180deg,rgba(14,165,233,.38),rgba(14,165,233,.16));
+  --tab-badge-bg:rgba(14,165,233,.22);
+  --tab-glow:rgba(14,165,233,.45);
+}
+
+/* Tab 2: Emerald / Mint Green (Product & Category) */
+.tab-p2{
+  --tab-c:#34d399;
+  --tab-border:rgba(52,211,153,.38);
+  --tab-border-hover:rgba(52,211,153,.75);
+  --tab-bg:linear-gradient(180deg,rgba(16,185,129,.16),rgba(16,185,129,.06));
+  --tab-bg-hover:linear-gradient(180deg,rgba(16,185,129,.26),rgba(16,185,129,.12));
+  --tab-bg-active:linear-gradient(180deg,rgba(16,185,129,.38),rgba(16,185,129,.16));
+  --tab-badge-bg:rgba(16,185,129,.22);
+  --tab-glow:rgba(16,185,129,.45);
+}
+
+/* Tab 3: Cyber Amber / Gold (Customer & Geography) */
+.tab-p3{
+  --tab-c:#fbbf24;
+  --tab-border:rgba(251,191,36,.38);
+  --tab-border-hover:rgba(251,191,36,.75);
+  --tab-bg:linear-gradient(180deg,rgba(245,158,11,.16),rgba(245,158,11,.06));
+  --tab-bg-hover:linear-gradient(180deg,rgba(245,158,11,.26),rgba(245,158,11,.12));
+  --tab-bg-active:linear-gradient(180deg,rgba(245,158,11,.38),rgba(245,158,11,.16));
+  --tab-badge-bg:rgba(245,158,11,.22);
+  --tab-glow:rgba(245,158,11,.45);
+}
+
+/* Tab 4: Electric Purple / Violet (Delivery & CSAT) */
+.tab-p4{
+  --tab-c:#c084fc;
+  --tab-border:rgba(192,132,252,.38);
+  --tab-border-hover:rgba(192,132,252,.75);
+  --tab-bg:linear-gradient(180deg,rgba(168,85,247,.16),rgba(168,85,247,.06));
+  --tab-bg-hover:linear-gradient(180deg,rgba(168,85,247,.26),rgba(168,85,247,.12));
+  --tab-bg-active:linear-gradient(180deg,rgba(168,85,247,.38),rgba(168,85,247,.16));
+  --tab-badge-bg:rgba(168,85,247,.22);
+  --tab-glow:rgba(168,85,247,.45);
+}
+
 @media(max-width:850px){.ecom-tabs-strip{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.ecom-tabs-strip{grid-template-columns:1fr}}
 
-.ecom-display-frame{position:relative;border-radius:20px;border:1px solid rgba(14,165,233,.25);background:#07090e;overflow:hidden;box-shadow:0 24px 70px -15px rgba(0,0,0,.85),0 0 35px -5px rgba(14,165,233,.15);margin-top:20px;margin-bottom:20px}
+.ecom-display-frame{position:relative;border-radius:20px;border:1px solid rgba(14,165,233,.25);background:#07090e;overflow:hidden;box-shadow:0 24px 70px -15px rgba(0,0,0,.85),0 0 35px -5px rgba(14,165,233,.15);margin-top:20px;margin-bottom:20px;transition:border-color .3s ease,box-shadow .3s ease}
 .ecom-frame-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(14,20,32,.85);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(10px)}
 .ecom-window-dots{display:flex;align-items:center;gap:6px}
 .ecom-window-dots i{width:10px;height:10px;border-radius:50%;display:inline-block}
@@ -409,7 +515,7 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .ecom-window-dots i:nth-child(2){background:#eab308}
 .ecom-window-dots i:nth-child(3){background:#10b981}
 .ecom-topbar-title{font:500 12px var(--mono);color:var(--muted);display:flex;align-items:center;gap:8px}
-.ecom-topbar-badge{font:600 10.5px var(--mono);color:#38bdf8;background:rgba(14,165,233,.15);padding:2px 8px;border-radius:999px;border:1px solid rgba(14,165,233,.3)}
+.ecom-topbar-badge{font:600 10.5px var(--mono);color:#38bdf8;background:rgba(14,165,233,.15);padding:2px 8px;border-radius:999px;border:1px solid rgba(14,165,233,.3);transition:all .3s ease}
 .ecom-stage{position:relative;cursor:pointer;overflow:hidden;background:#05070c;display:flex;align-items:center;justify-content:center}
 .ecom-stage-img{width:100%;height:auto;display:block;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1);object-fit:cover}
 .ecom-stage:hover .ecom-stage-img{transform:scale(1.012)}
@@ -423,21 +529,25 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .ecom-nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .25s ease}
 .ecom-nav-dot.is-active{width:22px;border-radius:999px;background:#38bdf8;box-shadow:0 0 10px #38bdf8}
 
-.ecom-analysis-box{margin-top:20px;padding:22px 24px;border-radius:18px;border:1px solid rgba(14,165,233,.2);background:rgba(12,18,28,.65);backdrop-filter:blur(12px)}
+.ecom-analysis-box{margin-top:20px;padding:22px 24px;border-radius:18px;border:1px solid rgba(14,165,233,.2);background:rgba(12,18,28,.65);backdrop-filter:blur(12px);transition:border-color .3s ease}
 .ecom-analysis-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
 .ecom-analysis-head h4{font:600 16px/1.3 var(--display);color:var(--text);margin:0}
-.ecom-analysis-pill{font:500 11px/1 var(--mono);color:#38bdf8;padding:4px 10px;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3)}
-.ecom-analysis-body{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.ecom-analysis-col p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+.ecom-analysis-pill{font:600 11px/1 var(--mono);color:#38bdf8;padding:4px 12px;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3);transition:all .3s ease}
+.ecom-analysis-body{display:grid;grid-template-columns:1fr 1.2fr 1.1fr;gap:20px}
+.ecom-analysis-col p{color:var(--muted);font-size:13.5px;line-height:1.6;margin:0}
 .ecom-analysis-col p b{color:var(--text);font-weight:600}
-.ecom-analysis-col small{display:block;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#38bdf8;margin-bottom:6px}
-@media(max-width:768px){.ecom-analysis-body{grid-template-columns:1fr}}
+.ecom-analysis-col small{display:block;font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--analysis-accent,#38bdf8);margin-bottom:6px;transition:color .3s ease}
+@media(max-width:960px){.ecom-analysis-body{grid-template-columns:1fr;gap:16px}}
 
-/* Modal Tab Bar for E-Commerce */
-.ecom-modal-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;width:100%}
-.ecom-modal-tab{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:500 12px var(--mono);cursor:pointer;transition:all .2s ease}
-.ecom-modal-tab:hover{color:var(--text);border-color:rgba(14,165,233,.4);background:rgba(14,165,233,.1)}
-.ecom-modal-tab.is-active{color:#38bdf8;border-color:rgba(14,165,233,.6);background:rgba(14,165,233,.18);font-weight:600}
+/* Modal Tab Bar for E-Commerce with Distinct Colors */
+.ecom-modal-tabs{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;width:100%}
+.ecom-modal-tab{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;border:1px solid var(--tab-border);background:var(--tab-bg);color:#f1f5f9;font:600 12.5px var(--mono);cursor:pointer;transition:all .2s ease}
+.ecom-modal-tab:hover{border-color:var(--tab-border-hover);background:var(--tab-bg-hover);color:#fff;transform:translateY(-1px)}
+.ecom-modal-tab.is-active{color:var(--tab-c);border-color:var(--tab-c);background:var(--tab-bg-active);box-shadow:0 4px 14px -2px var(--tab-glow)}
+.modal-tab-p1{--tab-c:#38bdf8;--tab-border:rgba(56,189,248,.35);--tab-border-hover:rgba(56,189,248,.75);--tab-bg:rgba(14,165,233,.12);--tab-bg-hover:rgba(14,165,233,.22);--tab-bg-active:rgba(14,165,233,.3);--tab-glow:rgba(14,165,233,.4)}
+.modal-tab-p2{--tab-c:#34d399;--tab-border:rgba(52,211,153,.35);--tab-border-hover:rgba(52,211,153,.75);--tab-bg:rgba(16,185,129,.12);--tab-bg-hover:rgba(16,185,129,.22);--tab-bg-active:rgba(16,185,129,.3);--tab-glow:rgba(16,185,129,.4)}
+.modal-tab-p3{--tab-c:#fbbf24;--tab-border:rgba(251,191,36,.35);--tab-border-hover:rgba(251,191,36,.75);--tab-bg:rgba(245,158,11,.12);--tab-bg-hover:rgba(245,158,11,.22);--tab-bg-active:rgba(245,158,11,.3);--tab-glow:rgba(245,158,11,.4)}
+.modal-tab-p4{--tab-c:#c084fc;--tab-border:rgba(192,132,252,.35);--tab-border-hover:rgba(192,132,252,.75);--tab-bg:rgba(168,85,247,.12);--tab-bg-hover:rgba(168,85,247,.22);--tab-bg-active:rgba(168,85,247,.3);--tab-glow:rgba(168,85,247,.4)}
 
 .nav-projects-link{position:relative;color:var(--text)!important;font-weight:500}
 .nav-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#38bdf8;color:#000;font:700 10.5px/1 var(--mono)}
@@ -778,19 +888,19 @@ html.rv-on .rv.in{opacity:1;transform:none}
               <span id="ecomPageIndicator">Showing Page 1 of 4</span>
             </div>
             <div class="ecom-tabs-strip" role="tablist">
-              <button type="button" class="ecom-tab-pill is-active" role="tab" aria-selected="true" data-ecom-page="0">
+              <button type="button" class="ecom-tab-pill tab-p1 is-active" role="tab" aria-selected="true" data-ecom-page="0">
                 <span class="ecom-tab-num">PAGE 01</span>
                 <span class="ecom-tab-name">Executive Sales Overview</span>
               </button>
-              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="1">
+              <button type="button" class="ecom-tab-pill tab-p2" role="tab" aria-selected="false" data-ecom-page="1">
                 <span class="ecom-tab-num">PAGE 02</span>
                 <span class="ecom-tab-name">Product &amp; Category Performance</span>
               </button>
-              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="2">
+              <button type="button" class="ecom-tab-pill tab-p3" role="tab" aria-selected="false" data-ecom-page="2">
                 <span class="ecom-tab-num">PAGE 03</span>
                 <span class="ecom-tab-name">Customer &amp; Geographic Insights</span>
               </button>
-              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="3">
+              <button type="button" class="ecom-tab-pill tab-p4" role="tab" aria-selected="false" data-ecom-page="3">
                 <span class="ecom-tab-num">PAGE 04</span>
                 <span class="ecom-tab-name">Delivery &amp; Customer Experience</span>
               </button>
@@ -845,8 +955,12 @@ html.rv-on .rv.in{opacity:1;transform:none}
                 <p id="ecomAnalysisPurpose">Evaluate total delivered orders, product revenue trajectory across months, freight charge proportion, and average order value across the Brazilian market.</p>
               </div>
               <div class="ecom-analysis-col">
-                <small>Key Business Insight &amp; Implication</small>
+                <small>Key Business Insight</small>
                 <p id="ecomAnalysisInsight">Delivered-order product revenue reached <b>R$13,221,498.11</b> plus <b>R$2,198,275.64</b> in freight across 96,478 orders. Growth climbed through 2017–2018 with documented coverage limitations for incomplete initial months.</p>
+              </div>
+              <div class="ecom-analysis-col">
+                <small>Strategic Recommendation</small>
+                <p id="ecomAnalysisRec">Isolate product merchandise revenue from shipping fees; expand regional fulfillment networks to reduce freight overhead and improve unit margins.</p>
               </div>
             </div>
           </div>
@@ -1107,10 +1221,10 @@ html.rv-on .rv.in{opacity:1;transform:none}
     <div class="nf-dialog-body">
       <!-- Modal Page Switcher -->
       <div class="ecom-modal-tabs" role="tablist" aria-label="Select report page in modal">
-        <button type="button" class="ecom-modal-tab is-active" data-modal-page="0">01 Executive Sales</button>
-        <button type="button" class="ecom-modal-tab" data-modal-page="1">02 Product &amp; Categories</button>
-        <button type="button" class="ecom-modal-tab" data-modal-page="2">03 Customer &amp; Geography</button>
-        <button type="button" class="ecom-modal-tab" data-modal-page="3">04 Delivery &amp; Experience</button>
+        <button type="button" class="ecom-modal-tab modal-tab-p1 is-active" data-modal-page="0">01 Executive Sales</button>
+        <button type="button" class="ecom-modal-tab modal-tab-p2" data-modal-page="1">02 Product &amp; Categories</button>
+        <button type="button" class="ecom-modal-tab modal-tab-p3" data-modal-page="2">03 Customer &amp; Geography</button>
+        <button type="button" class="ecom-modal-tab modal-tab-p4" data-modal-page="3">04 Delivery &amp; Experience</button>
       </div>
       <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center">
         <img id="ecommerceModalImg" src="images/ecommerce/01_executive_sales_overview.png" alt="E-Commerce Business Analytics Power BI Dashboard screenshot" loading="lazy">
@@ -1277,7 +1391,8 @@ html.rv-on .rv.in{opacity:1;transform:none}
         title: "Executive Sales Overview",
         headSub: "Page 1 of 4 · Sales Performance & Monthly Trends · 96,478 Delivered Orders",
         file: "01_executive_sales_overview.pbix",
-        badge: "Sales Performance",
+        badge: "Executive Sales",
+        color: "#38bdf8",
         img: "images/ecommerce/01_executive_sales_overview.png",
         alt: "E-Commerce Executive Sales Overview Power BI Dashboard Preview",
         kpis: [
@@ -1288,10 +1403,11 @@ html.rv-on .rv.in{opacity:1;transform:none}
           { label: "Avg order value", val: "R$137.04" }
         ],
         pill: "Sales & Financial Dynamics",
-        purpose: "Evaluate total delivered orders, product revenue trajectory across months, freight charge proportion, and average order value across the Brazilian market.",
-        insight: "Delivered-order product revenue reached <b>R$13,221,498.11</b> plus <b>R$2,198,275.64</b> in freight across 96,478 orders. Growth climbed through 2017–2018 with documented coverage limitations for incomplete initial months.",
+        purpose: "Provide a comprehensive high-level view of delivered order volume, monthly product revenue trends, freight charge dynamics, and average transaction size across Brazil.",
+        insight: "Delivered-order product revenue reached <b>R$13,221,498.11</b> plus <b>R$2,198,275.64</b> in freight charges across <b>96,478</b> completed orders. Monthly volume expanded significantly across 2017–2018 with documented baseline ramp-up caveats.",
+        recommendation: "Track merchandise sales independently from shipping charges in executive reporting; investigate regional fulfillment optimization in key hubs to lower freight overhead and protect checkout conversion.",
         modalTitle: "E-Commerce Business Analytics — Executive Sales Overview",
-        modalMetrics: "Key Metrics: 96,478 Delivered Orders · R$13.22M Product Revenue · R$2.20M Freight · R$15.42M Total"
+        modalMetrics: "Key Metrics: 96,478 Delivered Orders · R$13.22M Product Revenue · R$2.20M Freight · R$15.42M Total · R$137.04 AOV"
       },
       {
         id: 1,
@@ -1299,20 +1415,22 @@ html.rv-on .rv.in{opacity:1;transform:none}
         headSub: "Page 2 of 4 · Top Revenue Categories vs Item Sales Volume · 73 Categories",
         file: "02_product_category_performance.pbix",
         badge: "Category Intelligence",
+        color: "#34d399",
         img: "images/ecommerce/02_product_category_performance.png",
         alt: "E-Commerce Product and Category Performance Power BI Dashboard Preview",
         kpis: [
           { label: "Product revenue", val: "R$13.22", sup: "M" },
           { label: "Categories analyzed", val: "73" },
           { label: "Top category", val: "Health & Beauty" },
-          { label: "Total units sold", val: "112,653" },
-          { label: "Top category rev", val: "R$1.26", sup: "M" }
+          { label: "Top category rev", val: "R$1.26", sup: "M" },
+          { label: "Total units sold", val: "112,653" }
         ],
         pill: "Catalog Volume vs Revenue",
-        purpose: "Identify top revenue-generating product categories and compare high-value revenue drivers against high-volume transaction categories.",
-        insight: "<b>Health & Beauty</b> led all categories in revenue (R$1.26M), followed by Watches & Gifts and Bed Bath & Table. Notably, revenue leadership does not always match sales unit volume leadership.",
+        purpose: "Identify top revenue-generating product categories and evaluate whether top revenue drivers also lead in physical unit sales volume.",
+        insight: "<b>Health & Beauty</b> led all 73 categories in total revenue (<b>R$1.26M</b> / 9.5% share), followed by <b>Watches & Gifts</b> (R$1.21M) and <b>Bed Bath & Table</b> (R$1.04M). High revenue did not directly correlate with item quantity (Bed Bath & Table led units at 11,115).",
+        recommendation: "Prioritize supplier margin negotiations and promotional placements for high-revenue categories, while using high-volume utility categories to drive basket cross-sells.",
         modalTitle: "E-Commerce Business Analytics — Product & Category Performance",
-        modalMetrics: "Key Metrics: 73 Categories · Top: Health & Beauty (R$1.26M) · 112,653 Total Units Sold"
+        modalMetrics: "Key Metrics: 73 Categories · Top: Health & Beauty (R$1.26M, 9.5% Share) · 112,653 Units Sold"
       },
       {
         id: 2,
@@ -1320,6 +1438,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
         headSub: "Page 3 of 4 · Repeat Customer Dynamics & State-Level Revenue Distribution",
         file: "03_customer_geographic_insights.pbix",
         badge: "Customer Intelligence",
+        color: "#fbbf24",
         img: "images/ecommerce/03_customer_geographic_insights.png",
         alt: "E-Commerce Customer and Geographic Insights Power BI Dashboard Preview",
         kpis: [
@@ -1330,18 +1449,20 @@ html.rv-on .rv.in{opacity:1;transform:none}
           { label: "Rev / one-time cust", val: "R$137.96" }
         ],
         pill: "Retention & Geographic Demand",
-        purpose: "Understand repeat purchasing patterns, customer lifetime value differences, and regional geographic revenue concentration across Brazilian states.",
-        insight: "Repeat customers (~3% of base) generate <b>R$260.05</b> average revenue vs <b>R$137.96</b> for one-time buyers (almost 2x higher). <b>São Paulo (SP)</b> drove dominant revenue share.",
+        purpose: "Analyze repeat purchasing patterns, quantify customer lifetime value disparity, and map regional revenue concentration across Brazilian states.",
+        insight: "Repeat buyers represent <b>3.00%</b> of the customer base (2,801 of 93,358) but generate <b>R$260.05</b> average revenue vs <b>R$137.96</b> for one-time buyers (an 88.5% premium). Geographically, <b>São Paulo (SP)</b> drove dominant revenue (<b>R$5.20M</b> / 39.3% of total revenue).",
+        recommendation: "Establish automated post-purchase re-engagement sequences and loyalty rewards to convert one-time buyers into repeat customers; tailor localized campaigns in SP, RJ, and MG.",
         modalTitle: "E-Commerce Business Analytics — Customer & Geographic Insights",
-        modalMetrics: "Key Metrics: 2,801 Repeat Customers · ~3% Repeat Rate · R$260.05 vs R$137.96 Avg Rev · SP Top State"
+        modalMetrics: "Key Metrics: 2,801 Repeat Customers · ~3% Repeat Rate · R$260.05 vs R$137.96 Avg Rev · SP Top State (R$5.20M)"
       },
       {
         id: 3,
         title: "Delivery & Customer Experience",
         headSub: "Page 4 of 4 · Logistics Delivery Reliability & Customer Review Score Correlation",
-        file: "04_delivery_customer_experience.pbix",
+        file: "04_delivery_customers_experience.pbix",
         badge: "Logistics & CSAT",
-        img: "images/ecommerce/04_delivery_customer_experience.png",
+        color: "#c084fc",
+        img: "images/ecommerce/04_delivery_customers_experience.png",
         alt: "E-Commerce Delivery and Customer Experience Power BI Dashboard Preview",
         kpis: [
           { label: "On-time delivery rate", val: "91.89", sup: "%" },
@@ -1350,19 +1471,20 @@ html.rv-on .rv.in{opacity:1;transform:none}
           { label: "On-time review score", val: "4.29", sup: "/5" },
           { label: "Late review score", val: "2.57", sup: "/5" }
         ],
-        pill: "Operational Impact on CSAT",
-        purpose: "Evaluate delivery timeline reliability and quantify the statistical relationship between shipping delays and customer satisfaction review scores.",
-        insight: "Delivered orders achieved a <b>91.89%</b> on-time rate. Late deliveries averaged 8.87 days delay and suffered an average review score of <b>2.57/5</b> compared to <b>4.29/5</b> for on-time orders.",
+        pill: "Logistics Reliability & CSAT",
+        purpose: "Measure order delivery timeline reliability and quantify the empirical correlation between fulfillment delays and customer review scores.",
+        insight: "Delivered orders maintained a <b>91.89%</b> on-time rate. However, late deliveries (7,826 orders) suffered an average delay of <b>8.87 days</b>, precipitating an extreme 40% collapse in customer review scores: <b>2.57 / 5</b> compared to <b>4.29 / 5</b> for on-time deliveries.",
+        recommendation: "Focus logistics investments on carrier SLA compliance and real-time transit exception monitoring. Trigger automated apology credits before delayed orders arrive to safeguard review scores.",
         modalTitle: "E-Commerce Business Analytics — Delivery & Customer Experience",
-        modalMetrics: "Key Metrics: 91.89% On-time Rate · 7,826 Late Deliveries · 4.29 On-time CSAT vs 2.57 Late CSAT"
+        modalMetrics: "Key Metrics: 91.89% On-time Rate · 7,826 Late Deliveries (8.87d delay) · 4.29 On-time CSAT vs 2.57 Late CSAT"
       }
     ];
 
     var cur = 0;
     var headTitle = $('#ecomHeadTitle'), headSub = $('#ecomHeadSub'), ind = $('#ecomPageIndicator');
     var topTitle = $('#ecomTopbarTitle'), topBadge = $('#ecomTopbarBadge');
-    var stageImg = $('#ecomStageImg'), stage = $('#ecomStage');
-    var analysisPill = $('#ecomAnalysisPill'), analysisPurpose = $('#ecomAnalysisPurpose'), analysisInsight = $('#ecomAnalysisInsight');
+    var stageImg = $('#ecomStageImg'), stage = $('#ecomStage'), displayFrame = $('.ecom-display-frame');
+    var analysisBox = $('#ecomAnalysisBox'), analysisPill = $('#ecomAnalysisPill'), analysisPurpose = $('#ecomAnalysisPurpose'), analysisInsight = $('#ecomAnalysisInsight'), analysisRec = $('#ecomAnalysisRec');
     var tabBtns = $$('[data-ecom-page]', root), dots = $$('[data-ecom-dot]', root);
     var prevBtn = $('#ecomPrevBtn'), nextBtn = $('#ecomNextBtn');
 
@@ -1381,7 +1503,17 @@ html.rv-on .rv.in{opacity:1;transform:none}
       if(headSub) headSub.textContent = p.headSub;
       if(ind) ind.textContent = "Showing Page " + (cur + 1) + " of 4";
       if(topTitle) topTitle.textContent = p.file;
-      if(topBadge) topBadge.textContent = p.badge;
+      if(topBadge){
+        topBadge.textContent = p.badge;
+        topBadge.style.color = p.color;
+        topBadge.style.borderColor = p.color + '55';
+        topBadge.style.background = p.color + '22';
+      }
+
+      if(displayFrame){
+        displayFrame.style.borderColor = p.color + '44';
+        displayFrame.style.boxShadow = '0 24px 70px -15px rgba(0,0,0,.85), 0 0 35px -5px ' + p.color + '26';
+      }
 
       if(stageImg) {
         stageImg.style.opacity = '0.35';
@@ -1398,9 +1530,16 @@ html.rv-on .rv.in{opacity:1;transform:none}
         }
       }
 
-      if(analysisPill) analysisPill.textContent = p.pill;
+      if(analysisBox) analysisBox.style.setProperty('--analysis-accent', p.color);
+      if(analysisPill){
+        analysisPill.textContent = p.pill;
+        analysisPill.style.color = p.color;
+        analysisPill.style.borderColor = p.color + '55';
+        analysisPill.style.background = p.color + '1f';
+      }
       if(analysisPurpose) analysisPurpose.innerHTML = p.purpose;
       if(analysisInsight) analysisInsight.innerHTML = p.insight;
+      if(analysisRec) analysisRec.innerHTML = p.recommendation;
 
       tabBtns.forEach(function(b, i){
         var active = (i === cur);
@@ -1409,7 +1548,10 @@ html.rv-on .rv.in{opacity:1;transform:none}
       });
 
       dots.forEach(function(d, i){
-        d.classList.toggle('is-active', i === cur);
+        var active = (i === cur);
+        d.classList.toggle('is-active', active);
+        d.style.background = active ? p.color : '';
+        d.style.boxShadow = active ? ('0 0 10px ' + p.color) : '';
       });
 
       if(modalTitle) modalTitle.textContent = p.modalTitle;
