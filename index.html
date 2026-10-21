@@ -267,7 +267,29 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 
 .project-full-box{position:relative;padding:clamp(28px,4.5vw,52px);border:1px solid var(--line);border-radius:32px;background:rgba(12,14,20,.85);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 30px 80px -20px rgba(0,0,0,.7);transition:border-color .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),transform .35s;overflow:hidden}
 
-/* Project 1: Retail Sales (Emerald/Teal Theme) */
+/* Project 1: E-Commerce Analytics (Electric Cyan / Cobalt Theme) */
+.project-ecommerce{
+  --h: 198;
+  --bl: 44%;
+  --blue: #0ea5e9;
+  --blue-deep: #0284c7;
+  --tint: #7dd3fc;
+  --glow: rgba(14,165,233,.32);
+  border-color: rgba(14,165,233,.28);
+  box-shadow: 0 30px 90px -30px rgba(14,165,233,.18), 0 0 40px -10px rgba(14,165,233,.1);
+}
+.project-ecommerce:hover{
+  border-color: rgba(14,165,233,.55);
+  box-shadow: 0 36px 100px -25px rgba(14,165,233,.3), 0 0 50px -5px rgba(14,165,233,.2);
+}
+.project-ecommerce::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:radial-gradient(800px circle at var(--x,50%) var(--y,50%),rgba(14,165,233,.12),transparent 70%);
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.project-ecommerce:hover::before{opacity:1}
+
+/* Project 2: Retail Sales (Emerald/Teal Theme) */
 .project-sales{
   --h: 160;
   --bl: 40%;
@@ -289,7 +311,7 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 }
 .project-sales:hover::before{opacity:1}
 
-/* Project 2: Netflix (Crimson Red Theme) */
+/* Project 3: Netflix (Crimson Red Theme) */
 .project-netflix{
   --h: 357;
   --bl: 46%;
@@ -316,6 +338,7 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
   display:inline-flex;align-items:center;gap:10px;font:600 11.5px/1 var(--mono);
   letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:999px;margin-bottom:22px;
 }
+.proj-header-badge.badge-ecommerce{color:#38bdf8;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.35)}
 .proj-header-badge.badge-retail{color:#34d399;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.35)}
 .proj-header-badge.badge-netflix{color:#ff5263;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.35)}
 .proj-badge-dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor;animation:rmping 2s ease-out infinite}
@@ -323,17 +346,21 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 /* Distinct Project Separation Divider */
 .project-separation-divider{display:flex;align-items:center;justify-content:center;gap:20px;margin:72px auto;width:100%}
 .psd-line{flex:1;height:1.5px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
-.psd-content{display:inline-flex;align-items:center;gap:10px;font:600 11.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#f5f5f7;padding:10px 22px;border-radius:999px;background:rgba(20,22,30,.9);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 20px rgba(229,9,20,.15)}
-.psd-dot{width:8px;height:8px;border-radius:50%;background:#e50914;box-shadow:0 0 10px #e50914;animation:rmping 2s ease-out infinite}
+.psd-content{display:inline-flex;align-items:center;gap:10px;font:600 11.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#f5f5f7;padding:10px 22px;border-radius:999px;background:rgba(20,22,30,.9);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(16px);box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 20px rgba(14,165,233,.15)}
+.psd-dot{width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8;animation:rmping 2s ease-out infinite}
 .psd-arrow{color:var(--muted);font-size:13px}
 
 /* Hero Featured Projects Quick Showcase */
-.hero-projects-preview{width:100%;max-width:960px;margin:42px auto 0;text-align:left}
+.hero-projects-preview{width:100%;max-width:1120px;margin:42px auto 0;text-align:left}
 .hpp-title{display:inline-flex;align-items:center;gap:10px;font:600 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-.hpp-pulse{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;animation:rmping 2s ease-out infinite}
-.hpp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hpp-pulse{width:7px;height:7px;border-radius:50%;background:#38bdf8;box-shadow:0 0 10px #38bdf8;animation:rmping 2s ease-out infinite}
+.hpp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .hpp-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;border-radius:20px;border:1px solid var(--line);background:rgba(12,14,20,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);text-decoration:none;color:var(--text);transition:border-color .3s cubic-bezier(.2,.8,.2,1),transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s cubic-bezier(.2,.8,.2,1),background .3s;overflow:hidden}
 .hpp-card::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;pointer-events:none;transition:opacity .3s}
+.hpp-ecommerce{border-color:rgba(14,165,233,.3);box-shadow:0 12px 36px -12px rgba(14,165,233,.18)}
+.hpp-ecommerce::before{background:radial-gradient(400px circle at 50% 0%,rgba(14,165,233,.18),transparent 70%)}
+.hpp-ecommerce:hover{border-color:rgba(14,165,233,.7);box-shadow:0 20px 48px -12px rgba(14,165,233,.35),0 0 24px -2px rgba(14,165,233,.2);transform:translateY(-3px);background:linear-gradient(180deg,rgba(14,32,48,.85),rgba(12,14,20,.85))}
+.hpp-ecommerce:hover::before{opacity:1}
 .hpp-retail{border-color:rgba(16,185,129,.3);box-shadow:0 12px 36px -12px rgba(16,185,129,.18)}
 .hpp-retail::before{background:radial-gradient(400px circle at 50% 0%,rgba(16,185,129,.18),transparent 70%)}
 .hpp-retail:hover{border-color:rgba(16,185,129,.7);box-shadow:0 20px 48px -12px rgba(16,185,129,.35),0 0 24px -2px rgba(16,185,129,.2);transform:translateY(-3px);background:linear-gradient(180deg,rgba(16,32,24,.85),rgba(12,14,20,.85))}
@@ -344,20 +371,76 @@ html.rv-on .in .trend .area,html.rv-on .in .trend .dots{opacity:1}
 .hpp-netflix:hover::before{opacity:1}
 .hpp-badge-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 .hpp-badge{font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+.hpp-ecommerce .hpp-badge{color:#38bdf8;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3)}
 .hpp-retail .hpp-badge{color:#34d399;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3)}
 .hpp-netflix .hpp-badge{color:#ff5263;background:rgba(229,9,20,.12);border:1px solid rgba(229,9,20,.3)}
 .hpp-kpi-pill{font:500 11px var(--mono);color:var(--text);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:4px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
 .hpp-name{display:block;font:600 18px/1.3 var(--display);letter-spacing:-.015em;color:var(--text);margin-bottom:6px}
 .hpp-summary{font-size:13.5px;line-height:1.5;color:var(--muted);margin-bottom:16px}
 .hpp-action{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--mono);letter-spacing:.02em;margin-top:auto}
+.hpp-ecommerce .hpp-action{color:#38bdf8}
 .hpp-retail .hpp-action{color:#34d399}
 .hpp-netflix .hpp-action{color:#ff5263}
 .hpp-action svg{width:14px;height:14px;transition:transform .2s ease}
 .hpp-card:hover .hpp-action svg{transform:translateX(4px)}
-@media(max-width:768px){.hpp-grid{grid-template-columns:1fr}}
+@media(max-width:960px){.hpp-grid{grid-template-columns:1fr}}
+
+/* E-Commerce Interactive Single Dashboard Showcase & Page Switcher */
+.bi-ecom{border-color:rgba(14,165,233,.25)}
+.ecom-nav-wrapper{margin:24px 0 18px}
+.ecom-nav-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.ecom-nav-title small{font:600 11.5px/1 var(--mono);color:#38bdf8;letter-spacing:.12em;text-transform:uppercase}
+.ecom-nav-title span{font:400 12px/1 var(--mono);color:var(--muted)}
+.ecom-tabs-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ecom-tab-pill{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(18,22,32,.75);color:var(--muted);cursor:pointer;transition:all .25s cubic-bezier(.2,.8,.2,1);text-align:left;position:relative;overflow:hidden}
+.ecom-tab-pill:hover{color:var(--text);border-color:rgba(14,165,233,.4);background:rgba(14,165,233,.08);transform:translateY(-2px)}
+.ecom-tab-pill.is-active{color:#fff;border-color:rgba(14,165,233,.75);background:linear-gradient(180deg,rgba(14,165,233,.22),rgba(14,165,233,.08));box-shadow:0 8px 24px -4px rgba(14,165,233,.35),inset 0 1px 0 rgba(255,255,255,.2)}
+.ecom-tab-pill.is-active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#38bdf8;box-shadow:0 0 10px #38bdf8}
+.ecom-tab-num{font:700 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#38bdf8}
+.ecom-tab-name{font:500 13px/1.3 var(--display);letter-spacing:-.01em;color:inherit}
+@media(max-width:850px){.ecom-tabs-strip{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.ecom-tabs-strip{grid-template-columns:1fr}}
+
+.ecom-display-frame{position:relative;border-radius:20px;border:1px solid rgba(14,165,233,.25);background:#07090e;overflow:hidden;box-shadow:0 24px 70px -15px rgba(0,0,0,.85),0 0 35px -5px rgba(14,165,233,.15);margin-top:20px;margin-bottom:20px}
+.ecom-frame-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(14,20,32,.85);border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(10px)}
+.ecom-window-dots{display:flex;align-items:center;gap:6px}
+.ecom-window-dots i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.ecom-window-dots i:nth-child(1){background:#ef4444}
+.ecom-window-dots i:nth-child(2){background:#eab308}
+.ecom-window-dots i:nth-child(3){background:#10b981}
+.ecom-topbar-title{font:500 12px var(--mono);color:var(--muted);display:flex;align-items:center;gap:8px}
+.ecom-topbar-badge{font:600 10.5px var(--mono);color:#38bdf8;background:rgba(14,165,233,.15);padding:2px 8px;border-radius:999px;border:1px solid rgba(14,165,233,.3)}
+.ecom-stage{position:relative;cursor:pointer;overflow:hidden;background:#05070c;display:flex;align-items:center;justify-content:center}
+.ecom-stage-img{width:100%;height:auto;display:block;transition:opacity .3s ease,transform .35s cubic-bezier(.2,.8,.2,1);object-fit:cover}
+.ecom-stage:hover .ecom-stage-img{transform:scale(1.012)}
+.ecom-arrow-btn{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;background:rgba(10,14,22,.85);border:1px solid rgba(14,165,233,.35);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:4;font-size:22px;line-height:1;transition:all .2s cubic-bezier(.2,.8,.2,1);backdrop-filter:blur(8px)}
+.ecom-arrow-btn:hover{background:rgba(14,165,233,.3);border-color:#38bdf8;transform:translateY(-50%) scale(1.1)}
+.ecom-arrow-prev{left:14px}
+.ecom-arrow-next{right:14px}
+.ecom-stage-overlay{position:absolute;bottom:14px;right:14px;display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;background:rgba(10,14,22,.85);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(10px);font:500 11.5px var(--mono);color:var(--text);opacity:.9;transition:all .2s;z-index:3}
+.ecom-stage:hover .ecom-stage-overlay{opacity:1;background:rgba(14,165,233,.25);border-color:rgba(14,165,233,.6);color:#fff}
+.ecom-dots-row{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;z-index:3;padding:4px 10px;border-radius:999px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.ecom-nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .25s ease}
+.ecom-nav-dot.is-active{width:22px;border-radius:999px;background:#38bdf8;box-shadow:0 0 10px #38bdf8}
+
+.ecom-analysis-box{margin-top:20px;padding:22px 24px;border-radius:18px;border:1px solid rgba(14,165,233,.2);background:rgba(12,18,28,.65);backdrop-filter:blur(12px)}
+.ecom-analysis-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.ecom-analysis-head h4{font:600 16px/1.3 var(--display);color:var(--text);margin:0}
+.ecom-analysis-pill{font:500 11px/1 var(--mono);color:#38bdf8;padding:4px 10px;border-radius:999px;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.3)}
+.ecom-analysis-body{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ecom-analysis-col p{color:var(--muted);font-size:14px;line-height:1.6;margin:0}
+.ecom-analysis-col p b{color:var(--text);font-weight:600}
+.ecom-analysis-col small{display:block;font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#38bdf8;margin-bottom:6px}
+@media(max-width:768px){.ecom-analysis-body{grid-template-columns:1fr}}
+
+/* Modal Tab Bar for E-Commerce */
+.ecom-modal-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;width:100%}
+.ecom-modal-tab{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:500 12px var(--mono);cursor:pointer;transition:all .2s ease}
+.ecom-modal-tab:hover{color:var(--text);border-color:rgba(14,165,233,.4);background:rgba(14,165,233,.1)}
+.ecom-modal-tab.is-active{color:#38bdf8;border-color:rgba(14,165,233,.6);background:rgba(14,165,233,.18);font-weight:600}
 
 .nav-projects-link{position:relative;color:var(--text)!important;font-weight:500}
-.nav-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#10b981;color:#000;font:700 10.5px/1 var(--mono)}
+.nav-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#38bdf8;color:#000;font:700 10.5px/1 var(--mono)}
 
 .proj-hero-heading{font:500 clamp(28px,4.4vw,44px)/1.12 var(--display);letter-spacing:-.03em;max-width:24ch;margin-bottom:24px}
 .proj-copy h3{font:500 clamp(21px,2.6vw,26px)/1.2 var(--display);letter-spacing:-.02em}
@@ -530,7 +613,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
     <nav aria-label="Primary">
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#work" class="nav-projects-link">Projects <span class="nav-badge">2</span></a></li>
+        <li><a href="#work" class="nav-projects-link">Projects <span class="nav-badge">3</span></a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -561,16 +644,28 @@ html.rv-on .rv.in{opacity:1;transform:none}
         </a>
       </div>
 
-      <!-- Recruiter Immediate Showcase: 2 Featured Live Projects on open -->
+      <!-- Recruiter Immediate Showcase: 3 Featured Live Projects on open -->
       <div class="hero-projects-preview rv" role="region" aria-label="Featured projects preview">
         <div class="hpp-title">
           <span class="hpp-pulse"></span>
           <span>FEATURED LIVE ANALYTICS PROJECTS</span>
         </div>
         <div class="hpp-grid">
+          <a class="hpp-card hpp-ecommerce" href="#project-ecommerce" aria-label="Explore E-Commerce Analytics Project">
+            <div class="hpp-badge-row">
+              <span class="hpp-badge">PROJECT 01 · MYSQL &amp; POWER BI</span>
+              <span class="hpp-kpi-pill">R$15.42M Rev</span>
+            </div>
+            <strong class="hpp-name">E-Commerce Analytics &amp; Customer Intelligence</strong>
+            <p class="hpp-summary">96,478 delivered orders · R$13.22M product revenue · 4-page Power BI intelligence suite</p>
+            <div class="hpp-action">
+              <span>Explore Interactive Suite</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </div>
+          </a>
           <a class="hpp-card hpp-retail" href="#project-retail" aria-label="Explore Retail Sales Analytics Project">
             <div class="hpp-badge-row">
-              <span class="hpp-badge">PROJECT 01 · POWER BI &amp; PYTHON</span>
+              <span class="hpp-badge">PROJECT 02 · POWER BI &amp; PYTHON</span>
               <span class="hpp-kpi-pill">₹586.5M Sales</span>
             </div>
             <strong class="hpp-name">Retail Sales &amp; Profitability Intelligence</strong>
@@ -582,7 +677,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
           </a>
           <a class="hpp-card hpp-netflix" href="#project-netflix" aria-label="Explore Netflix Content Analytics Project">
             <div class="hpp-badge-row">
-              <span class="hpp-badge">PROJECT 02 · POWER BI &amp; EDA</span>
+              <span class="hpp-badge">PROJECT 03 · POWER BI &amp; EDA</span>
               <span class="hpp-kpi-pill">8,807 Titles</span>
             </div>
             <strong class="hpp-name">Netflix Global Content &amp; Catalog Platform</strong>
@@ -616,16 +711,16 @@ html.rv-on .rv.in{opacity:1;transform:none}
             <span>CGPA · B.Tech CSE (AI &amp; ML)</span>
           </div>
           <div class="am-card">
-            <strong>2<i> Live</i></strong>
+            <strong>3<i> Live</i></strong>
             <span>Interactive Power BI Models</span>
           </div>
           <div class="am-card">
-            <strong>58<i>K+</i></strong>
+            <strong>150<i>K+</i></strong>
             <span>Cleaned &amp; Validated Records</span>
           </div>
           <div class="am-card">
             <strong>100<i>%</i></strong>
-            <span>Reproducible EDA Pipelines</span>
+            <span>Reproducible Analytics Pipelines</span>
           </div>
         </div>
       </div>
@@ -637,10 +732,142 @@ html.rv-on .rv.in{opacity:1;transform:none}
     <div class="wrap">
       <div class="my-projects-box rv">
         <h2 class="my-projects-title" data-split>Featured Analytics Projects</h2>
-        <p class="my-projects-subtitle">Production-grade exploratory data analysis pipelines and cross-filtering interactive Power BI business intelligence models.</p>
+        <p class="my-projects-subtitle">Production-grade exploratory data analysis pipelines, SQL database intelligence, and interactive multi-page Power BI business intelligence suites.</p>
       </div>
+
+      <!-- PROJECT 01: E-Commerce Business Analytics & Customer Intelligence -->
+      <div class="project-full-box project-ecommerce rv" id="project-ecommerce">
+        <div class="proj-header-badge badge-ecommerce"><span class="proj-badge-dot"></span> PROJECT 01 // E-COMMERCE &amp; CUSTOMER INTELLIGENCE</div>
+        <h2 class="proj-hero-heading" data-split>E-Commerce sales, retention &amp; operations.</h2>
+        <div class="proj-copy">
+          <h3>E-Commerce Business Analytics &amp; Customer Intelligence</h3>
+          <p>An end-to-end business analytics project analyzing 96,478 delivered orders from the Brazilian Olist e-commerce ecosystem using MySQL, SQL, Power BI, and DAX. Investigated sales trends, product categories, customer repeat purchasing, geographic revenue concentration, and delivery impact on customer review scores.</p>
+          <p>Connected relational database modeling and structured SQL queries with an interactive four-page Power BI dashboard, establishing measurable KPIs, data validation checks, and operational business recommendations.</p>
+          <ul class="tags" aria-label="Technologies used">
+            <li>MySQL</li><li>SQL</li><li>Power BI</li><li>DAX</li><li>Power Query</li><li>Data Modeling</li><li>KPI Analysis</li><li>Data Validation</li>
+          </ul>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+            <a class="github-box" href="https://github.com/Kishore292006/ecommerce-business-analytics" target="_blank" rel="noopener">
+              <span>View on GitHub</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            </a>
+            <button type="button" class="github-box ecommerce-preview-btn" id="openEcommerceModal" style="color:var(--text);border-color:var(--line)">
+              <span>View Power BI Report</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Single Interactive Dashboard Showcase with 4-Page Switcher -->
+        <div class="bi bi-ecom" id="biEcommerce" role="group" aria-label="Interactive E-Commerce Business Intelligence Report">
+          <div class="bi-head">
+            <div>
+              <b id="ecomHeadTitle">Executive Sales Overview</b>
+              <span id="ecomHeadSub">Page 1 of 4 · Sales Performance &amp; Monthly Trends · 96,478 Delivered Orders</span>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <span class="bi-tag" style="color:#38bdf8;border-color:rgba(14,165,233,.3);background:rgba(14,165,233,.12)">Power BI · 4-Page Suite</span>
+              <button type="button" class="pill" id="biEcommerceModalBtn" style="font-size:12px;padding:4px 12px;min-height:28px">Full View</button>
+            </div>
+          </div>
+
+          <!-- Page Selection Tabs (Choose between the 4 dashboards) -->
+          <div class="ecom-nav-wrapper" role="toolbar" aria-label="Select report dashboard page">
+            <div class="ecom-nav-title">
+              <small>SELECT DASHBOARD VIEW (4 REPORT PAGES)</small>
+              <span id="ecomPageIndicator">Showing Page 1 of 4</span>
+            </div>
+            <div class="ecom-tabs-strip" role="tablist">
+              <button type="button" class="ecom-tab-pill is-active" role="tab" aria-selected="true" data-ecom-page="0">
+                <span class="ecom-tab-num">PAGE 01</span>
+                <span class="ecom-tab-name">Executive Sales Overview</span>
+              </button>
+              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="1">
+                <span class="ecom-tab-num">PAGE 02</span>
+                <span class="ecom-tab-name">Product &amp; Category Performance</span>
+              </button>
+              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="2">
+                <span class="ecom-tab-num">PAGE 03</span>
+                <span class="ecom-tab-name">Customer &amp; Geographic Insights</span>
+              </button>
+              <button type="button" class="ecom-tab-pill" role="tab" aria-selected="false" data-ecom-page="3">
+                <span class="ecom-tab-num">PAGE 04</span>
+                <span class="ecom-tab-name">Delivery &amp; Customer Experience</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic KPIs Strip that reflects the active page -->
+          <div class="bi-kpis" id="ecomKpis" style="grid-template-columns:repeat(5,1fr)">
+            <div class="bi-kpi"><small id="ek-label-0">Delivered orders</small><strong id="ek-val-0">96,478</strong></div>
+            <div class="bi-kpi"><small id="ek-label-1">Product revenue</small><strong id="ek-val-1">R$13.22<i>M</i></strong></div>
+            <div class="bi-kpi"><small id="ek-label-2">Freight charges</small><strong id="ek-val-2">R$2.20<i>M</i></strong></div>
+            <div class="bi-kpi"><small id="ek-label-3">Revenue + freight</small><strong id="ek-val-3">R$15.42<i>M</i></strong></div>
+            <div class="bi-kpi"><small id="ek-label-4">Avg order value</small><strong id="ek-val-4">R$137.04</strong></div>
+          </div>
+
+          <!-- Interactive Dashboard Visual Display Frame -->
+          <div class="ecom-display-frame">
+            <div class="ecom-frame-topbar">
+              <div class="ecom-window-dots"><i></i><i></i><i></i></div>
+              <div class="ecom-topbar-title">
+                <span id="ecomTopbarTitle">01_executive_sales_overview.pbix</span>
+                <span class="ecom-topbar-badge" id="ecomTopbarBadge">Interactive Report</span>
+              </div>
+              <div style="font:500 11px var(--mono);color:var(--muted)">100% Zoom</div>
+            </div>
+            <div class="ecom-stage" id="ecomStage" title="Click to open Full-Screen Interactive View">
+              <img id="ecomStageImg" class="ecom-stage-img" src="images/ecommerce/01_executive_sales_overview.png" alt="E-Commerce Executive Sales Overview Power BI Dashboard Preview" loading="lazy">
+              <button type="button" class="ecom-arrow-btn ecom-arrow-prev" id="ecomPrevBtn" aria-label="Previous dashboard page">‹</button>
+              <button type="button" class="ecom-arrow-btn ecom-arrow-next" id="ecomNextBtn" aria-label="Next dashboard page">›</button>
+              <div class="ecom-dots-row" id="ecomDotsRow">
+                <span class="ecom-nav-dot is-active" data-ecom-dot="0" aria-label="Go to Page 1"></span>
+                <span class="ecom-nav-dot" data-ecom-dot="1" aria-label="Go to Page 2"></span>
+                <span class="ecom-nav-dot" data-ecom-dot="2" aria-label="Go to Page 3"></span>
+                <span class="ecom-nav-dot" data-ecom-dot="3" aria-label="Go to Page 4"></span>
+              </div>
+              <div class="ecom-stage-overlay">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <span>Click to Expand</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Contextual Analysis & Takeaways for the active page -->
+          <div class="ecom-analysis-box" id="ecomAnalysisBox">
+            <div class="ecom-analysis-head">
+              <h4 id="ecomAnalysisTitle">Business Purpose &amp; Executive Findings</h4>
+              <span class="ecom-analysis-pill" id="ecomAnalysisPill">Sales &amp; Financial Dynamics</span>
+            </div>
+            <div class="ecom-analysis-body">
+              <div class="ecom-analysis-col">
+                <small>Analytical Objective</small>
+                <p id="ecomAnalysisPurpose">Evaluate total delivered orders, product revenue trajectory across months, freight charge proportion, and average order value across the Brazilian market.</p>
+              </div>
+              <div class="ecom-analysis-col">
+                <small>Key Business Insight &amp; Implication</small>
+                <p id="ecomAnalysisInsight">Delivered-order product revenue reached <b>R$13,221,498.11</b> plus <b>R$2,198,275.64</b> in freight across 96,478 orders. Growth climbed through 2017–2018 with documented coverage limitations for incomplete initial months.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="bi-note">Click any of the 4 page tabs above or use the left/right arrows to switch dashboards. Click the dashboard to launch the high-resolution report viewer.</p>
+        </div>
+      </div>
+
+      <!-- Distinct Visual Separation Between Projects -->
+      <div class="project-separation-divider rv" role="separator" aria-label="Project boundary">
+        <div class="psd-line"></div>
+        <div class="psd-content">
+          <span class="psd-dot" style="background:#10b981;box-shadow:0 0 10px #10b981"></span>
+          <span class="psd-text">NEXT FEATURED PROJECT</span>
+          <span class="psd-arrow">↓</span>
+        </div>
+        <div class="psd-line"></div>
+      </div>
+
       <div class="project-full-box project-sales rv" id="project-retail">
-        <div class="proj-header-badge badge-retail"><span class="proj-badge-dot"></span> PROJECT 01 // RETAIL &amp; COMMERCE ANALYTICS</div>
+        <div class="proj-header-badge badge-retail"><span class="proj-badge-dot"></span> PROJECT 02 // RETAIL &amp; COMMERCE ANALYTICS</div>
         <h2 class="proj-hero-heading" data-split>Retail sales, end&nbsp;to&nbsp;end.</h2>
         <div class="proj-copy">
           <h3>Retail Sales Performance &amp; Profitability Analytics</h3>
@@ -705,7 +932,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
       <div class="project-separation-divider rv" role="separator" aria-label="Project boundary">
         <div class="psd-line"></div>
         <div class="psd-content">
-          <span class="psd-dot"></span>
+          <span class="psd-dot" style="background:#e50914;box-shadow:0 0 10px #e50914"></span>
           <span class="psd-text">NEXT FEATURED PROJECT</span>
           <span class="psd-arrow">↓</span>
         </div>
@@ -713,7 +940,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
       </div>
 
       <div class="project-full-box project-netflix rv" id="project-netflix">
-        <div class="proj-header-badge badge-netflix"><span class="proj-badge-dot"></span> PROJECT 02 // STREAMING &amp; ENTERTAINMENT ANALYTICS</div>
+        <div class="proj-header-badge badge-netflix"><span class="proj-badge-dot"></span> PROJECT 03 // STREAMING &amp; ENTERTAINMENT ANALYTICS</div>
         <h2 class="proj-hero-heading" data-split>Netflix catalog, decoded&nbsp;&amp;&nbsp;visualized.</h2>
         <div class="proj-copy">
           <h3>Netflix Content Analytics</h3>
@@ -802,6 +1029,7 @@ html.rv-on .rv.in{opacity:1;transform:none}
           <span class="chip" data-cat="db">SQL</span>
           <span class="chip" data-cat="db">MySQL</span>
           <span class="chip" data-cat="bi">Power BI</span>
+          <span class="chip" data-cat="bi">DAX</span>
           <span class="chip" data-cat="bi">Dashboard Development</span>
           <span class="chip" data-cat="bi">KPI Analysis</span>
           <span class="chip" data-cat="bi">Data Visualization</span>
@@ -864,6 +1092,38 @@ html.rv-on .rv.in{opacity:1;transform:none}
       </div>
     </div>
   </section>
+
+<!-- E-Commerce Power BI Dashboard Modal with 4-Page Switcher -->
+<div class="nf-modal" id="ecommerceModal" role="dialog" aria-modal="true" aria-label="E-Commerce Power BI Dashboard Preview" hidden>
+  <div class="nf-backdrop" id="ecommerceModalBackdrop"></div>
+  <div class="nf-dialog">
+    <div class="nf-dialog-head">
+      <div>
+        <h3 id="ecommerceModalTitle">E-Commerce Business Analytics — Executive Sales Overview</h3>
+        <p id="ecommerceModalSub">Interactive Multi-Page Power BI Report · Click tabs below to switch pages</p>
+      </div>
+      <button type="button" class="nf-close" id="ecommerceModalClose" aria-label="Close modal">✕</button>
+    </div>
+    <div class="nf-dialog-body">
+      <!-- Modal Page Switcher -->
+      <div class="ecom-modal-tabs" role="tablist" aria-label="Select report page in modal">
+        <button type="button" class="ecom-modal-tab is-active" data-modal-page="0">01 Executive Sales</button>
+        <button type="button" class="ecom-modal-tab" data-modal-page="1">02 Product &amp; Categories</button>
+        <button type="button" class="ecom-modal-tab" data-modal-page="2">03 Customer &amp; Geography</button>
+        <button type="button" class="ecom-modal-tab" data-modal-page="3">04 Delivery &amp; Experience</button>
+      </div>
+      <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center">
+        <img id="ecommerceModalImg" src="images/ecommerce/01_executive_sales_overview.png" alt="E-Commerce Business Analytics Power BI Dashboard screenshot" loading="lazy">
+        <button type="button" class="ecom-arrow-btn ecom-arrow-prev" id="ecomModalPrevBtn" aria-label="Previous page">‹</button>
+        <button type="button" class="ecom-arrow-btn ecom-arrow-next" id="ecomModalNextBtn" aria-label="Next page">›</button>
+      </div>
+    </div>
+    <div class="nf-dialog-foot">
+      <span id="ecommerceModalMetrics">Key Metrics: 96,478 Delivered Orders · R$13.22M Product Revenue · R$2.20M Freight · R$15.42M Total</span>
+      <a class="btn btn-primary" href="https://github.com/Kishore292006/ecommerce-business-analytics" target="_blank" rel="noopener" style="min-height:38px;padding:8px 18px;font-size:13px">View Repository</a>
+    </div>
+  </div>
+</div>
 
 <!-- Retail Sales Power BI Dashboard Modal -->
 <div class="nf-modal" id="salesModal" role="dialog" aria-modal="true" aria-label="Retail Sales Power BI Dashboard Preview" hidden>
@@ -1007,6 +1267,219 @@ html.rv-on .rv.in{opacity:1;transform:none}
   }
   addEventListener('scroll',function(){ if(!pTick){pTick=true;requestAnimationFrame(prog);} },{passive:true});
   addEventListener('resize',prog); prog();
+
+  /* ---------- interactive e-commerce multi-page dashboard ---------- */
+  (function(){
+    var root = $('#biEcommerce'); if(!root) return;
+    var pages = [
+      {
+        id: 0,
+        title: "Executive Sales Overview",
+        headSub: "Page 1 of 4 · Sales Performance & Monthly Trends · 96,478 Delivered Orders",
+        file: "01_executive_sales_overview.pbix",
+        badge: "Sales Performance",
+        img: "images/ecommerce/01_executive_sales_overview.png",
+        alt: "E-Commerce Executive Sales Overview Power BI Dashboard Preview",
+        kpis: [
+          { label: "Delivered orders", val: "96,478" },
+          { label: "Product revenue", val: "R$13.22", sup: "M" },
+          { label: "Freight charges", val: "R$2.20", sup: "M" },
+          { label: "Revenue + freight", val: "R$15.42", sup: "M" },
+          { label: "Avg order value", val: "R$137.04" }
+        ],
+        pill: "Sales & Financial Dynamics",
+        purpose: "Evaluate total delivered orders, product revenue trajectory across months, freight charge proportion, and average order value across the Brazilian market.",
+        insight: "Delivered-order product revenue reached <b>R$13,221,498.11</b> plus <b>R$2,198,275.64</b> in freight across 96,478 orders. Growth climbed through 2017–2018 with documented coverage limitations for incomplete initial months.",
+        modalTitle: "E-Commerce Business Analytics — Executive Sales Overview",
+        modalMetrics: "Key Metrics: 96,478 Delivered Orders · R$13.22M Product Revenue · R$2.20M Freight · R$15.42M Total"
+      },
+      {
+        id: 1,
+        title: "Product & Category Performance",
+        headSub: "Page 2 of 4 · Top Revenue Categories vs Item Sales Volume · 73 Categories",
+        file: "02_product_category_performance.pbix",
+        badge: "Category Intelligence",
+        img: "images/ecommerce/02_product_category_performance.png",
+        alt: "E-Commerce Product and Category Performance Power BI Dashboard Preview",
+        kpis: [
+          { label: "Product revenue", val: "R$13.22", sup: "M" },
+          { label: "Categories analyzed", val: "73" },
+          { label: "Top category", val: "Health & Beauty" },
+          { label: "Total units sold", val: "112,653" },
+          { label: "Top category rev", val: "R$1.26", sup: "M" }
+        ],
+        pill: "Catalog Volume vs Revenue",
+        purpose: "Identify top revenue-generating product categories and compare high-value revenue drivers against high-volume transaction categories.",
+        insight: "<b>Health & Beauty</b> led all categories in revenue (R$1.26M), followed by Watches & Gifts and Bed Bath & Table. Notably, revenue leadership does not always match sales unit volume leadership.",
+        modalTitle: "E-Commerce Business Analytics — Product & Category Performance",
+        modalMetrics: "Key Metrics: 73 Categories · Top: Health & Beauty (R$1.26M) · 112,653 Total Units Sold"
+      },
+      {
+        id: 2,
+        title: "Customer & Geographic Insights",
+        headSub: "Page 3 of 4 · Repeat Customer Dynamics & State-Level Revenue Distribution",
+        file: "03_customer_geographic_insights.pbix",
+        badge: "Customer Intelligence",
+        img: "images/ecommerce/03_customer_geographic_insights.png",
+        alt: "E-Commerce Customer and Geographic Insights Power BI Dashboard Preview",
+        kpis: [
+          { label: "Repeat customers", val: "2,801" },
+          { label: "One-time customers", val: "90,557" },
+          { label: "Repeat customer rate", val: "~3.00", sup: "%" },
+          { label: "Rev / repeat customer", val: "R$260.05" },
+          { label: "Rev / one-time cust", val: "R$137.96" }
+        ],
+        pill: "Retention & Geographic Demand",
+        purpose: "Understand repeat purchasing patterns, customer lifetime value differences, and regional geographic revenue concentration across Brazilian states.",
+        insight: "Repeat customers (~3% of base) generate <b>R$260.05</b> average revenue vs <b>R$137.96</b> for one-time buyers (almost 2x higher). <b>São Paulo (SP)</b> drove dominant revenue share.",
+        modalTitle: "E-Commerce Business Analytics — Customer & Geographic Insights",
+        modalMetrics: "Key Metrics: 2,801 Repeat Customers · ~3% Repeat Rate · R$260.05 vs R$137.96 Avg Rev · SP Top State"
+      },
+      {
+        id: 3,
+        title: "Delivery & Customer Experience",
+        headSub: "Page 4 of 4 · Logistics Delivery Reliability & Customer Review Score Correlation",
+        file: "04_delivery_customer_experience.pbix",
+        badge: "Logistics & CSAT",
+        img: "images/ecommerce/04_delivery_customer_experience.png",
+        alt: "E-Commerce Delivery and Customer Experience Power BI Dashboard Preview",
+        kpis: [
+          { label: "On-time delivery rate", val: "91.89", sup: "%" },
+          { label: "Late deliveries", val: "7,826" },
+          { label: "Avg delivery time", val: "12.50", sup: "d" },
+          { label: "On-time review score", val: "4.29", sup: "/5" },
+          { label: "Late review score", val: "2.57", sup: "/5" }
+        ],
+        pill: "Operational Impact on CSAT",
+        purpose: "Evaluate delivery timeline reliability and quantify the statistical relationship between shipping delays and customer satisfaction review scores.",
+        insight: "Delivered orders achieved a <b>91.89%</b> on-time rate. Late deliveries averaged 8.87 days delay and suffered an average review score of <b>2.57/5</b> compared to <b>4.29/5</b> for on-time orders.",
+        modalTitle: "E-Commerce Business Analytics — Delivery & Customer Experience",
+        modalMetrics: "Key Metrics: 91.89% On-time Rate · 7,826 Late Deliveries · 4.29 On-time CSAT vs 2.57 Late CSAT"
+      }
+    ];
+
+    var cur = 0;
+    var headTitle = $('#ecomHeadTitle'), headSub = $('#ecomHeadSub'), ind = $('#ecomPageIndicator');
+    var topTitle = $('#ecomTopbarTitle'), topBadge = $('#ecomTopbarBadge');
+    var stageImg = $('#ecomStageImg'), stage = $('#ecomStage');
+    var analysisPill = $('#ecomAnalysisPill'), analysisPurpose = $('#ecomAnalysisPurpose'), analysisInsight = $('#ecomAnalysisInsight');
+    var tabBtns = $$('[data-ecom-page]', root), dots = $$('[data-ecom-dot]', root);
+    var prevBtn = $('#ecomPrevBtn'), nextBtn = $('#ecomNextBtn');
+
+    var eModal = $('#ecommerceModal'), openModalBtn = $('#openEcommerceModal'), modalBtn = $('#biEcommerceModalBtn'), closeModalBtn = $('#ecommerceModalClose'), modalBackdrop = $('#ecommerceModalBackdrop');
+    var modalTitle = $('#ecommerceModalTitle'), modalMetrics = $('#ecommerceModalMetrics'), modalImg = $('#ecommerceModalImg');
+    var modalPrevBtn = $('#ecomModalPrevBtn'), modalNextBtn = $('#ecomModalNextBtn');
+    var modalTabs = $$('[data-modal-page]', eModal || document);
+
+    function setPage(idx){
+      if(idx < 0) idx = pages.length - 1;
+      if(idx >= pages.length) idx = 0;
+      cur = idx;
+      var p = pages[cur];
+
+      if(headTitle) headTitle.textContent = p.title;
+      if(headSub) headSub.textContent = p.headSub;
+      if(ind) ind.textContent = "Showing Page " + (cur + 1) + " of 4";
+      if(topTitle) topTitle.textContent = p.file;
+      if(topBadge) topBadge.textContent = p.badge;
+
+      if(stageImg) {
+        stageImg.style.opacity = '0.35';
+        stageImg.src = p.img;
+        stageImg.alt = p.alt;
+        stageImg.onload = function(){ stageImg.style.opacity = '1'; };
+      }
+
+      for(var k = 0; k < 5; k++){
+        var lEl = $('#ek-label-' + k), vEl = $('#ek-val-' + k);
+        if(lEl && p.kpis[k]) lEl.textContent = p.kpis[k].label;
+        if(vEl && p.kpis[k]){
+          vEl.innerHTML = p.kpis[k].val + (p.kpis[k].sup ? '<i>' + p.kpis[k].sup + '</i>' : '');
+        }
+      }
+
+      if(analysisPill) analysisPill.textContent = p.pill;
+      if(analysisPurpose) analysisPurpose.innerHTML = p.purpose;
+      if(analysisInsight) analysisInsight.innerHTML = p.insight;
+
+      tabBtns.forEach(function(b, i){
+        var active = (i === cur);
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-selected', String(active));
+      });
+
+      dots.forEach(function(d, i){
+        d.classList.toggle('is-active', i === cur);
+      });
+
+      if(modalTitle) modalTitle.textContent = p.modalTitle;
+      if(modalMetrics) modalMetrics.textContent = p.modalMetrics;
+      if(modalImg) {
+        modalImg.src = p.img;
+        modalImg.alt = p.alt;
+      }
+      modalTabs.forEach(function(b, i){
+        b.classList.toggle('is-active', i === cur);
+      });
+    }
+
+    tabBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = parseInt(b.getAttribute('data-ecom-page'), 10);
+        setPage(i);
+      });
+    });
+
+    dots.forEach(function(d){
+      d.addEventListener('click', function(e){
+        e.stopPropagation();
+        var i = parseInt(d.getAttribute('data-ecom-dot'), 10);
+        setPage(i);
+      });
+    });
+
+    if(prevBtn) prevBtn.addEventListener('click', function(e){ e.stopPropagation(); setPage(cur - 1); });
+    if(nextBtn) nextBtn.addEventListener('click', function(e){ e.stopPropagation(); setPage(cur + 1); });
+
+    if(modalPrevBtn) modalPrevBtn.addEventListener('click', function(e){ e.stopPropagation(); setPage(cur - 1); });
+    if(modalNextBtn) modalNextBtn.addEventListener('click', function(e){ e.stopPropagation(); setPage(cur + 1); });
+
+    modalTabs.forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = parseInt(b.getAttribute('data-modal-page'), 10);
+        setPage(i);
+      });
+    });
+
+    function setEcomModal(open){
+      if(!eModal) return;
+      eModal.hidden = !open;
+      if(open){
+        setPage(cur);
+        requestAnimationFrame(function(){ eModal.classList.add('is-open'); });
+        document.body.style.overflow = 'hidden';
+      } else {
+        eModal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if(stage) stage.addEventListener('click', function(e){
+      if(e.target.closest('.ecom-arrow-btn') || e.target.closest('.ecom-nav-dot')) return;
+      setEcomModal(true);
+    });
+    if(openModalBtn) openModalBtn.addEventListener('click', function(){ setEcomModal(true); });
+    if(modalBtn) modalBtn.addEventListener('click', function(){ setEcomModal(true); });
+    if(closeModalBtn) closeModalBtn.addEventListener('click', function(){ setEcomModal(false); });
+    if(modalBackdrop) modalBackdrop.addEventListener('click', function(){ setEcomModal(false); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && eModal && !eModal.hidden) setEcomModal(false);
+      if(!eModal.hidden){
+        if(e.key === 'ArrowLeft') setPage(cur - 1);
+        if(e.key === 'ArrowRight') setPage(cur + 1);
+      }
+    });
+  })();
 
   /* ---------- interactive sales dashboard: real aggregates of sales_cleaned.csv, filtered client-side ---------- */
   (function(){
