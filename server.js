@@ -240,7 +240,7 @@ async function serveFile(req, res, { file, kind }, query) {
   const ext = path.extname(file).toLowerCase();
   const headers = {
     'Content-Type': MIME[ext] || 'application/octet-stream',
-    'Cache-Control': kind === 'html' ? 'no-cache' : 'public, max-age=86400',
+    'Cache-Control': (kind === 'html' || kind === 'pdf') ? 'no-cache' : 'public, max-age=86400',
   };
 
   if (kind === 'pdf') {
